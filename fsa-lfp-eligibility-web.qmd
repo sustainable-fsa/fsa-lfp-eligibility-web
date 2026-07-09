@@ -106,6 +106,24 @@ variable = "payment_type"
 
 ```
 
+```{ojs map-size}
+//| output: false
+
+// Size the map to its card. A ResizeObserver notifies as soon as the card
+// receives its real dimensions, so the FIRST render is correctly sized —
+// the stdlib `width` is only re-evaluated on window resize, which left the
+// initial paint at the wrong scale until the viewport changed.
+mapSize = Generators.observe((notify) => {
+  const body = document.querySelector(".card .card-body");
+  const ro = new ResizeObserver((entries) => {
+    const r = entries[0].contentRect;
+    if (r.width > 0 && r.height > 0) notify({width: r.width, height: r.height});
+  });
+  ro.observe(body);
+  return () => ro.disconnect();
+})
+```
+
 ```{ojs filter-join-data}
 //| output: false
 
@@ -150,6 +168,8 @@ countiesFiltered = {
 //| title: FSA Livestock Forage Disaster Program Eligibility
 
 Plot.plot({
+width: mapSize.width,
+height: Math.max(300, mapSize.height - 70),  // leave room for the legend
 projection: {
     type: "albers",
     domain: counties
