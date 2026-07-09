@@ -305,8 +305,8 @@ ggplot(counties) +
 
 If you use this data in published work, please cite:
 
-> USDA Farm Service Agency. *Weekly Livestock Forage Disaster Program
-> County Eligibility Maps and Tables, 2008–present*. Curated and
+> USDA Farm Service Agency. *Web Archive of Livestock Forage Disaster
+> Program County Eligibility Maps and Tables, 2008–present*. Curated and
 > archived by R. Kyle Bocinsky, Montana Climate Office, University of
 > Montana. Sustainable FSA project. Accessed YYYY-MM-DD.
 > <https://sustainable-fsa.com/fsa-lfp-eligibility-web/>
