@@ -29,9 +29,18 @@ additionally harmonized into a single analysis-ready dataset.
 
 This repository is the web-published companion to
 [`sustainable-fsa/fsa-lfp-eligibility`](https://github.com/sustainable-fsa/fsa-lfp-eligibility),
-which archives the same LFP county eligibility data as obtained directly
-from FSA via FOIA request. The two datasets share a common schema and
-are directly comparable.
+which archives the same LFP county eligibility determinations as
+obtained directly from FSA via FOIA request. The two datasets share a
+common schema, but differ in content: the FOIA data are richer — they
+include Fire eligibility, payment factors for 2008–2011, and later
+corrections and retroactive determinations that never appeared in the
+web-published tables (the web tables for a program year remain
+provisional until well after year end). This archive’s unique
+contributions are current-year coverage, the weekly snapshot history,
+and the original published maps and tables themselves. For most analyses
+of 2008–2025 eligibility, prefer the FOIA archive; use this archive for
+the current program year and for studying when eligibility was
+published.
 
 The [`fsa-lfp-eligibility-web.R`](fsa-lfp-eligibility-web.R) script
 handles all data acquisition and processing. The script scrapes the USDA
@@ -51,22 +60,42 @@ interactive dashboard.
 LFP provides compensation to eligible livestock producers who suffer
 grazing losses on drought-afflicted pastureland. Eligibility is
 determined weekly, by county and pasture type, from the [U.S. Drought
-Monitor](https://droughtmonitor.unl.edu/). Payment rates depend on
-drought severity and duration during the normal grazing period:
+Monitor](https://droughtmonitor.unl.edu/). Under the criteria in effect
+for the eligibility determinations archived here ([7 CFR §
+1416.205](https://www.ecfr.gov/current/title-7/subtitle-B/chapter-XIV/subchapter-B/part-1416/subpart-C/section-1416.205)),
+payments depend on drought severity and duration during the normal
+grazing period:
 
-- **D2 (Severe Drought)** for at least four consecutive weeks — *one*
+- **D2 (Severe Drought)** for at least eight consecutive weeks — *one*
   monthly payment
-- **D2 (Severe Drought)** for at least seven out of eight consecutive
-  weeks — *two* monthly payments
 - **D3 (Extreme Drought)** at any time — *three* monthly payments
-- **D3 (Extreme Drought)** for at least four weeks or **D4 (Exceptional
+- **D3 (Extreme Drought)** for at least four weeks, or **D4 (Exceptional
   Drought)** at any time — *four* monthly payments
 - **D4 (Exceptional Drought)** for four weeks (not necessarily
   consecutive) — *five* monthly payments
 
-These tiers correspond to the `Drought Factor` and `Payment Factor`
-variables in the output data; the `D2 START DATE` … `D4B END` variables
-record the qualifying drought windows.
+In the output data, `Drought Factor` records this tier (1, 3, 4, or 5),
+and `Payment Factor` is the number of payments actually eligible — the
+`Drought Factor` capped by `Maximum Eligible Payment Months`, the length
+of the pasture type’s normal grazing period. The `D2 START DATE` …
+`D4B END` variables record the qualifying drought windows.
+
+**Recent revisions, not yet reflected in the data:** Section 10401(b) of
+the One Big Beautiful Bill Act ([P.L.
+119-21](https://www.congress.gov/bill/119th-congress/house-bill/1), July
+4, 2025) lowered the D2 trigger to *four* consecutive weeks for one
+monthly payment and added a new tier — D2 for at least seven of the
+previous eight consecutive weeks, worth *two* monthly payments; all
+other tiers are unchanged. FSA’s implementing [final
+rule](https://www.federalregister.gov/documents/2026/07/09/2026-13878/supplemental-disaster-assistance-programs-marketing-assistance-loans-and-sugar-provisions)
+became effective July 9, 2026, applicable to program year 2026 and
+subsequent years. As of this writing, however, the weekly eligibility
+maps and tables published by FSA — and therefore the determinations
+archived here — are still produced under the prior criteria, even though
+FSA’s program pages already describe the revised tiers. Because the
+revisions apply retroactively to program year 2026, the weekly snapshots
+in this archive will record when and how the published determinations
+change.
 
 ------------------------------------------------------------------------
 
@@ -128,7 +157,10 @@ published version of each county × program year × pasture type record.
 [`fsa-lfp-eligibility-web-snapshots.parquet`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web-snapshots.parquet)
 contains *every* archived weekly version of every record — the unique
 contribution of this archive — for studying how eligibility accrued
-within each season.
+within each season. Note that the published 2008–2011 workbook reports
+qualifying drought windows but no payment information, so
+`Drought Factor` and `Payment Factor` are `NA` for those years; the FOIA
+archive fills that gap.
 
 ### Variables in Output
 
@@ -148,11 +180,11 @@ within each season.
 | `Disaster Type` | Type of disaster (Drought) |
 | `D2 START DATE`:`D4B END` | Start and end dates for qualifying drought events |
 | `Date of Qualifying Drought` | Start date of qualifying disaster |
-| `Drought Factor` | Qualifying payments given the drought severity |
+| `Drought Factor` | Monthly payments earned by drought severity and duration (1, 3, 4, or 5) |
 | `Grazing Period Start Date` | Start date of grazing period for the pasture type |
 | `Grazing Period End Date` | End date of grazing period for the pasture type |
 | `Maximum Eligible Payment Months` | Duration of grazing period, in months |
-| `Payment Factor` | Number of eligible payments |
+| `Payment Factor` | Eligible monthly payments (`Drought Factor` capped by `Maximum Eligible Payment Months`) |
 
 ------------------------------------------------------------------------
 
