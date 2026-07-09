@@ -1,0 +1,199 @@
+---
+format:
+  dashboard:
+    theme: yeti
+    scrolling: false
+    expandable: false
+    embed-resources: true
+editor_options:
+  chunk_output_type: console
+---
+
+<style>
+.plot-d6a7b5-swatches-wrap {
+  justify-content: center;
+}
+</style>
+
+```{r create-simple-csv}
+#| echo: false     # hides the code
+#| results: "hide" # hides printed output
+#| message: false  # hides messages (e.g. from package loading)
+#| warning: false  # hides warnings
+
+library(magrittr)
+
+dir.create("assets",
+           recursive = TRUE,
+           showWarnings = FALSE)
+
+readr::read_csv("fsa-lfp-eligibility-web.csv") %>%
+  dplyr::transmute(
+    id = paste0(`FIPS State Code`, `FIPS County Code`),
+    state = `FIPS State Name`,
+    county = `FIPS County Name`,
+    year = `Program Year`,
+    type = `Pasture Type`,
+    disaster = `Disaster Type`,
+    disaster_start_date = `Date of Qualifying Drought`,
+    payment_type = ifelse(is.na(`Payment Factor`), "Eligible", paste(`Payment Factor`, "Month"))) %>%
+  dplyr::distinct(id, year, type, disaster, .keep_all = TRUE) %>%
+  dplyr::arrange(id, type, dplyr::desc(year), disaster) %>%
+  readr::write_csv(
+    file.path(
+      "assets",
+      "fsa-lfp-eligibility-web-simple.csv"
+    ),
+    quote = "all")
+
+```
+
+
+```{ojs inputs}
+//| content: card-toolbar
+
+// Create interactive inputs
+
+viewof year = Inputs.range(
+d3.extent(data, d => d.year),
+{
+step: 1,
+label: "Year",
+value: d3.max(data, d => d.year)
+}
+)
+
+viewof type = Inputs.select(
+[...new Set(data.map(d => d.type))].sort(),
+{ label: "Type", value: "Native Pasture" }
+)
+```
+
+```{ojs read-data}
+//| output: false
+
+// Import libraries
+scaleSequential = (await import("https://cdn.jsdelivr.net/npm/d3@7/+esm")).scaleSequential
+
+// a format for dates
+formatDate = d3.utcFormat("%b %d, %Y")  // e.g., "Apr 18, 2025"
+
+// this archive is drought-only
+disaster = "Drought"
+
+// counties
+us = await d3.json("https://data.sustainable-fsa.com/fsa-counties-dd17/fsa-counties-dd17.topojson");
+counties = topojson.feature(us, us.objects.counties)
+
+// states, but just the boundaries between them
+states = topojson.mesh(us, us.objects.states, (a, b) => a !== b)
+
+// weekly LFP eligibility data, simplified
+data = FileAttachment("assets/fsa-lfp-eligibility-web-simple.csv").csv({typed: true})
+
+// Load color palettes
+color =
+new Map([
+["1 Month", "#FFFF54"],
+["2 Month", "#F3AE3D"],
+["3 Month", "#6D4E16"],
+["4 Month", "#EA3323"],
+["5 Month", "#7316A2"],
+["Eligible", "#EA3323"]
+])
+
+variable = "payment_type"
+
+```
+
+```{ojs filter-join-data}
+//| output: false
+
+// Filter CSV data to current selections
+filtered = data.filter(d => d.year === year && d.type === type && d.disaster === disaster)
+
+// Create a lookup table keyed by `id`
+valueById = Object.fromEntries(filtered.map(d => [String(d.id).padStart(5, "0"), d[variable]]))
+
+// Merge values into counties.features
+countiesFiltered = {
+  // Build lookup from filtered CSV: id → full row
+  const rowById = Object.fromEntries(
+        filtered.map(d => [String(d.id).padStart(5, "0"), d])
+  );
+
+  // Rebuild counties with joined properties
+  return {
+    type: "FeatureCollection",
+    features: counties.features.map(f => {
+      const id = String(f.id);
+      const row = rowById[id];
+
+      return {
+        ...f,
+        value: row ? row[variable] : null,
+        properties: {
+          id: f.id,
+          ...f.properties,
+          ...(row ?? {}),
+          value: row ? row[variable] : null  // explicitly add value for coloring
+        }
+      };
+    })
+  };
+}
+
+```
+
+```{ojs}
+//| label: map
+//| title: FSA Livestock Forage Disaster Program Eligibility
+
+Plot.plot({
+projection: {
+    type: "albers",
+    domain: counties
+  },
+grid: true,
+color: {
+    domain: ["1 Month", "2 Month", "3 Month", "4 Month", "5 Month"],
+    range: ["#FFFF54", "#F3AE3D", "#6D4E16", "#EA3323", "#7316A2"],
+    unknown: "#ccc",
+    legend: true
+  },
+marks: [
+Plot.geo(countiesFiltered, {
+      fill: "value"
+    }),
+
+Plot.dot(
+  countiesFiltered.features.map(f => {
+    const [x, y] = d3.geoCentroid(f);
+    return {
+      ...f.properties,
+      x,
+      y
+    };
+  }),
+  {
+    x: "x",
+    y: "y",
+    r: 3,
+    fill: "transparent",
+    stroke: "none",
+    tip: true,
+    title: d => `${d.county} County, ${d.state}
+FIPS: ${String(d.id).padStart(5, "0")}
+Program Year: ${year}
+Crop Type: ${type}
+Disaster: ${d.disaster ? d.disaster : "None"}
+Start Date: ${d.disaster_start_date ? formatDate(d.disaster_start_date) : "None"}
+`
+  }
+),
+
+Plot.geo(states, {stroke: "white"}),
+]
+})
+
+```

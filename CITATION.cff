@@ -1,0 +1,21 @@
+# Citation metadata for this repository (Citation File Format 1.2.0).
+# Standardized across the sustainable-fsa organization; the same
+# citation appears in human-readable form in README.md.
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it using these metadata."
+type: dataset
+title: "Weekly Livestock Forage Disaster Program County Eligibility Maps and Tables (2008–present) (Sustainable FSA Archive)"
+authors:
+  - name: "USDA Farm Service Agency"
+  - family-names: Bocinsky
+    given-names: R. Kyle
+    affiliation: "Montana Climate Office, University of Montana"
+date-released: 2026-07-09
+repository-code: "https://github.com/sustainable-fsa/fsa-lfp-eligibility-web"
+url: "https://sustainable-fsa.com/fsa-lfp-eligibility-web/"
+keywords:
+  - USDA
+  - FSA
+  - drought
+  - grazing
+  - Livestock Forage Disaster Program

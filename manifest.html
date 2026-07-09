@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FSA LFP Weekly Eligibility Archive</title>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <style>
+    body { font-family: sans-serif; margin: 2rem; }
+
+    div.dataTables_wrapper .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    table.dataTable tbody td {
+      vertical-align: middle;
+    }
+
+    th, td {
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+  <table id="fileTable" class="display" style="width:100%">
+    <thead>
+      <tr>
+        <th>Path</th>
+        <th>Size</th>
+        <th>Last Modified</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <script>
+    function formatSize(bytes) {
+      if (bytes === "-" || isNaN(bytes)) return "-";
+      const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(1024));
+      return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
+    }
+
+    function formatTimestamp(iso) {
+      if (iso === "-" || !iso) return "-";
+      const d = new Date(iso);
+      return d.toLocaleString(); // localized
+    }
+
+    function calculatePageLength() {
+      const rowHeight = 45;
+      const marginTop = 180;
+      const available = window.innerHeight - marginTop;
+      return Math.floor(available / rowHeight);
+    }
+
+    fetch("manifest.json")
+      .then(res => res.json())
+      .then(data => {
+        const rows = data.map(d => ({
+          path: d.path
+            ? `<a href="${d.path}">📄 ${d.path}</a>`
+            : "-",
+          size: formatSize(d.size),
+          /*mtime: formatTimestamp(d.mtime)*/
+          mtime: d.mtime
+        }));
+
+        $('#fileTable').DataTable({
+          data: rows,
+          columns: [
+            { data: 'path' },
+            { data: 'size' },
+            { data: 'mtime' }
+          ],
+          order: [[0, "asc"]],
+          pageLength: calculatePageLength(),
+          lengthChange: false,
+          responsive: true,
+          dom: '<"top-row"f><"clear">t<"bottom"ip>',
+          initComplete: function () {
+            const wrapper = document.querySelector('.top-row');
+            const heading = document.createElement('h1');
+            heading.textContent = "FSA LFP Weekly Eligibility Archive";
+            wrapper.prepend(heading);
+          }
+        });
+      });
+  </script>
+</body>
+</html>

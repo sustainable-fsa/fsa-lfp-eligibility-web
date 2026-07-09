@@ -1,0 +1,11 @@
+title: FSA LFP Weekly Eligibility Archive
+description:
+  Archive of the weekly USDA Farm Service Agency Livestock Forage Disaster Program (LFP)
+  county eligibility maps and tables, 2008–present.
+author: R. Kyle Bocinsky
+url: "https://sustainable-fsa.com/fsa-lfp-eligibility-web/" # Your GitHub Pages URL
+baseurl: "/fsa-lfp-eligibility-web"
+
+remote_theme: jekyll/minima
+plugins:
+  - jekyll-remote-theme

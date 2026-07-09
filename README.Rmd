@@ -1,0 +1,241 @@
+---
+output:
+  github_document:
+    html_preview: false
+editor_options:
+  chunk_output_type: console
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+[![Static Badge](https://img.shields.io/badge/Repo-sustainable--fsa%2Ffsa--lfp--eligibility--web-magenta?style=flat)](https://github.com/sustainable-fsa/fsa-lfp-eligibility-web/)
+![Last Update](https://img.shields.io/github/last-commit/sustainable-fsa/fsa-lfp-eligibility-web?style=flat)
+![Repo Size](https://img.shields.io/github/repo-size/sustainable-fsa/fsa-lfp-eligibility-web?style=flat)
+
+# FSA Weekly County Eligibility Data from the Livestock Forage Disaster Program, 2008–present
+
+This repository is an archive of the **Weekly LFP Program Eligibility Maps and Table** published by the USDA Farm Service Agency for the [Livestock Forage Disaster Program (LFP)](https://www.fsa.usda.gov/resources/disaster-recovery/livestock-forage-disaster-program-lfp). Per-pasture-type eligibility map PDFs and county eligibility tables are acquired daily from the <a href="https://www.fsa.usda.gov/resources/programs/livestock-forage-disaster-program-lfp/maps" target="_blank">USDA LFP maps portal</a>. The raw data are archived in the <a href="https://data.sustainable-fsa.com/#/fsa-lfp-eligibility-web/data-raw/" target="_blank">`data-raw` directory</a>.
+
+FSA publishes each week's maps and table at *new, dated URLs* and only links the current week from the maps page — prior weeks simply drop off the page. This archive preserves that history: every dated PDF and XLSX is captured once and kept forever, and the weekly tables are additionally harmonized into a single analysis-ready dataset.
+
+This repository is the web-published companion to [`sustainable-fsa/fsa-lfp-eligibility`](https://github.com/sustainable-fsa/fsa-lfp-eligibility), which archives the same LFP county eligibility data as obtained directly from FSA via FOIA request. The two datasets share a common schema and are directly comparable.
+
+The [`fsa-lfp-eligibility-web.R`](fsa-lfp-eligibility-web.R) script handles all data acquisition and processing. The script scrapes the USDA LFP maps page, resolves every linked document to its underlying file, and exits quietly if nothing new has been published. When new files appear, it downloads them, appends them to the S3 archive, parses **all** archived eligibility tables (whose column layouts vary considerably across vintages), harmonizes them into a consistent schema — standardizing column names, dates, pasture types, and county codes — and writes consolidated CSV and Parquet outputs along with an interactive dashboard.
+
+---
+
+## About the Livestock Forage Disaster Program
+
+LFP provides compensation to eligible livestock producers who suffer grazing losses on drought-afflicted pastureland. Eligibility is determined weekly, by county and pasture type, from the [U.S. Drought Monitor](https://droughtmonitor.unl.edu/). Payment rates depend on drought severity and duration during the normal grazing period:
+
+- **D2 (Severe Drought)** for at least four consecutive weeks — *one* monthly payment
+- **D2 (Severe Drought)** for at least seven out of eight consecutive weeks — *two* monthly payments
+- **D3 (Extreme Drought)** at any time — *three* monthly payments
+- **D3 (Extreme Drought)** for at least four weeks or **D4 (Exceptional Drought)** at any time — *four* monthly payments
+- **D4 (Exceptional Drought)** for four weeks (not necessarily consecutive) — *five* monthly payments
+
+These tiers correspond to the `Drought Factor` and `Payment Factor` variables in the output data; the `D2 START DATE` … `D4B END` variables record the qualifying drought windows.
+
+---
+
+## 🗂️ Contents
+
+- [`fsa-lfp-eligibility-web.R`](fsa-lfp-eligibility-web.R) — acquisition and processing script
+- [`fsa-lfp-eligibility-web.csv`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web.csv) — cleaned and consolidated data (latest published version of each record)
+- [`fsa-lfp-eligibility-web.parquet`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web.parquet) — the same, as Parquet
+- [`fsa-lfp-eligibility-web-snapshots.parquet`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web-snapshots.parquet) — every archived weekly version of every record
+- [`fsa-lfp-eligibility-web.qmd`](fsa-lfp-eligibility-web.qmd) — Quarto dashboard source
+- [`fsa-lfp-eligibility-web.html`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web.html) — interactive summary dashboard
+- [`data-raw/`](https://data.sustainable-fsa.com/#/fsa-lfp-eligibility-web/data-raw/) — raw weekly PDFs and XLSX tables as published by FSA, organized by program year (S3 only; not in git)
+- [`manifest.json`](manifest.json) — flat index of the raw archive (path, size, last-modified)
+
+---
+
+## 📥 Input Data: Weekly Maps and Tables
+
+FSA publishes, for each program year, roughly a dozen per-pasture-type eligibility map **PDFs** (Native Pasture, Cool/Warm Season Improved, Forage Sorghum, small grains variants, etc.) and a single **Counties & Pasture Types Eligible XLSX table**. During the current program year these are re-issued weekly, following each Thursday's U.S. Drought Monitor release, at new dated URLs.
+
+The XLSX table layout has varied over the years — a multi-sheet workbook covering 2008–2011, a wide layout with FSA state/county codes for 2012–2023, a revised layout for 2024–2025, and a slimmed-down weekly layout from 2026 onward that omits county codes entirely. The processing workflow in [`fsa-lfp-eligibility-web.R`](fsa-lfp-eligibility-web.R) harmonizes all of these, resolving county identities against the archive's own earlier records.
+
+Each run that archives new files also records provenance under `data-raw/log/<date>/`: the maps page HTML as fetched, and a `links.json` listing every discovered asset with its resolved URL and (for new files) SHA-256 hash.
+
+---
+
+## 📤 Output Data: Cleaned CSV and Parquet
+
+The files [`fsa-lfp-eligibility-web.csv`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web.csv) and [`fsa-lfp-eligibility-web.parquet`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web.parquet) are tidy datasets for analysis and visualization, containing the latest published version of each county × program year × pasture type record. [`fsa-lfp-eligibility-web-snapshots.parquet`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web-snapshots.parquet) contains *every* archived weekly version of every record — the unique contribution of this archive — for studying how eligibility accrued within each season.
+
+### Variables in Output
+
+| Variable Name                          | Description                                              |
+|----------------------------------------|----------------------------------------------------------|
+| `FIPS State Code`                      | A two-digit FIPS state code                              |
+| `FIPS County Code`                     | A three-digit FIPS county code                           |
+| `FIPS State Name`                      | U.S. state                                               |
+| `FIPS County Name`                     | County or county-equivalent name                         |
+| `file`                                 | Source file, as a path within `data-raw/`                |
+| `file_datestamp`                       | Publication datestamp embedded in the source filename    |
+| `FSA State Code`                       | A two-digit FSA state code (not always FIPS)             |
+| `FSA County Code`                      | A three-digit FSA county code (not always FIPS)          |
+| `FSA County Name`                      | County or county-equivalent name                         |
+| `Program Year`                         | Year the data applies to                                 |
+| `Pasture Type`                         | Pasture classification (e.g., Native, Improved)          |
+| `Disaster Type`                        | Type of disaster (Drought)                               |
+| `D2 START DATE`:`D4B END`              | Start and end dates for qualifying drought events        |
+| `Date of Qualifying Drought`           | Start date of qualifying disaster                        |
+| `Drought Factor`                       | Qualifying payments given the drought severity           |
+| `Grazing Period Start Date`            | Start date of grazing period for the pasture type        |
+| `Grazing Period End Date`              | End date of grazing period for the pasture type          |
+| `Maximum Eligible Payment Months`      | Duration of grazing period, in months                    |
+| `Payment Factor`                       | Number of eligible payments                              |
+
+---
+
+## 📊 Demonstration Dashboard
+
+The Quarto dashboard [`fsa-lfp-eligibility-web.qmd`](fsa-lfp-eligibility-web.qmd) provides:
+
+- An **interactive viewer** to explore LFP Eligibility by county, year, and pasture type
+- A **tool for researchers and policymakers** to assess temporal trends
+
+<iframe src="https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web.html" frameborder="0" allowfullscreen
+style="width:100%;height:40vw;"></iframe>
+
+Access a full-screen version of the dashboard at:
+<https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web.html>
+
+---
+
+## 📍 Quick Start: Visualize a FSA LFP Eligibility Map in R
+
+This snippet shows how to load the FSA LFP Eligibility data from the archive and create a simple map using `sf` and `ggplot2`.
+
+```{r example, message=FALSE, fig.align = 'center', dpi=300, fig.path = './'}
+# Load required libraries
+library(arrow)
+library(sf)
+library(ggplot2) # For plotting
+library(tigris)  # For state boundaries
+library(rmapshaper) # For innerlines function
+
+## Get the LFP Eligibility data
+eligibility <-
+  # "https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web.parquet" |>
+  "fsa-lfp-eligibility-web.parquet" |>
+  arrow::read_parquet()
+
+## The latest program year in the archive
+plot_year <- max(eligibility$`Program Year`)
+
+counties <-
+  tigris::counties(cb = TRUE,
+                   resolution = "5m",
+                   progress_bar = FALSE) |>
+  dplyr::filter(
+    !(STATE_NAME %in% c("Guam",
+                        "American Samoa",
+                        "United States Virgin Islands",
+                        "Commonwealth of the Northern Mariana Islands"))
+  ) |>
+  sf::st_cast("POLYGON", warn = FALSE, do_split = TRUE) |>
+  tigris::shift_geometry() |>
+  dplyr::group_by(STATEFP, COUNTYFP) |>
+  dplyr::summarise(.groups = "drop") |>
+  sf::st_cast("MULTIPOLYGON")
+
+## Calculate the LFP Eligibility for Native Pasture, and
+## combine with the county data
+eligibility_counties <-
+  eligibility |>
+  dplyr::filter(`Pasture Type` == "Native Pasture",
+                `Program Year` == plot_year) |>
+  dplyr::transmute(
+    id = paste0(`FIPS State Code`, `FIPS County Code`),
+    `Payment Factor` = factor(`Payment Factor`,
+                            levels = 1:5,
+                            ordered = TRUE)
+  ) |>
+  dplyr::left_join(
+    counties |>
+      dplyr::transmute(id = paste0(STATEFP, COUNTYFP))
+    ) |>
+  sf::st_as_sf()
+
+# Plot the map
+ggplot(counties) +
+  geom_sf(data = sf::st_union(counties),
+          fill = "grey80",
+          color = NA) +
+  geom_sf(data = eligibility_counties,
+          aes(fill = `Payment Factor`),
+          color = NA,
+          show.legend = TRUE) +
+  geom_sf(data = rmapshaper::ms_innerlines(counties),
+          fill = NA,
+          color = "white",
+          linewidth = 0.1) +
+  geom_sf(data = counties |>
+            dplyr::group_by(STATEFP) |>
+            dplyr::summarise() |>
+            rmapshaper::ms_innerlines(),
+          fill = NA,
+          color = "white",
+          linewidth = 0.2) +
+  # Use the same color scale used by the LFP
+  # https://www.fsa.usda.gov/documents/native-pasture-2024-lfp-01-23-25
+  scale_fill_manual(
+    values = c("1" = "#E0E436",
+               "2" = "#DF9114",
+               "3" = "#DD2313",
+               "4" = "#850014",
+               "5" = "#3B003C"),
+    drop = FALSE,
+    name = "Payment\nMonths") +
+  labs(title = "FSA LFP Eligibility",
+       subtitle = paste("Native Pasture —", plot_year)) +
+  theme_void()
+```
+
+---
+
+## 📝 Citation
+
+If you use this data in published work, please cite:
+
+> USDA Farm Service Agency. *Weekly Livestock Forage Disaster Program County Eligibility Maps and Tables, 2008–present*. Curated and archived by R. Kyle Bocinsky, Montana Climate Office, University of Montana. Sustainable FSA project. Accessed YYYY-MM-DD. <https://sustainable-fsa.com/fsa-lfp-eligibility-web/>
+
+Machine-readable metadata are in [`CITATION.cff`](CITATION.cff); GitHub's **Cite this repository** button (top right of the repo page) renders it as APA or BibTeX.
+
+## 📄 License
+
+- **Raw data** (USDA): Public Domain (17 USC § 105)
+- **Processed data & scripts**: © R. Kyle Bocinsky, released under [CC0](https://creativecommons.org/publicdomain/zero/1.0/) and [MIT License](./LICENSE) as applicable
+
+---
+
+## ⚠️ Disclaimer
+
+This dataset is archived for research and educational use only. It may not reflect current USDA administrative boundaries or official LFP policy. Always consult your **local FSA office** for the latest program guidance.
+
+To locate your nearest USDA Farm Service Agency office, use the USDA Service Center Locator:
+
+🔗 [**USDA Service Center Locator**](https://offices.sc.egov.usda.gov/locator/app)
+
+---
+
+## 👏 Acknowledgment
+
+This project is part of:
+
+**[*Enhancing Sustainable Disaster Relief in FSA Programs*](https://www.ars.usda.gov/research/project/?accnNo=444612)**
+Supported by USDA OCE/OEEP and USDA Climate Hubs
+Prepared by the [Montana Climate Office](https://climate.umt.edu)
+
+---
+
+## 📬 Contact
+
+**R. Kyle Bocinsky**
+Director of Climate Extension
+Montana Climate Office
+📧 [kyle.bocinsky@umontana.edu](mailto:kyle.bocinsky@umontana.edu)
+🌐 [https://climate.umt.edu](https://climate.umt.edu)

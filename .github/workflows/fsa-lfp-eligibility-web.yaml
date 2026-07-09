@@ -1,0 +1,55 @@
+# Canonical archive-update workflow (sustainable-fsa S3 migration).
+name: update
+run-name: Update the fsa-lfp-eligibility-web archive → S3
+
+on:
+  schedule:
+    # daily, evening US/Mountain; FSA posts new maps Thursdays after the
+    # U.S. Drought Monitor release. No-op days fast-exit via the freshness
+    # gate before any S3 write.
+    - cron: '20 2 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['**.R', '.github/workflows/**']
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: s3-archive-${{ github.repository }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash -l {0}
+
+jobs:
+  update:
+    runs-on: macos-latest
+    timeout-minutes: 90
+    env:
+      S3_BUCKET: sustainable-fsa
+      S3_PREFIX: fsa-lfp-eligibility-web
+      AWS_REGION: us-west-2
+      CLOUDFRONT_DISTRIBUTION_ID: E1BNL6ONVN84RI
+      CLOUDFRONT_BASE: https://data.sustainable-fsa.com
+    steps:
+      - uses: mt-climate-office/actions/setup-geospatial@v1
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Configure AWS credentials (GitHub OIDC)
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: arn:aws:iam::202533506375:role/sustainable-fsa-github-actions
+          aws-region: us-west-2
+          role-duration-seconds: 14400
+
+      - name: Verify AWS identity
+        run: aws sts get-caller-identity
+
+      - name: Update archive
+        run: Rscript fsa-lfp-eligibility-web.R

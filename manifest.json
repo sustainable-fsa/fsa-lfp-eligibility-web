@@ -1,0 +1,757 @@
+[
+  {
+    "path": "data-raw/2009-2011/Counties & Pasture Types Eligible for Fiscal Year 2009 to  September  2011.xlsx",
+    "size": 309371,
+    "mtime": "2026-07-09 20:10:37"
+  },
+  {
+    "path": "data-raw/2012/2012 LFP Eligible Counties (20141216).xlsx",
+    "size": 779115,
+    "mtime": "2026-07-09 20:10:37"
+  },
+  {
+    "path": "data-raw/2013/2013 LFP Eligible Counties (20141216).xlsx",
+    "size": 472360,
+    "mtime": "2026-07-09 20:10:37"
+  },
+  {
+    "path": "data-raw/2014/2014 LFP Eligible Counties (20141224).xlsx",
+    "size": 260124,
+    "mtime": "2026-07-09 20:10:37"
+  },
+  {
+    "path": "data-raw/2014/annual_crab_grass_2014.pdf",
+    "size": 2605414,
+    "mtime": "2026-07-09 20:10:38"
+  },
+  {
+    "path": "data-raw/2014/annual_rye_grass_2014.pdf",
+    "size": 2607043,
+    "mtime": "2026-07-09 20:10:37"
+  },
+  {
+    "path": "data-raw/2014/forage_sorghum_2014.pdf",
+    "size": 2603025,
+    "mtime": "2026-07-09 20:10:37"
+  },
+  {
+    "path": "data-raw/2014/full_season_improved_2014.pdf",
+    "size": 2345947,
+    "mtime": "2026-07-09 20:10:37"
+  },
+  {
+    "path": "data-raw/2014/long_sml_grains_2014.pdf",
+    "size": 2604364,
+    "mtime": "2026-07-09 20:10:37"
+  },
+  {
+    "path": "data-raw/2014/native_pasture_2014.pdf",
+    "size": 2607633,
+    "mtime": "2026-07-09 20:10:38"
+  },
+  {
+    "path": "data-raw/2014/small_grains_2014prgyr.pdf",
+    "size": 2604065,
+    "mtime": "2026-07-09 20:10:39"
+  },
+  {
+    "path": "data-raw/2015/2015 LFPEligibleCounties20151231.xlsx",
+    "size": 236535,
+    "mtime": "2026-07-09 20:10:44"
+  },
+  {
+    "path": "data-raw/2015/annual_crab_grass_2015.pdf",
+    "size": 2602915,
+    "mtime": "2026-07-09 20:10:46"
+  },
+  {
+    "path": "data-raw/2015/annual_rye_grass_2015.pdf",
+    "size": 2603481,
+    "mtime": "2026-07-09 20:10:39"
+  },
+  {
+    "path": "data-raw/2015/cool_season_improved_pasture_2015.pdf",
+    "size": 2605542,
+    "mtime": "2026-07-09 20:10:39"
+  },
+  {
+    "path": "data-raw/2015/forage_sorghum_2015.pdf",
+    "size": 2652156,
+    "mtime": "2026-07-09 20:10:46"
+  },
+  {
+    "path": "data-raw/2015/full_season_improved_pasture_2015.pdf",
+    "size": 2695901,
+    "mtime": "2026-07-09 20:10:39"
+  },
+  {
+    "path": "data-raw/2015/long_season_smgrains_2015.pdf",
+    "size": 2650745,
+    "mtime": "2026-07-09 20:10:49"
+  },
+  {
+    "path": "data-raw/2015/native_pasture_2015.pdf",
+    "size": 2695706,
+    "mtime": "2026-07-09 20:10:48"
+  },
+  {
+    "path": "data-raw/2015/short_season_smgrains_2015.pdf",
+    "size": 2603397,
+    "mtime": "2026-07-09 20:10:49"
+  },
+  {
+    "path": "data-raw/2015/warm_season_improved_pasture_2015.pdf",
+    "size": 2606219,
+    "mtime": "2026-07-09 20:10:46"
+  },
+  {
+    "path": "data-raw/2016/2016 lfpeligiblecounties20161229.xlsx",
+    "size": 163441,
+    "mtime": "2026-07-09 20:10:50"
+  },
+  {
+    "path": "data-raw/2016/annual_crab_grass_2016.pdf",
+    "size": 2602688,
+    "mtime": "2026-07-09 20:10:51"
+  },
+  {
+    "path": "data-raw/2016/forage_sorghum_2016.pdf",
+    "size": 2396049,
+    "mtime": "2026-07-09 20:10:52"
+  },
+  {
+    "path": "data-raw/2016/full_season_improved_pasture_2016.pdf",
+    "size": 2429168,
+    "mtime": "2026-07-09 20:10:52"
+  },
+  {
+    "path": "data-raw/2016/long_season_smgrains_2016.pdf",
+    "size": 2387384,
+    "mtime": "2026-07-09 20:10:51"
+  },
+  {
+    "path": "data-raw/2016/native_pasture_2016.pdf",
+    "size": 2428356,
+    "mtime": "2026-07-09 20:10:56"
+  },
+  {
+    "path": "data-raw/2016/warm_season_improved_2016.pdf",
+    "size": 2603456,
+    "mtime": "2026-07-09 20:10:56"
+  },
+  {
+    "path": "data-raw/2017/2017 LFPEligibleCounties 20171228.xlsx",
+    "size": 217617,
+    "mtime": "2026-07-09 20:10:58"
+  },
+  {
+    "path": "data-raw/2017/annual_crab_grass_2017.pdf",
+    "size": 2240594,
+    "mtime": "2026-07-09 20:10:59"
+  },
+  {
+    "path": "data-raw/2017/annual_rye_grass_2017.pdf",
+    "size": 2339572,
+    "mtime": "2026-07-09 20:10:56"
+  },
+  {
+    "path": "data-raw/2017/cool_season_improved_2017.pdf",
+    "size": 2414777,
+    "mtime": "2026-07-09 20:10:57"
+  },
+  {
+    "path": "data-raw/2017/forage_sorghum_2017.pdf",
+    "size": 2319168,
+    "mtime": "2026-07-09 20:10:59"
+  },
+  {
+    "path": "data-raw/2017/full_season_improved_pasture_2017.pdf",
+    "size": 2339977,
+    "mtime": "2026-07-09 20:11:00"
+  },
+  {
+    "path": "data-raw/2017/long_season_smgrains_2017.pdf",
+    "size": 2360605,
+    "mtime": "2026-07-09 20:11:00"
+  },
+  {
+    "path": "data-raw/2017/native_pasture_2017.pdf",
+    "size": 2342037,
+    "mtime": "2026-07-09 20:11:01"
+  },
+  {
+    "path": "data-raw/2017/short_season_smgrains_2017.pdf",
+    "size": 2312837,
+    "mtime": "2026-07-09 20:11:02"
+  },
+  {
+    "path": "data-raw/2018/2018 LFPEligibleCounties 20181231.xlsx",
+    "size": 308014,
+    "mtime": "2026-07-09 20:11:03"
+  },
+  {
+    "path": "data-raw/2018/annual_crab_grass_2018.pdf",
+    "size": 2248833,
+    "mtime": "2026-07-09 20:11:03"
+  },
+  {
+    "path": "data-raw/2018/annual_rye_grass_2018.pdf",
+    "size": 2332815,
+    "mtime": "2026-07-09 20:11:06"
+  },
+  {
+    "path": "data-raw/2018/cool_season_improved_2018.pdf",
+    "size": 2413402,
+    "mtime": "2026-07-09 20:11:08"
+  },
+  {
+    "path": "data-raw/2018/forage_sorghum_2018.pdf",
+    "size": 2329142,
+    "mtime": "2026-07-09 20:11:08"
+  },
+  {
+    "path": "data-raw/2018/full_season_improved_2018.pdf",
+    "size": 2339387,
+    "mtime": "2026-07-09 20:11:08"
+  },
+  {
+    "path": "data-raw/2018/full_season_improved_mixed_2018.pdf",
+    "size": 2328826,
+    "mtime": "2026-07-09 20:11:09"
+  },
+  {
+    "path": "data-raw/2018/long_season_smgrains_2018.pdf",
+    "size": 2339328,
+    "mtime": "2026-07-09 20:11:09"
+  },
+  {
+    "path": "data-raw/2018/native_pasture_2018.pdf",
+    "size": 2357981,
+    "mtime": "2026-07-09 20:11:09"
+  },
+  {
+    "path": "data-raw/2018/short_season_smgrains_1_2018.pdf",
+    "size": 2304483,
+    "mtime": "2026-07-09 20:11:10"
+  },
+  {
+    "path": "data-raw/2018/short_season_smgrains_2018.pdf",
+    "size": 2317897,
+    "mtime": "2026-07-09 20:11:11"
+  },
+  {
+    "path": "data-raw/2018/warm_season_improved_2018.pdf",
+    "size": 2356285,
+    "mtime": "2026-07-09 20:11:14"
+  },
+  {
+    "path": "data-raw/2019/2019 LFPELligibleCounties20191226.xlsx",
+    "size": 114731,
+    "mtime": "2026-07-09 20:11:16"
+  },
+  {
+    "path": "data-raw/2019/annual_crab_grass_2019.pdf",
+    "size": 2239251,
+    "mtime": "2026-07-09 20:11:15"
+  },
+  {
+    "path": "data-raw/2019/annual_rye_grass_2019.pdf",
+    "size": 2310492,
+    "mtime": "2026-07-09 20:11:17"
+  },
+  {
+    "path": "data-raw/2019/forage_sorghum_2019.pdf",
+    "size": 2335895,
+    "mtime": "2026-07-09 20:11:17"
+  },
+  {
+    "path": "data-raw/2019/full_season_improved_2019.pdf",
+    "size": 2342817,
+    "mtime": "2026-07-09 20:11:17"
+  },
+  {
+    "path": "data-raw/2019/full_season_improved_mixed_2019.pdf",
+    "size": 2331274,
+    "mtime": "2026-07-09 20:11:17"
+  },
+  {
+    "path": "data-raw/2019/long_season_smgrains_2019.pdf",
+    "size": 2331380,
+    "mtime": "2026-07-09 20:11:18"
+  },
+  {
+    "path": "data-raw/2019/native_pasture_2019.pdf",
+    "size": 2356153,
+    "mtime": "2026-07-09 20:11:19"
+  },
+  {
+    "path": "data-raw/2019/short_season_smgrains_2019.pdf",
+    "size": 2311053,
+    "mtime": "2026-07-09 20:11:20"
+  },
+  {
+    "path": "data-raw/2019/warm_season_improved_2019.pdf",
+    "size": 2352196,
+    "mtime": "2026-07-09 20:11:20"
+  },
+  {
+    "path": "data-raw/2020/2020 LFPEligibleCounties20201231.xlsx",
+    "size": 243605,
+    "mtime": "2026-07-09 20:11:23"
+  },
+  {
+    "path": "data-raw/2020/annual_crab_grass_2020.pdf",
+    "size": 2241861,
+    "mtime": "2026-07-09 20:11:24"
+  },
+  {
+    "path": "data-raw/2020/annual_rye_grass_2020.pdf",
+    "size": 2319651,
+    "mtime": "2026-07-09 20:11:26"
+  },
+  {
+    "path": "data-raw/2020/cool_season_improved_2020.pdf",
+    "size": 2400808,
+    "mtime": "2026-07-09 20:11:26"
+  },
+  {
+    "path": "data-raw/2020/forage_sorghum_2020.pdf",
+    "size": 2335582,
+    "mtime": "2026-07-09 20:11:25"
+  },
+  {
+    "path": "data-raw/2020/full_season_improved_2020.pdf",
+    "size": 2358700,
+    "mtime": "2026-07-09 20:11:25"
+  },
+  {
+    "path": "data-raw/2020/full_season_improved_mixed_2020.pdf",
+    "size": 2322182,
+    "mtime": "2026-07-09 20:11:24"
+  },
+  {
+    "path": "data-raw/2020/long_season_smgrains_2020.pdf",
+    "size": 2343820,
+    "mtime": "2026-07-09 20:11:26"
+  },
+  {
+    "path": "data-raw/2020/native_pasture_2020.pdf",
+    "size": 2371849,
+    "mtime": "2026-07-09 20:11:30"
+  },
+  {
+    "path": "data-raw/2020/short_season_smgrains_2020.pdf",
+    "size": 2312083,
+    "mtime": "2026-07-09 20:11:31"
+  },
+  {
+    "path": "data-raw/2020/short_season_spring_smgrains_2020.pdf",
+    "size": 2323417,
+    "mtime": "2026-07-09 20:11:30"
+  },
+  {
+    "path": "data-raw/2020/shrt_ssn_fall_wtr_sml_grn_2020.pdf",
+    "size": 2344807,
+    "mtime": "2026-07-09 20:11:31"
+  },
+  {
+    "path": "data-raw/2020/warm_season_improved_2020.pdf",
+    "size": 2350236,
+    "mtime": "2026-07-09 20:11:33"
+  },
+  {
+    "path": "data-raw/2021/2021 LFPEligibleCounties20211230.xlsx",
+    "size": 393779,
+    "mtime": "2026-07-09 20:11:33"
+  },
+  {
+    "path": "data-raw/2021/annual_crab_grass_2021.pdf",
+    "size": 2511767,
+    "mtime": "2026-07-09 20:11:34"
+  },
+  {
+    "path": "data-raw/2021/annual_rye_grass_2021.pdf",
+    "size": 2458452,
+    "mtime": "2026-07-09 20:11:36"
+  },
+  {
+    "path": "data-raw/2021/cool_season_improved_2021.pdf",
+    "size": 2513251,
+    "mtime": "2026-07-09 20:11:35"
+  },
+  {
+    "path": "data-raw/2021/forage_sorghum_2021.pdf",
+    "size": 2458055,
+    "mtime": "2026-07-09 20:11:36"
+  },
+  {
+    "path": "data-raw/2021/full_season_improved_2021.pdf",
+    "size": 2456396,
+    "mtime": "2026-07-09 20:11:39"
+  },
+  {
+    "path": "data-raw/2021/long_season_smgrains_2021.pdf",
+    "size": 2461625,
+    "mtime": "2026-07-09 20:11:40"
+  },
+  {
+    "path": "data-raw/2021/native_pasture_2021.pdf",
+    "size": 2459446,
+    "mtime": "2026-07-09 20:11:39"
+  },
+  {
+    "path": "data-raw/2021/short_season_smgrains_2021.pdf",
+    "size": 2448566,
+    "mtime": "2026-07-09 20:11:39"
+  },
+  {
+    "path": "data-raw/2021/short_season_spring_smgrains_2021.pdf",
+    "size": 2465919,
+    "mtime": "2026-07-09 20:11:41"
+  },
+  {
+    "path": "data-raw/2021/shrt_ssn_fall_wtr_sml_grn_2021.pdf",
+    "size": 2484327,
+    "mtime": "2026-07-09 20:11:42"
+  },
+  {
+    "path": "data-raw/2021/warm_season_improved_2021.pdf",
+    "size": 2482482,
+    "mtime": "2026-07-09 20:11:41"
+  },
+  {
+    "path": "data-raw/2022/2022 LFPEligibleCounties20221229.xlsx",
+    "size": 526477,
+    "mtime": "2026-07-09 20:11:50"
+  },
+  {
+    "path": "data-raw/2022/annual_crab_grass_2022.pdf",
+    "size": 1620966,
+    "mtime": "2026-07-09 20:11:52"
+  },
+  {
+    "path": "data-raw/2022/annual_rye_grass_2022.pdf",
+    "size": 1622952,
+    "mtime": "2026-07-09 20:11:50"
+  },
+  {
+    "path": "data-raw/2022/cool_season_improved_2022.pdf",
+    "size": 1621064,
+    "mtime": "2026-07-09 20:11:43"
+  },
+  {
+    "path": "data-raw/2022/forage_sorghum_2022.pdf",
+    "size": 1621532,
+    "mtime": "2026-07-09 20:11:51"
+  },
+  {
+    "path": "data-raw/2022/full_season_improved_2022.pdf",
+    "size": 1624278,
+    "mtime": "2026-07-09 20:11:46"
+  },
+  {
+    "path": "data-raw/2022/full_season_improved_mixed_2022.pdf",
+    "size": 2213601,
+    "mtime": "2026-07-09 20:11:47"
+  },
+  {
+    "path": "data-raw/2022/long_season_smgrains_2022.pdf",
+    "size": 1623288,
+    "mtime": "2026-07-09 20:11:48"
+  },
+  {
+    "path": "data-raw/2022/native_pasture_2022.pdf",
+    "size": 1622690,
+    "mtime": "2026-07-09 20:11:48"
+  },
+  {
+    "path": "data-raw/2022/short_season_smgrains_2022.pdf",
+    "size": 1622322,
+    "mtime": "2026-07-09 20:11:49"
+  },
+  {
+    "path": "data-raw/2022/short_season_spring_smgrains_2022.pdf",
+    "size": 1621445,
+    "mtime": "2026-07-09 20:11:52"
+  },
+  {
+    "path": "data-raw/2022/shrt_ssn_fall_wtr_sml_grn_2022.pdf",
+    "size": 1621661,
+    "mtime": "2026-07-09 20:11:53"
+  },
+  {
+    "path": "data-raw/2022/warm_season_improved_2022.pdf",
+    "size": 1621426,
+    "mtime": "2026-07-09 20:11:53"
+  },
+  {
+    "path": "data-raw/2023/2023 LFPEligibleCounties20240104.xlsx",
+    "size": 515182,
+    "mtime": "2026-07-09 20:11:56"
+  },
+  {
+    "path": "data-raw/2023/annual_crab_grass_2023.pdf",
+    "size": 920237,
+    "mtime": "2026-07-09 20:11:56"
+  },
+  {
+    "path": "data-raw/2023/annual_rye_grass_2023.pdf",
+    "size": 920242,
+    "mtime": "2026-07-09 20:11:54"
+  },
+  {
+    "path": "data-raw/2023/cool_season_improved_2023.pdf",
+    "size": 919847,
+    "mtime": "2026-07-09 20:11:55"
+  },
+  {
+    "path": "data-raw/2023/forage_sorghum_2023.pdf",
+    "size": 920371,
+    "mtime": "2026-07-09 20:11:56"
+  },
+  {
+    "path": "data-raw/2023/full_season_improved_2023.pdf",
+    "size": 922283,
+    "mtime": "2026-07-09 20:11:55"
+  },
+  {
+    "path": "data-raw/2023/full_season_improved_mixed_2023.pdf",
+    "size": 2156607,
+    "mtime": "2026-07-09 20:11:57"
+  },
+  {
+    "path": "data-raw/2023/long_season_smgrains_2023.pdf",
+    "size": 920595,
+    "mtime": "2026-07-09 20:11:59"
+  },
+  {
+    "path": "data-raw/2023/native_pasture_2023.pdf",
+    "size": 920495,
+    "mtime": "2026-07-09 20:12:00"
+  },
+  {
+    "path": "data-raw/2023/short_season_smgrains_2023.pdf",
+    "size": 920793,
+    "mtime": "2026-07-09 20:11:59"
+  },
+  {
+    "path": "data-raw/2023/short_season_spring_smgrains_2023.pdf",
+    "size": 920050,
+    "mtime": "2026-07-09 20:11:58"
+  },
+  {
+    "path": "data-raw/2023/shrt_ssn_fall_wtr_sml_grn_2023.pdf",
+    "size": 920113,
+    "mtime": "2026-07-09 20:11:57"
+  },
+  {
+    "path": "data-raw/2023/warm_season_improved_2023.pdf",
+    "size": 920456,
+    "mtime": "2026-07-09 20:11:58"
+  },
+  {
+    "path": "data-raw/2024/Annual Crab Grass for 2024 LFP 01-23-25.pdf",
+    "size": 3306532,
+    "mtime": "2026-07-09 20:12:00"
+  },
+  {
+    "path": "data-raw/2024/Annual Rye Grass for 2024 LFP 01-23-25.pdf",
+    "size": 3312264,
+    "mtime": "2026-07-09 20:12:01"
+  },
+  {
+    "path": "data-raw/2024/Cool Season Improved for 2024 LFP 01-23-25.pdf",
+    "size": 3306202,
+    "mtime": "2026-07-09 20:12:00"
+  },
+  {
+    "path": "data-raw/2024/Forage Sorghum for 2024 LFP 01-23-25.pdf",
+    "size": 3308361,
+    "mtime": "2026-07-09 20:12:01"
+  },
+  {
+    "path": "data-raw/2024/Full Season Improved Mixed for 2024 LFP 01-23-25.pdf",
+    "size": 3309134,
+    "mtime": "2026-07-09 20:12:01"
+  },
+  {
+    "path": "data-raw/2024/Full Season Improved for 2024 LFP 01-23-25.pdf",
+    "size": 3311126,
+    "mtime": "2026-07-09 20:12:02"
+  },
+  {
+    "path": "data-raw/2024/LFPEligibleCounties20250102.xlsx",
+    "size": 298422,
+    "mtime": "2026-07-09 20:12:02"
+  },
+  {
+    "path": "data-raw/2024/Long Season Small Grains for 2024 LFP 01-23-25.pdf",
+    "size": 3309681,
+    "mtime": "2026-07-09 20:12:02"
+  },
+  {
+    "path": "data-raw/2024/Native Pasture for 2024 LFP 01-23-25.pdf",
+    "size": 3308692,
+    "mtime": "2026-07-09 20:12:03"
+  },
+  {
+    "path": "data-raw/2024/Short Season Fall Winter Small Grains for 2024 LFP 01-23-25.pdf",
+    "size": 5816241,
+    "mtime": "2026-07-09 20:12:04"
+  },
+  {
+    "path": "data-raw/2024/Short Season Small Grains for 2024 LFP 01-23-25.pdf",
+    "size": 3308064,
+    "mtime": "2026-07-09 20:12:11"
+  },
+  {
+    "path": "data-raw/2024/Short Season Spring Small Grains for 2024 LFP 01-23-25.pdf",
+    "size": 5818656,
+    "mtime": "2026-07-09 20:12:12"
+  },
+  {
+    "path": "data-raw/2024/Warm Season Improved for 2024 LFP 01-23-25.pdf",
+    "size": 3307807,
+    "mtime": "2026-07-09 20:12:07"
+  },
+  {
+    "path": "data-raw/2025/Annual Crab Grass for 2025 LFP 12-31-25.pdf",
+    "size": 5839401,
+    "mtime": "2026-07-09 20:12:14"
+  },
+  {
+    "path": "data-raw/2025/Annual Rye Grass for 2025 LFP 12-31-25.pdf",
+    "size": 5839902,
+    "mtime": "2026-07-09 20:12:13"
+  },
+  {
+    "path": "data-raw/2025/Cool Season Improved for 2025 LFP 12-31-25.pdf",
+    "size": 5839762,
+    "mtime": "2026-07-09 20:12:16"
+  },
+  {
+    "path": "data-raw/2025/Forage Sorghum for 2025 LFP 12-31-25.pdf",
+    "size": 5842006,
+    "mtime": "2026-07-09 20:12:17"
+  },
+  {
+    "path": "data-raw/2025/Full Season Improved Mixed for 2025 LFP 12-31-25.pdf",
+    "size": 5840931,
+    "mtime": "2026-07-09 20:12:18"
+  },
+  {
+    "path": "data-raw/2025/Full Season Improved for 2025 LFP 12-31-25.pdf",
+    "size": 5843166,
+    "mtime": "2026-07-09 20:12:18"
+  },
+  {
+    "path": "data-raw/2025/LFPEligibleCounties20251229.xlsx",
+    "size": 333146,
+    "mtime": "2026-07-09 20:12:18"
+  },
+  {
+    "path": "data-raw/2025/Long Season Small Grains for 2025 LFP 12-31-25.pdf",
+    "size": 5839887,
+    "mtime": "2026-07-09 20:12:28"
+  },
+  {
+    "path": "data-raw/2025/Native Pasture for 2025 12-31-25.pdf",
+    "size": 5840196,
+    "mtime": "2026-07-09 20:12:32"
+  },
+  {
+    "path": "data-raw/2025/Short Season Fall Winter Small Grains for 2025 LFP 12-31-25.pdf",
+    "size": 5876724,
+    "mtime": "2026-07-09 20:12:20"
+  },
+  {
+    "path": "data-raw/2025/Short Season Small Grains for 2025 12-31-25.pdf",
+    "size": 5841776,
+    "mtime": "2026-07-09 20:12:32"
+  },
+  {
+    "path": "data-raw/2025/Short Season Spring Small Grains for 2025 LFP 12-31-25.pdf",
+    "size": 2986273,
+    "mtime": "2026-07-09 20:12:36"
+  },
+  {
+    "path": "data-raw/2025/Warm Season Improved for 2025 LFP 12-31-25.pdf",
+    "size": 5839176,
+    "mtime": "2026-07-09 20:12:22"
+  },
+  {
+    "path": "data-raw/2026/Annual Crab Grass for 2026 LFP 07-09-26.pdf",
+    "size": 6845855,
+    "mtime": "2026-07-09 20:12:40"
+  },
+  {
+    "path": "data-raw/2026/Annual Rye Grass for 2026 LFP 07-09-26.pdf",
+    "size": 6851987,
+    "mtime": "2026-07-09 20:12:40"
+  },
+  {
+    "path": "data-raw/2026/Cool Season Improved for 2026 LFP 07-09-26.pdf",
+    "size": 6844720,
+    "mtime": "2026-07-09 20:12:41"
+  },
+  {
+    "path": "data-raw/2026/Counties & Pasture Types Eligible for 2026 LFP 07-09-2026.xlsx",
+    "size": 295039,
+    "mtime": "2026-07-09 20:12:42"
+  },
+  {
+    "path": "data-raw/2026/Forage Sorghum for 2026 LFP 07-09-26.pdf",
+    "size": 6850706,
+    "mtime": "2026-07-09 20:12:44"
+  },
+  {
+    "path": "data-raw/2026/Full Season Improved Mixed for 2026 LFP 07-09-26.pdf",
+    "size": 6846866,
+    "mtime": "2026-07-09 20:12:45"
+  },
+  {
+    "path": "data-raw/2026/Full Season Improved for 2026 LFP 07-09-26.pdf",
+    "size": 6849111,
+    "mtime": "2026-07-09 20:12:47"
+  },
+  {
+    "path": "data-raw/2026/Long Season Small Grains for 2026 LFP 07-09-26.pdf",
+    "size": 3876375,
+    "mtime": "2026-07-09 20:12:51"
+  },
+  {
+    "path": "data-raw/2026/Native Pasture for 2026 LFP 07-09-26.pdf",
+    "size": 6849113,
+    "mtime": "2026-07-09 20:12:52"
+  },
+  {
+    "path": "data-raw/2026/Short Season Fall Winter Small Grains for 2026 LFP 07-09-26.pdf",
+    "size": 9879578,
+    "mtime": "2026-07-09 20:12:52"
+  },
+  {
+    "path": "data-raw/2026/Short Season Small Grains for 2026 LFP 07-09-26.pdf",
+    "size": 6848324,
+    "mtime": "2026-07-09 20:13:05"
+  },
+  {
+    "path": "data-raw/2026/Short Season Spring Small Grains for 2026 LFP 07-09-26_0.pdf",
+    "size": 6864787,
+    "mtime": "2026-07-09 20:13:06"
+  },
+  {
+    "path": "data-raw/2026/Warm Season Improved for 2026 LFP 07-09-26.pdf",
+    "size": 6844533,
+    "mtime": "2026-07-09 20:13:05"
+  },
+  {
+    "path": "data-raw/log/2026-07-09/links.json",
+    "size": 70561,
+    "mtime": "2026-07-09 20:13:08"
+  },
+  {
+    "path": "data-raw/log/2026-07-09/maps-page.html",
+    "size": 144833,
+    "mtime": "2026-07-09 20:13:07"
+  }
+]
