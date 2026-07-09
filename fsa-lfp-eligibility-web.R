@@ -19,6 +19,8 @@
 #      CloudFront (https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/).
 #
 # Set DRY_RUN=true to skip all S3/CloudFront writes (reads still occur).
+# Set FORCE_REBUILD=true to regenerate and republish the consolidated outputs
+# even when the maps page shows nothing new (e.g. after harmonization fixes).
 #
 # Packages (provided by mt-climate-office/actions/setup-geospatial in CI):
 # pak::pak(c("tidyverse", "magrittr", "arrow", "readxl", "xml2", "curl",
@@ -38,6 +40,7 @@ s3_prefix <- Sys.getenv("S3_PREFIX", unset = "fsa-lfp-eligibility-web")
 cloudfront_base <- Sys.getenv("CLOUDFRONT_BASE",
                               unset = "https://data.sustainable-fsa.com")
 dry_run <- tolower(Sys.getenv("DRY_RUN", unset = "false")) == "true"
+force_rebuild <- tolower(Sys.getenv("FORCE_REBUILD", unset = "false")) == "true"
 
 fsa_base <- "https://www.fsa.usda.gov"
 maps_url <- paste0(fsa_base,
@@ -144,13 +147,14 @@ inventory <- s3_list_keys(s3_bucket, paste0(s3_prefix, "/data-raw"))
 
 new_assets <- dplyr::filter(discovered, !(key %in% inventory$Key))
 
-if (nrow(new_assets) == 0) {
+if (nrow(new_assets) == 0 && !force_rebuild) {
   gate_skip(paste0("All ", nrow(discovered), " assets on the FSA LFP maps ",
                    "page are already archived; nothing to do."))
   quit(save = "no", status = 0)
 }
 
-message(nrow(new_assets), " new assets to archive")
+message(nrow(new_assets), " new assets to archive",
+        if (force_rebuild) " (FORCE_REBUILD)" else "")
 
 ## D. Pull the xlsx corpus, download new assets, append to S3 ----
 
@@ -160,6 +164,8 @@ dir.create("data-raw", showWarnings = FALSE)
 # the (small) xlsx corpus down; the (large) PDF corpus stays remote.
 s3_pull(s3_bucket, paste0(s3_prefix, "/data-raw"), "data-raw",
         excludes = "*", includes = c("*.xlsx", "*.xls"))
+
+if (nrow(new_assets) > 0) {
 
 purrr::walk(unique(dirname(new_assets$dest)),
             dir.create, recursive = TRUE, showWarnings = FALSE)
@@ -234,6 +240,8 @@ discovered %>%
   dplyr::select(kind, url, file_url, key, program_year, new, size, sha256) %>%
   jsonlite::write_json(file.path(log_dir, "links.json"),
                        pretty = TRUE, auto_unbox = TRUE)
+
+}  # end if (nrow(new_assets) > 0)
 
 if (!dry_run) {
   s3_push(s3_bucket, paste0(s3_prefix, "/data-raw"), "data-raw",
@@ -403,7 +411,11 @@ fsa_lfp_eligibility <-
     `PAYMENT FACTOR` = ifelse(is.na(`PAYMENT FACTOR`),
                               `Eligible Payment Months`, `PAYMENT FACTOR`),
     `PAYMENT FACTOR` = ifelse(is.na(`PAYMENT FACTOR`), LOWEST,
-                              `PAYMENT FACTOR`)
+                              `PAYMENT FACTOR`),
+    # Some vintages (e.g. 2025) store codes as numbers, which read as
+    # unpadded text ("1", "11"); NA passes through str_pad untouched.
+    `FSA ST CODE` = stringr::str_pad(`FSA ST CODE`, 2, pad = "0"),
+    `FSA CNTY CODE` = stringr::str_pad(`FSA CNTY CODE`, 3, pad = "0")
   ) %>%
   dplyr::select(
     file,
@@ -545,6 +557,33 @@ county_lookup <-
   dplyr::bind_rows(lookup_archive, lookup_fips) %>%
   dplyr::distinct(`FSA State Code`, name_norm, .keep_all = TRUE)
 
+# FSA's exports print "???" for the names of FSA-specific administrative
+# units (identified in sustainable-fsa/fsa-counties-dd22, FSA's own county
+# layer). When such a row also lacks codes (the 2026+ weekly format), the
+# unit is recoverable from the state alone -- except Minnesota, which has
+# three distinct split-county units (East/West Otter Tail, East/West Polk,
+# North/South St. Louis); those fall through to the unidentifiable drop
+# below.
+mystery_units <- tibble::tribble(
+  ~`FSA State Code`, ~mystery_county_code,
+  "12", "025", # "Dade,Monroe" unit, FL
+  "19", "156", # West Pottawattamie, IA
+  "23", "002", # Houlton unit of Aroostook, ME (002/004 both map to FIPS 003)
+  "29", "193", # Ste. Genevieve, MO
+  "32", "035"  # Southeast Nye, NV
+)
+
+fsa_lfp_eligibility <-
+  fsa_lfp_eligibility %>%
+  dplyr::left_join(mystery_units, by = "FSA State Code") %>%
+  dplyr::mutate(
+    `FSA County Code` = dplyr::if_else(
+      is.na(`FSA County Code`) & `FSA County Name` %in% "???",
+      mystery_county_code,
+      `FSA County Code`)
+  ) %>%
+  dplyr::select(-mystery_county_code)
+
 unidentifiable <-
   fsa_lfp_eligibility %>%
   dplyr::filter(is.na(`FSA County Code`),
@@ -600,6 +639,7 @@ fsa_lfp_eligibility <-
       `FIPS State Code` == "78" & `FSA County Code` == "001" ~ "010", # St. Croix, USVI
       `FIPS State Code` == "78" & `FSA County Code` == "003" ~ "020", # St. John, USVI
       `FIPS State Code` == "78" & `FSA County Code` == "005" ~ "030", # St. Thomas, USVI
+      `FIPS State Code` == "23" & `FSA County Code` %in% c("002", "004") ~ "003", # Houlton & Fort Kent FSA units to Aroostook, ME
       `FIPS State Code` == "46" & `FSA County Code` == "113" & `Program Year` > 2015 ~ "102", # Shannon, SD to Oglala Lakota, SD
       `FIPS State Code` == "32" & `FSA County Code` == "035" ~ "023", # Nye, NV
       `FIPS State Code` == "29" & `FSA County Code` == "193" ~ "186", # Ste. Genevieve, Missouri
@@ -615,8 +655,22 @@ fsa_lfp_eligibility <-
   dplyr::left_join(
     fips_counties,
     relationship = "many-to-many"
-  ) %>%
-  dplyr::filter(!is.na(`FIPS County Name`)) %>%
+  )
+
+# Every record must resolve to a real FIPS county; a silent drop here is how
+# bad codes disappear unnoticed, so fail loudly instead.
+fips_unmatched <-
+  fsa_lfp_eligibility %>%
+  dplyr::filter(is.na(`FIPS County Name`)) %>%
+  dplyr::distinct(`FSA State Code`, `FSA County Code`, `FSA County Name`)
+if (nrow(fips_unmatched) > 0) {
+  print(fips_unmatched, n = Inf)
+  stop(nrow(fips_unmatched), " (state, county) codes failed the FIPS join; ",
+       "extend the FSA -> FIPS reconciliation.")
+}
+
+fsa_lfp_eligibility <-
+  fsa_lfp_eligibility %>%
   dplyr::select(
     `FIPS State Code`,
     `FIPS County Code`,

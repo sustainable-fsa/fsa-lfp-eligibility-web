@@ -31,16 +31,16 @@ This repository is the web-published companion to
 [`sustainable-fsa/fsa-lfp-eligibility`](https://github.com/sustainable-fsa/fsa-lfp-eligibility),
 which archives the same LFP county eligibility determinations as
 obtained directly from FSA via FOIA request. The two datasets share a
-common schema, but differ in content: the FOIA data are richer — they
-include Fire eligibility, payment factors for 2008–2011, and later
-corrections and retroactive determinations that never appeared in the
-web-published tables (the web tables for a program year remain
-provisional until well after year end). This archive’s unique
-contributions are current-year coverage, the weekly snapshot history,
-and the original published maps and tables themselves. For most analyses
-of 2008–2025 eligibility, prefer the FOIA archive; use this archive for
-the current program year and for studying when eligibility was
-published.
+common schema and agree on the determinations they both contain, but
+differ at the margins: the FOIA data are somewhat richer — they include
+Fire eligibility, payment factors for 2008–2011, and modestly more
+records in most years (roughly 0.3–3%) reflecting corrections and late
+determinations captured in FSA’s subsequent database extracts. This
+archive’s unique contributions are current-year coverage, the weekly
+snapshot history, and the original published maps and tables themselves.
+For analyses of completed program years, prefer the FOIA archive; use
+this archive for the current program year and for studying when
+eligibility was published.
 
 The [`fsa-lfp-eligibility-web.R`](fsa-lfp-eligibility-web.R) script
 handles all data acquisition and processing. The script scrapes the USDA
