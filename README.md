@@ -18,7 +18,7 @@ Per-pasture-type eligibility map PDFs and county eligibility tables are
 acquired daily from the
 <a href="https://www.fsa.usda.gov/resources/programs/livestock-forage-disaster-program-lfp/maps" target="_blank">USDA
 LFP maps portal</a>. The raw data are archived in the
-<a href="https://data.sustainable-fsa.com/#/fsa-lfp-eligibility-web/data-raw/" target="_blank">`data-raw`
+<a href="https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/data-raw/" target="_blank">`data-raw`
 directory</a>.
 
 FSA publishes each week’s maps and table at *new, dated URLs* and only
@@ -114,7 +114,7 @@ change.
   dashboard source
 - [`fsa-lfp-eligibility-web.html`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web.html)
   — interactive summary dashboard
-- [`data-raw/`](https://data.sustainable-fsa.com/#/fsa-lfp-eligibility-web/data-raw/)
+- [`data-raw/`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/data-raw/)
   — raw weekly PDFs and XLSX tables as published by FSA, organized by
   program year (S3 only; not in git)
 - [`manifest.json`](manifest.json) — flat index of the raw archive

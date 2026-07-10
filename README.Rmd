@@ -13,7 +13,7 @@ editor_options:
 
 # FSA Weekly County Eligibility Data from the Livestock Forage Disaster Program, 2008–present
 
-This repository is an archive of the **Weekly LFP Program Eligibility Maps and Table** published by the USDA Farm Service Agency for the [Livestock Forage Disaster Program (LFP)](https://www.fsa.usda.gov/resources/disaster-recovery/livestock-forage-disaster-program-lfp). Per-pasture-type eligibility map PDFs and county eligibility tables are acquired daily from the <a href="https://www.fsa.usda.gov/resources/programs/livestock-forage-disaster-program-lfp/maps" target="_blank">USDA LFP maps portal</a>. The raw data are archived in the <a href="https://data.sustainable-fsa.com/#/fsa-lfp-eligibility-web/data-raw/" target="_blank">`data-raw` directory</a>.
+This repository is an archive of the **Weekly LFP Program Eligibility Maps and Table** published by the USDA Farm Service Agency for the [Livestock Forage Disaster Program (LFP)](https://www.fsa.usda.gov/resources/disaster-recovery/livestock-forage-disaster-program-lfp). Per-pasture-type eligibility map PDFs and county eligibility tables are acquired daily from the <a href="https://www.fsa.usda.gov/resources/programs/livestock-forage-disaster-program-lfp/maps" target="_blank">USDA LFP maps portal</a>. The raw data are archived in the <a href="https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/data-raw/" target="_blank">`data-raw` directory</a>.
 
 FSA publishes each week's maps and table at *new, dated URLs* and only links the current week from the maps page — prior weeks simply drop off the page. This archive preserves that history: every dated PDF and XLSX is captured once and kept forever, and the weekly tables are additionally harmonized into a single analysis-ready dataset.
 
@@ -46,7 +46,7 @@ In the output data, `Drought Factor` records this tier (1, 3, 4, or 5), and `Pay
 - [`fsa-lfp-eligibility-web-snapshots.parquet`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web-snapshots.parquet) — every archived weekly version of every record
 - [`fsa-lfp-eligibility-web.qmd`](fsa-lfp-eligibility-web.qmd) — Quarto dashboard source
 - [`fsa-lfp-eligibility-web.html`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web.html) — interactive summary dashboard
-- [`data-raw/`](https://data.sustainable-fsa.com/#/fsa-lfp-eligibility-web/data-raw/) — raw weekly PDFs and XLSX tables as published by FSA, organized by program year (S3 only; not in git)
+- [`data-raw/`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/data-raw/) — raw weekly PDFs and XLSX tables as published by FSA, organized by program year (S3 only; not in git)
 - [`manifest.json`](manifest.json) — flat index of the raw archive (path, size, last-modified)
 
 ---
