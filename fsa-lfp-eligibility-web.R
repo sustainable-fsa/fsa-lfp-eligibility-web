@@ -782,9 +782,7 @@ if (!dry_run) {
          "fsa-lfp-eligibility-web-snapshots.parquet",
          content_type = "application/vnd.apache.parquet",
          cache_control = "max-age=3600")
-  s3_put(s3_bucket, paste0(s3_prefix, "/fsa-lfp-eligibility-web.html"),
-         "fsa-lfp-eligibility-web.html",
-         content_type = "text/html", cache_control = "max-age=3600")
+  # (the dashboard html is served by GitHub Pages from this repo, not S3)
   s3_put(s3_bucket,
          paste0(s3_prefix, "/assets/fsa-lfp-eligibility-web-simple.csv"),
          "assets/fsa-lfp-eligibility-web-simple.csv",
