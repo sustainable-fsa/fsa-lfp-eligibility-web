@@ -112,7 +112,7 @@ change.
   — every archived weekly version of every record
 - [`fsa-lfp-eligibility-web.qmd`](fsa-lfp-eligibility-web.qmd) — Quarto
   dashboard source
-- [`fsa-lfp-eligibility-web.html`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web.html)
+- [`fsa-lfp-eligibility-web.html`](https://sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web.html)
   — interactive summary dashboard
 - [`data-raw/`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/data-raw/)
   — raw weekly PDFs and XLSX tables as published by FSA, organized by
@@ -197,12 +197,12 @@ The Quarto dashboard
   and pasture type
 - A **tool for researchers and policymakers** to assess temporal trends
 
-<iframe src="https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web.html" frameborder="0" allowfullscreen style="width:100%;height:40vw;">
+<iframe src="https://sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web.html" frameborder="0" allowfullscreen style="width:100%;height:40vw;">
 
 </iframe>
 
 Access a full-screen version of the dashboard at:
-<https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web.html>
+<https://sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web.html>
 
 ------------------------------------------------------------------------
 

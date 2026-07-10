@@ -15,7 +15,7 @@ on:
 
 permissions:
   id-token: write
-  contents: read
+  contents: write  # commit-back of rendered dashboard
 
 concurrency:
   group: s3-archive-${{ github.repository }}
@@ -53,3 +53,23 @@ jobs:
 
       - name: Update archive
         run: Rscript fsa-lfp-eligibility-web.R
+
+      # Commit the freshly rendered dashboard back to git; GitHub Pages
+      # serves it from this repo. No-op days quit before rendering, so
+      # this only fires when the archive actually gained data.
+      - name: Commit refreshed dashboard
+        run: |
+          if git diff --quiet -- fsa-lfp-eligibility-web.html; then
+            echo "Dashboard unchanged; skipping commit."
+            exit 0
+          fi
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add fsa-lfp-eligibility-web.html
+          git commit -m 'Render dashboard with latest data'
+          if ! git pull --rebase --autostash origin main; then
+            git rebase --abort || true
+            echo "::notice::Dashboard render superseded by a concurrent run; skipping commit."
+            exit 0
+          fi
+          git push
