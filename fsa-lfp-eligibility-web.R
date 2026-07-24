@@ -232,10 +232,15 @@ discovered %>%
   dplyr::mutate(
     new = key %in% new_assets$key,
     size = dplyr::if_else(new, file.size(dest), archived_size),
-    sha256 = dplyr::if_else(
-      new,
-      purrr::map_chr(dest, ~ digest::digest(.x, algo = "sha256", file = TRUE)),
-      NA_character_)
+    # dplyr::if_else() is vectorized -- it evaluates both branches in full
+    # before selecting per row -- so hashing must be done per-row (base `if`
+    # short-circuits) rather than via if_else(new, map_chr(dest, ...), NA),
+    # which would run digest() over every already-archived asset too, most
+    # of which (PDFs) were never downloaded this run and don't exist locally.
+    sha256 = purrr::map2_chr(dest, new, function(path, is_new) {
+      if (is_new) digest::digest(path, algo = "sha256", file = TRUE)
+      else NA_character_
+    })
   ) %>%
   dplyr::select(kind, url, file_url, key, program_year, new, size, sha256) %>%
   jsonlite::write_json(file.path(log_dir, "links.json"),
