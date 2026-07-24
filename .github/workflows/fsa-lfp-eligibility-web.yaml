@@ -9,6 +9,13 @@ on:
     # gate before any S3 write.
     - cron: '20 2 * * *'
   workflow_dispatch:
+    inputs:
+      force_rebuild:
+        description: >-
+          Regenerate and republish the consolidated outputs (CSV, parquet,
+          dashboard, manifest) even when the maps page shows nothing new.
+        type: boolean
+        default: false
   push:
     branches: [main]
     paths: ['**.R', '.github/workflows/**']
@@ -35,6 +42,7 @@ jobs:
       AWS_REGION: us-west-2
       CLOUDFRONT_DISTRIBUTION_ID: E1BNL6ONVN84RI
       CLOUDFRONT_BASE: https://data.sustainable-fsa.com
+      FORCE_REBUILD: ${{ inputs.force_rebuild || false }}
     steps:
       - uses: mt-climate-office/actions/setup-geospatial@v1
         with:
