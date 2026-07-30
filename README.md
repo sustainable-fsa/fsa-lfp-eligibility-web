@@ -110,6 +110,14 @@ change.
   — the same, as Parquet
 - [`fsa-lfp-eligibility-web-snapshots.parquet`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web-snapshots.parquet)
   — every archived weekly version of every record
+- [`fsa-lfp-eligibility-web-events.csv`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web-events.csv)
+  — the same determinations reshaped long, one record per qualifying
+  drought event
+- [`fsa-lfp-eligibility-web-events.parquet`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web-events.parquet)
+  — the same event records as Parquet
+- [`qa-report.txt`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/qa-report.txt)
+  — validation summary, source vintages, and how much FSA revised each
+  program year
 - [`fsa-lfp-eligibility-web.qmd`](fsa-lfp-eligibility-web.qmd) — Quarto
   dashboard source
 - [`fsa-lfp-eligibility-web.html`](https://sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web.html)
@@ -178,13 +186,100 @@ archive fills that gap.
 | `Program Year` | Year the data applies to |
 | `Pasture Type` | Pasture classification (e.g., Native, Improved) |
 | `Disaster Type` | Type of disaster (Drought) |
-| `D2 START DATE`:`D4B END` | Start and end dates for qualifying drought events |
+| `D2 START DATE`:`D4B END` | Start and end dates for qualifying drought events, including the `D2A`/`D2B` pair FSA introduced for 2026 |
 | `Date of Qualifying Drought` | Start date of qualifying disaster |
 | `Drought Factor` | Monthly payments earned by drought severity and duration (1, 3, 4, or 5) |
 | `Grazing Period Start Date` | Start date of grazing period for the pasture type |
 | `Grazing Period End Date` | End date of grazing period for the pasture type |
 | `Maximum Eligible Payment Months` | Duration of grazing period, in months |
 | `Payment Factor` | Eligible monthly payments (`Drought Factor` capped by `Maximum Eligible Payment Months`) |
+
+### The record key is the FSA county
+
+One record per **FSA county**, program year, pasture type and disaster
+type — the same grain as the [FOIA
+archive](https://sustainable-fsa.com/fsa-lfp-eligibility/), so the two
+are directly comparable. FSA administers seven Census counties as two or
+three separate offices, each setting its own grazing period and
+receiving its own determination, so those Census counties carry several
+records per program year and pasture type. A join on FIPS returns
+several rows for them; see
+[`qa-report.txt`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/qa-report.txt)
+for the list and decide how to combine them.
+
+### `current` is last-seen-wins
+
+`fsa-lfp-eligibility-web.csv` exposes the most recent *archived file*
+that reported each record, not a point-in-time view. If FSA silently
+withdraws a county from a later weekly table, the earlier determination
+is still what you see here — the archive keeps it rather than dropping
+it. A genuine retraction is therefore invisible in this file and
+recoverable only by diffing
+[`fsa-lfp-eligibility-web-snapshots.parquet`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web-snapshots.parquet).
+
+------------------------------------------------------------------------
+
+## 🔄 Output Data: Event Grain
+
+[`fsa-lfp-eligibility-web-events.csv`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web-events.csv)
+and its Parquet twin reshape the wide table long: **one record per
+qualifying drought event**, matching the [FOIA archive’s event
+projection](https://sustainable-fsa.com/fsa-lfp-eligibility/) column for
+column, so the two bind directly.
+
+| Variable Name | Description |
+|----|----|
+| `FIPS` | Five-digit Census county code |
+| `FSA County` | Five-digit FSA county code (not always FIPS) |
+| `Program Year` | Year the determination applies to |
+| `Pasture Type` | Pasture classification, as FSA reports it |
+| `Qualifying Drought Event` | `D2`, `D3a`, `D3b`, `D4a`, `D4b`; from 2026, `D2a_2026`/`D2b_2026` |
+| `Qualifying Date` | The date the tier was satisfied |
+| `Drought Factor` | Monthly payments the event earns — derived, see below |
+| `Maximum Eligible Payment Months` | FSA’s cap, from the length of the grazing period |
+| `Payment Factor` | FSA’s payable months |
+
+Which date qualifies a tier is not uniform. `D2`, `D2A`, `D2B`, `D3B`
+and `D4B` are duration tiers, satisfied on their **END**. `D3A` and
+`D4A` trigger “at any time”, carry no END value in any vintage, and are
+satisfied on their **START**. Do not reshape the wide table yourself by
+pivoting on the START columns — FSA reports each B-tier START as a copy
+of its A-tier counterpart, so a START-keyed pivot double-counts D3 and
+D4.
+
+**This archive has better 2008–2011 coverage than the FOIA one.** The
+fy-2009-2011 workbook reports the actual per-tier qualifying and ending
+dates, so every one of those records yields dated events. The FOIA
+response omitted the tier columns for those years entirely, leaving its
+event projection to fall back on FSA’s single
+`Date of Qualifying Drought`. Where the two disagree before 2012, prefer
+this one.
+
+### Program year 2026 onward
+
+The rules change: D2 splits in two — four consecutive weeks earns one
+payment, seven earns two — reinstating a two-payment tier the 2014 Farm
+Bill had removed. D3 and D4 are unchanged.
+
+| Program year | Ladder |
+|----|----|
+| 2008–2011 | `D2` 1 · `D3a` 2 · `D3b`/`D4a`/`D4b` 3 |
+| 2012–2025 | `D2` 1 · `D3a` 3 · `D3b`/`D4a` 4 · `D4b` 5 |
+| 2026– | `D2a_2026` 1 · `D2b_2026` 2 · `D3a` 3 · `D3b`/`D4a` 4 · `D4b` 5 |
+
+FSA reports the two windows separately, as `D2A_START_DATE`/`D2A_END`
+and `D2B_START_DATE`/`D2B_END`. Observed lengths confirm the rule: D2A
+is 27 days in every record, D2B is 48 or 55.
+
+**One deliberate divergence from FSA.** FSA sets `Drought Factor` to 1
+for D2A-only and D2A+D2B records alike, carrying the two-payment outcome
+in `Payment Factor` instead. This archive scores `D2b_2026` as **2**,
+because `Drought Factor` means “the monthly payments this tier earns”
+everywhere else in it and recording a two-payment tier as 1 would make
+the column unexplainable. The consequence: when checking 2026 against
+FSA, compare **`Payment Factor`**, not `Drought Factor` — otherwise you
+will see roughly 1,024 differences that are conventions, not errors.
+`qa-report.txt` counts them exactly.
 
 ------------------------------------------------------------------------
 

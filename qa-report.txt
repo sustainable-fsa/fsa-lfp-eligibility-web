@@ -1,0 +1,93 @@
+FSA LFP Eligibility (web harvest) archive — QA report
+
+Grain: one record per FSA county, program year, pasture type, and disaster
+type — the same grain as the sustainable-fsa/fsa-lfp-eligibility FOIA archive.
+FSA administers some Census counties as several offices and determines
+eligibility for each separately, so a Census county may carry several records.
+
+Records published: 59339
+Snapshot records (every archived weekly version): 67139
+Events published: 134458
+FSA counties: 2904
+Census counties: 2897
+Program years: 2008-2026
+
+Invariants enforced (the run aborts on any violation):
+  * every record resolves to an FSA county code and a Census county
+  * every pasture type is one of the canonical set
+  * every drought factor within the ladder in force for its program year
+  * no drought tier column left unread by the events projection
+  * no program year smaller than the published archive's
+
+Everything below is reported, not enforced.
+
+Census counties carrying several FSA counties: 7
+  A join on FIPS returns several rows for these; decide how to combine them.
+  The record key includes the FSA county so both survive — a FIPS-only key
+  silently dropped one of every pair until 2026-07-30.
+  FIPS State Code,FIPS County Code,FIPS State Name,FIPS County Name,FSA Counties,FSA Codes,Records
+  23,003,Maine,Aroostook,3,23002 23003 23004,9
+  19,155,Iowa,Pottawattamie,2,19155 19156,28
+  27,111,Minnesota,Otter Tail,2,27111 27112,12
+  27,119,Minnesota,Polk,2,27119 27120,12
+  27,137,Minnesota,St. Louis,2,27137 27138,23
+  32,023,Nevada,Nye,2,32023 32035,26
+  46,102,South Dakota,Oglala Lakota,2,46102 46113,21
+
+Source vintages by program year:
+  FSA republishes the open program year weekly at a new URL. `Versions` counts
+  the archived weekly workbooks covering each year; `current` exposes the most
+  recent version of each record, and every version is kept in
+  fsa-lfp-eligibility-web-snapshots.parquet.
+  Program Year,Versions,Latest,Records
+  2008,1,-Inf,1842
+  2009,1,-Inf,940
+  2010,1,-Inf,736
+  2011,1,-Inf,3139
+  2012,1,2014-12-16,6777
+  2013,1,2014-12-16,4056
+  2014,1,2014-12-24,2165
+  2015,1,2015-12-31,2098
+  2016,1,2016-12-29,1403
+  2017,1,2017-12-28,1813
+  2018,1,2018-12-31,2591
+  2019,1,2019-12-26,971
+  2020,1,2020-12-31,2002
+  2021,1,2021-12-30,3196
+  2022,1,2022-12-29,5498
+  2023,1,2024-01-04,5537
+  2024,1,2025-01-02,3168
+  2025,1,2025-12-29,2821
+  2026,2,2026-07-23,8586
+
+FSA revisions within a program year:
+  Records seen in more than one weekly workbook, and how many had a value
+  change. FSA revises the open program year heavily and closed years not at
+  all. Only the snapshots table preserves the superseded values.
+  Program Year,Records,Qualifying Date revised,Payment Factor revised
+  2008,1,0,0
+  2010,2,0,0
+  2011,1,0,0
+  2012,1,0,0
+  2013,1,0,0
+  2014,1,0,0
+  2018,2,0,0
+  2019,4,0,0
+  2020,1,0,0
+  2021,3,0,0
+  2022,3,0,0
+  2023,1,0,0
+  2024,3,0,0
+  2025,3,0,0
+  2026,7767,1134,41
+
+2026 records where our drought factor departs from FSA's: 1024
+  From 2026 the D2 tier splits: four consecutive weeks earns one payment,
+  seven earns two. FSA reports `Drought Factor` 1 for both and carries the
+  two-payment outcome in `Payment Factor`. This archive's events projection
+  scores D2b_2026 as 2, because `Drought Factor` means "the payments this tier
+  earns" everywhere else in it. Compare `Payment Factor`, not `Drought Factor`,
+  when checking 2026 against FSA.
+  Program Year,Drought Factor,Payment Factor,records
+  2026,1,2,1024
+

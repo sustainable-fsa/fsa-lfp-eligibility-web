@@ -18,11 +18,11 @@ on:
         default: false
   push:
     branches: [main]
-    paths: ['**.R', '.github/workflows/**']
+    paths: ['**.R', '**.qmd', '.github/workflows/**']
 
 permissions:
   id-token: write
-  contents: write  # commit-back of rendered dashboard
+  contents: write  # commit-back of the archive outputs and rendered dashboard
 
 concurrency:
   group: s3-archive-${{ github.repository }}
@@ -46,7 +46,10 @@ jobs:
     steps:
       - uses: mt-climate-office/actions/setup-geospatial@v1
         with:
-          extra-r-packages: quarto
+          # `readxl` reads the harvested workbooks, `digest` hashes new assets
+          # for the provenance log, `jsonlite` writes it, and `rmarkdown`
+          # re-renders the README.
+          extra-r-packages: quarto readxl digest jsonlite rmarkdown
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
@@ -64,22 +67,27 @@ jobs:
       - name: Update archive
         run: Rscript fsa-lfp-eligibility-web.R
 
-      # Commit the freshly rendered dashboard back to git; GitHub Pages
-      # serves it from this repo. No-op days quit before rendering, so
-      # this only fires when the archive actually gained data.
-      - name: Commit refreshed dashboard
+      # Commit the archive outputs and the rendered dashboard back to git;
+      # GitHub Pages serves the dashboard from this repo. No-op days quit before
+      # any of this, so it only fires when the archive actually gained data.
+      #
+      # `git add -A`, not just the html: the CSV, both parquets, the events
+      # files, qa-report.txt, the dashboard extract and manifest.json are all
+      # tracked, and adding only the html left every one of them stale in git the
+      # moment CI ran.
+      - name: Commit refreshed archive
         run: |
-          if git diff --quiet -- fsa-lfp-eligibility-web.html; then
-            echo "Dashboard unchanged; skipping commit."
-            exit 0
-          fi
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git add fsa-lfp-eligibility-web.html
-          git commit -m 'Render dashboard with latest data'
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nothing changed; skipping commit."
+            exit 0
+          fi
+          git commit -m 'Update archive'
           if ! git pull --rebase --autostash origin main; then
             git rebase --abort || true
-            echo "::notice::Dashboard render superseded by a concurrent run; skipping commit."
+            echo "::notice::Archive render superseded by a concurrent run; skipping commit."
             exit 0
           fi
           git push
