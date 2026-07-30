@@ -40,10 +40,10 @@ Source vintages by program year:
   recent version of each record, and every version is kept in
   fsa-lfp-eligibility-web-snapshots.parquet.
   Program Year,Versions,Latest,Records
-  2008,1,-Inf,1842
-  2009,1,-Inf,940
-  2010,1,-Inf,736
-  2011,1,-Inf,3139
+  2008,1,NA,1842
+  2009,1,NA,940
+  2010,1,NA,736
+  2011,1,NA,3139
   2012,1,2014-12-16,6777
   2013,1,2014-12-16,4056
   2014,1,2014-12-24,2165
