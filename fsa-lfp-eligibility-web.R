@@ -22,9 +22,7 @@
 # Set FORCE_REBUILD=true to regenerate and republish the consolidated outputs
 # even when the maps page shows nothing new (e.g. after harmonization fixes).
 #
-# Packages (provided by mt-climate-office/actions/setup-geospatial in CI):
-# pak::pak(c("tidyverse", "magrittr", "arrow", "readxl", "xml2", "curl",
-#            "digest", "jsonlite", "processx", "tigris", "quarto", "sf"))
+# Packages are provided by mt-climate-office/actions/setup-geospatial in CI.
 
 library(magrittr)
 library(tidyverse)
@@ -72,9 +70,8 @@ hrefs <-
   xml2::xml_attr("href") %>%
   unique()
 
-# Landing pages (/documents/<slug>) each contain exactly one link to the
-# actual file under /sites/default/files/; assert that so upstream page
-# restructuring fails loudly instead of silently corrupting the archive.
+# Landing pages (/documents/<slug>) each contain exactly one link to the actual
+# file under /sites/default/files/; assert that, so a page restructure fails.
 resolve_landing <- function(url) {
   Sys.sleep(0.2)
   files <-
@@ -147,13 +144,9 @@ inventory <- s3_list_keys(s3_bucket, paste0(s3_prefix, "/data-raw"))
 
 new_assets <- dplyr::filter(discovered, !(key %in% inventory$Key))
 
-# The page-versus-inventory test alone is not sufficient to decide there is
-# nothing to do. A run that archived assets and then died before publishing
-# leaves them archived but unrepresented in the consolidated outputs, and every
-# later run then sees nothing new on the page and skips -- so the published
-# table stays stale until someone notices and dispatches FORCE_REBUILD. That
-# happened on 2026-07-24. Compare the archived workbook corpus against the files
-# the published table was actually built from, and rebuild if any are missing.
+# Rebuild also when the archived workbook corpus is ahead of the published table,
+# not only when the page shows something new: a run that archived assets and then
+# failed before publishing would otherwise never be retried.
 archived_xlsx <-
   inventory$Key %>%
   stringr::str_subset("\\.xlsx?$") %>%
@@ -252,25 +245,17 @@ if (!all(magic_ok)) {
   stop("DOWNLOADED FILES FAILED CONTENT VALIDATION")
 }
 
-# Get the bytes onto S3 the moment they are validated, before anything that
-# could fail. FSA's maps page links only the current week, so a downloaded
-# asset that dies with the runner is gone for good -- there is no second
-# chance to fetch it. This push used to sit after the provenance block below,
-# which threw on 2026-07-23 and 2026-07-24 and discarded that week's downloads
-# both times; they survived only because FSA had not yet rotated the link.
+# Push before anything that could fail. FSA's maps page links only the current
+# week, so an asset that dies with the runner cannot be re-fetched.
 if (!dry_run) {
   s3_push(s3_bucket, paste0(s3_prefix, "/data-raw"), "data-raw",
           delete = FALSE)
   s3_verify_subset(s3_bucket, paste0(s3_prefix, "/data-raw"), "data-raw")
 }
 
-# Per-run provenance: the maps page HTML and the full discovery table (with
-# sha256 for newly archived files). Written only on runs that archive
-# something, so daily no-ops leave no trace.
-#
-# Wrapped because provenance is not worth data: the assets are already on S3 by
-# this point, and a failure here must not abort the run and lose the parse and
-# publish stages below.
+# Per-run provenance: the maps page HTML and the discovery table, with sha256 for
+# newly archived files. Written only on runs that archive something. Wrapped so a
+# provenance failure cannot abort the parse and publish stages below.
 tryCatch({
   log_dir <- file.path("data-raw", "log", format(Sys.Date()))
   dir.create(log_dir, recursive = TRUE, showWarnings = FALSE)
@@ -584,9 +569,7 @@ fips_counties <-
 # carry no county codes, and their county names are messy (squashed
 # "LosAngeles", abbreviated "W BATON ROUGE", typo'd "CULPEPPER"). Resolve
 # codes by normalized name against (1) the archive's own coded rows, then
-# (2) the FIPS roster -- FSA and FIPS codes agree except for the handful of
-# cases the reconciliation below fixes, and what matters downstream is the
-# FIPS identity.
+# (2) the FIPS roster; the reconciliation below fixes the codes that differ.
 county_name_fixes <- c(
   "W BATON ROUGE" = "WEST BATON ROUGE",
   "CULPEPPER" = "CULPEPER",
@@ -726,8 +709,7 @@ fsa_lfp_eligibility <-
     relationship = "many-to-many"
   )
 
-# Every record must resolve to a real FIPS county; a silent drop here is how
-# bad codes disappear unnoticed, so fail loudly instead.
+# Every record must resolve to a real FIPS county.
 fips_unmatched <-
   fsa_lfp_eligibility %>%
   dplyr::filter(is.na(`FIPS County Name`)) %>%
@@ -784,10 +766,8 @@ snapshots <-
 # sustainable-fsa/fsa-lfp-eligibility FOIA archive.
 #
 # The key includes the FSA county, matching that archive's grain. FSA runs split
-# administrative units that the reconciliation above deliberately folds onto one
-# FIPS code -- East/West Polk MN, Northwest/Southeast Nye NV, the three Aroostook
-# ME offices -- each with its own determination. A FIPS-only key kept one and
-# dropped the sibling: 45 records, silently, before this was fixed.
+# administrative units that the reconciliation above folds onto one FIPS code,
+# each with its own determination, so a FIPS-only key would drop one of each pair.
 current <-
   snapshots %>%
   dplyr::arrange(`FIPS State Code`,
@@ -835,20 +815,12 @@ arrow::write_parquet(snapshots,
 
 ## F2. Event grain ----
 #
-# The same determinations reshaped long: one row per qualifying drought event,
-# matching sustainable-fsa/fsa-lfp-eligibility's -events projection so the two
-# archives bind directly.
+# The same determinations reshaped long, one row per qualifying drought event,
+# matching the fsa-lfp-eligibility and fsa-lfp-eligibility-reanalysis projections.
+# See README for the tier-date convention and the ladders.
 #
-# Which date qualifies a tier is not uniform. D2, D2A, D2B, D3B and D4B are
-# duration tiers and their END is the day the requirement is met; D3A and D4A
-# trigger "at any time", carry no END value in any vintage, and are satisfied on
-# their START. Do not pivot on the START columns -- FSA reports the B-tier START
-# as a copy of its A-tier counterpart, so a START-keyed pivot double-counts D3
-# and D4.
-#
-# Unlike the FOIA archive, whose 2008-2011 response omitted the tier dates
-# entirely, the fy-2009-2011 workbook here carries them: every one of those
-# records resolves to at least one event without needing a fallback.
+# The fy-2009-2011 workbook carries per-tier dates, so 2008-2011 needs no
+# fallback here.
 
 event_dates <- c(
   D2       = "D2 END",
@@ -860,10 +832,9 @@ event_dates <- c(
   D4b      = "D4B END"
 )
 
-# Tier columns deliberately not read: the START of a duration tier, whose END is
-# the satisfaction date, and the empty END of an "at any time" tier. Listed so
-# the assertion below can tell a column ignored on purpose from one FSA has newly
-# introduced -- the check that would have caught the D2A/D2B loss immediately.
+# Tier columns not read: the START of a duration tier and the empty END of an
+# "at any time" tier. Listed so the assertion below can distinguish these from a
+# column FSA has newly introduced.
 event_dates_unused <- c(
   "D2 START DATE", "D2A START DATE", "D2B START DATE",
   "D3A END", "D3B START DATE",
@@ -891,19 +862,11 @@ events <-
     `Pasture Type` = as.character(`Pasture Type`),
     `Qualifying Drought Event`,
     `Qualifying Date`,
-    # The monthly payments the tier earns under the ladder in force, not FSA's
-    # record-level `Drought Factor`, which names only the tier that set the award.
-    #
-    # From 2026 this deliberately departs from FSA: FSA reports
-    # `Drought Factor` = 1 for D2A-only and D2A+D2B records alike, carrying the
-    # two-payment outcome in `Payment Factor` instead. `Drought Factor` means "the
-    # payments this tier earns" everywhere else in both archives, so D2b_2026 is 2
-    # here. A 2026 comparison against FSA must use `Payment Factor`; comparing
-    # `Drought Factor` shows ~1,024 differences that are conventions, not errors.
-    #
-    # No `.default`: an unrecognised event becomes NA and the assertion below
-    # stops the run. Eras are bounded at both ends so an open-ended `>= 2012`
-    # cannot quietly price a 2026 tier on the 2014 Farm Bill ladder.
+    # Monthly payments the tier earns under the ladder in force, derived rather
+    # than copied from FSA's record-level `Drought Factor`. From 2026 this differs
+    # from FSA, which reports 1 for both D2 sub-tiers and carries the two-payment
+    # outcome in `Payment Factor`; compare `Payment Factor` for 2026. See README.
+    # Unrecognised events become NA and the assertion below stops the run.
     `Drought Factor` =
       dplyr::case_when(
         # 2008 Farm Bill
@@ -912,14 +875,15 @@ events <-
         `Program Year` <= 2011L & `Qualifying Drought Event` %in%
           c("D3b", "D4a", "D4b") ~ 3L,
 
-        # 2014 Farm Bill, from Program Year 2012: the ceiling rises from 3 to 5
+        # 2014 Farm Bill, from Program Year 2012
         `Program Year` %in% 2012:2025 & `Qualifying Drought Event` == "D2"  ~ 1L,
         `Program Year` %in% 2012:2025 & `Qualifying Drought Event` == "D3a" ~ 3L,
         `Program Year` %in% 2012:2025 & `Qualifying Drought Event` %in%
           c("D3b", "D4a") ~ 4L,
         `Program Year` %in% 2012:2025 & `Qualifying Drought Event` == "D4b" ~ 5L,
 
-        # From Program Year 2026: D2 splits at four and seven consecutive weeks
+        # P.L. 119-21, from Program Year 2026: D2 splits into a 4-consecutive-week
+        # tier and a 7-of-8-consecutive-week tier
         `Program Year` >= 2026L & `Qualifying Drought Event` == "D2a_2026" ~ 1L,
         `Program Year` >= 2026L & `Qualifying Drought Event` == "D2b_2026" ~ 2L,
         `Program Year` >= 2026L & `Qualifying Drought Event` == "D3a"      ~ 3L,
@@ -935,9 +899,8 @@ events <-
 
 ## F3. Validation ----
 #
-# Invariants abort before the outputs are published, so a defect reaches neither
-# git nor S3. The FSA-county-to-Census-county fan-out and FSA's own revisions are
-# reported instead: they are properties of the source, not defects.
+# Invariants abort before the outputs are published. The county fan-out and FSA's
+# own revisions are reported, never enforced.
 
 # Fail with the count and a sample, so a CI log alone identifies the cause.
 assert_empty <- function(offenders, what) {
@@ -960,9 +923,7 @@ assert_empty(
 )
 
 # A tier column FSA has introduced that the events projection neither reads nor
-# knowingly ignores. This is the check that was missing when the 2026 workbook
-# added D2A/D2B: those four columns were silently dropped for weeks, taking the
-# entire 2026 D2 tier structure with them.
+# knowingly ignores.
 assert_empty(
   tibble::tibble(
     column = stringr::str_subset(
@@ -974,8 +935,8 @@ assert_empty(
   "drought tier columns the events projection does not account for"
 )
 
-# `aws s3 sync` is not transactional: a partial pull of the workbook corpus would
-# rebuild a smaller table and publish it without complaint. Refuse to shrink.
+# `aws s3 sync` is not transactional, so a partial pull would rebuild a smaller
+# table and publish it without complaint.
 published_current <-
   tryCatch(
     arrow::read_parquet(
@@ -1004,9 +965,8 @@ if (!is.null(published_current)) {
 
 ## F4. QA report ----
 
-# Census counties FSA administers as more than one office. The record key
-# includes the FSA county precisely so these survive; a FIPS-only key dropped one
-# of every pair.
+# Census counties FSA administers as more than one office. A join on FIPS returns
+# several rows for these.
 qa_split_counties <-
   current %>%
   dplyr::summarise(
@@ -1039,8 +999,7 @@ qa_vintages <-
   ) %>%
   dplyr::arrange(`Program Year`)
 
-# How much FSA revises a program year after first publishing it. This is the
-# archive's distinctive contribution: no other LFP source records it.
+# How much FSA revises a program year after first publishing it.
 qa_revisions <-
   snapshots %>%
   dplyr::arrange(`FSA State Code`, `FSA County Code`, `Pasture Type`,
@@ -1109,8 +1068,7 @@ qa_report <- c(
   paste0("Census counties carrying several FSA counties: ",
          nrow(qa_split_counties)),
   "  A join on FIPS returns several rows for these; decide how to combine them.",
-  "  The record key includes the FSA county so both survive — a FIPS-only key",
-  "  silently dropped one of every pair until 2026-07-30.",
+  "  The record key includes the FSA county, so both survive.",
   qa_detail(qa_split_counties),
   "",
   "Source vintages by program year:",
@@ -1153,11 +1111,8 @@ arrow::write_parquet(events,
 
 ## G. Publish the consolidated outputs ----
 #
-# Before the dashboard render, not after. The render is the most failure-prone
-# step in the script -- a missing `quarto` package killed it on 2026-07-24 -- and
-# publishing after it meant a render failure left the data unpublished while the
-# freshness gate reported nothing to do. The data is the archive; the dashboard
-# is a view of it, and it must not gate the archive's publication.
+# Before the dashboard render, so a render failure cannot leave the data
+# unpublished.
 
 if (!dry_run) {
   s3_list_keys(s3_bucket, paste0(s3_prefix, "/data-raw")) %>%
@@ -1199,15 +1154,13 @@ if (!dry_run) {
 
 ## H. Render the interactive dashboard ----
 #
-# Produces assets/fsa-lfp-eligibility-web-simple.csv, which is why its upload
-# sits below rather than with the data artifacts above. The dashboard html is
-# committed to the repo and served by GitHub Pages, so it is never uploaded.
+# Produces assets/fsa-lfp-eligibility-web-simple.csv, uploaded below. The
+# dashboard html is committed to the repo and served by GitHub Pages.
 
 quarto::quarto_render("fsa-lfp-eligibility-web.qmd")
 
 # Regenerates README.md from the freshly updated archive; the workflow commits it
-# back along with the data. README.md has always claimed to be generated from
-# README.Rmd, but nothing rendered it until now.
+# back along with the data.
 rmarkdown::render("README.Rmd")
 
 ## I. Publish the dashboard's data extract and invalidate CloudFront ----

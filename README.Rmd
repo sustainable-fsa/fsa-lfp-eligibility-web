@@ -25,16 +25,16 @@ The [`fsa-lfp-eligibility-web.R`](fsa-lfp-eligibility-web.R) script handles all 
 
 ## About the Livestock Forage Disaster Program
 
-LFP provides compensation to eligible livestock producers who suffer grazing losses on drought-afflicted pastureland. Eligibility is determined weekly, by county and pasture type, from the [U.S. Drought Monitor](https://droughtmonitor.unl.edu/). Under the criteria in effect for the eligibility determinations archived here ([7 CFR § 1416.205](https://www.ecfr.gov/current/title-7/subtitle-B/chapter-XIV/subchapter-B/part-1416/subpart-C/section-1416.205)), payments depend on drought severity and duration during the normal grazing period:
+LFP compensates eligible livestock producers for grazing losses on drought-afflicted
+pastureland. Eligibility is determined by county and pasture type from the
+[US Drought Monitor](https://droughtmonitor.unl.edu/), against the normal grazing
+period FSA establishes for that pasture type. The tiers and the payments they earn
+are set out under *Drought tiers and payment ladders* below.
 
-- **D2 (Severe Drought)** for at least eight consecutive weeks — *one* monthly payment
-- **D3 (Extreme Drought)** at any time — *three* monthly payments
-- **D3 (Extreme Drought)** for at least four weeks, or **D4 (Exceptional Drought)** at any time — *four* monthly payments
-- **D4 (Exceptional Drought)** for four weeks (not necessarily consecutive) — *five* monthly payments
-
-In the output data, `Drought Factor` records this tier (1, 3, 4, or 5), and `Payment Factor` is the number of payments actually eligible — the `Drought Factor` capped by `Maximum Eligible Payment Months`, the length of the pasture type's normal grazing period. The `D2 START DATE` … `D4B END` variables record the qualifying drought windows.
-
-**Recent revisions, not yet reflected in the data:** Section 10401(b) of the One Big Beautiful Bill Act ([P.L. 119-21](https://www.congress.gov/bill/119th-congress/house-bill/1), July 4, 2025) lowered the D2 trigger to *four* consecutive weeks for one monthly payment and added a new tier — D2 for at least seven of the previous eight consecutive weeks, worth *two* monthly payments; all other tiers are unchanged. FSA's implementing [final rule](https://www.federalregister.gov/documents/2026/07/09/2026-13878/supplemental-disaster-assistance-programs-marketing-assistance-loans-and-sugar-provisions) became effective July 9, 2026, applicable to program year 2026 and subsequent years. As of this writing, however, the weekly eligibility maps and tables published by FSA — and therefore the determinations archived here — are still produced under the prior criteria, even though FSA's program pages already describe the revised tiers. Because the revisions apply retroactively to program year 2026, the weekly snapshots in this archive will record when and how the published determinations change.
+Program year 2026 is the first under the tiers introduced by P.L. 119-21, and the
+weekly tables archived here report the split D2 windows FSA added for it. Because
+the revisions apply retroactively to 2026, the snapshot history records when and how
+the published determinations changed.
 
 ---
 
@@ -54,6 +54,31 @@ In the output data, `Drought Factor` records this tier (1, 3, 4, or 5), and `Pay
 
 ---
 
+## ☁️ Archive Hosting & Automated Publishing
+
+The consolidated data, the event-grain projection, the snapshot history, the QA
+report, the `assets/` directory the dashboard reads from, and the raw weekly
+`data-raw/` corpus are mirrored to S3 and served via CloudFront at
+<https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/> (browse the
+[archive listing](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/) or
+[`_manifest.txt`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/_manifest.txt)
+for a flat index). The interactive dashboard is served separately, via GitHub Pages
+at <https://sustainable-fsa.com/fsa-lfp-eligibility-web/>.
+
+Publishing is handled by
+[`fsa-lfp-eligibility-web.R`](fsa-lfp-eligibility-web.R) via the shared
+[`R/s3-archive.R`](R/s3-archive.R) helpers, and runs automatically in GitHub Actions
+([`.github/workflows/fsa-lfp-eligibility-web.yaml`](.github/workflows/fsa-lfp-eligibility-web.yaml))
+each evening, or on manual dispatch. The workflow authenticates to AWS via GitHub
+OIDC (no long-lived credentials stored in the repo), re-renders the README and
+dashboard, and commits them back to git only if the rendered output changed.
+
+The raw archive is append-only: FSA publishes each week at a new URL, and a file
+once archived is never overwritten or removed. Days on which FSA has published
+nothing exit before any write.
+
+---
+
 ## 📥 Input Data: Weekly Maps and Tables
 
 FSA publishes, for each program year, roughly a dozen per-pasture-type eligibility map **PDFs** (Native Pasture, Cool/Warm Season Improved, Forage Sorghum, small grains variants, etc.) and a single **Counties & Pasture Types Eligible XLSX table**. During the current program year these are re-issued weekly, following each Thursday's U.S. Drought Monitor release, at new dated URLs.
@@ -64,9 +89,25 @@ Each run that archives new files also records provenance under `data-raw/log/<da
 
 ---
 
-## 📤 Output Data: Cleaned CSV and Parquet
+## 📤 Output Data
 
-The files [`fsa-lfp-eligibility-web.csv`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web.csv) and [`fsa-lfp-eligibility-web.parquet`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web.parquet) are tidy datasets for analysis and visualization, containing the latest published version of each county × program year × pasture type record. [`fsa-lfp-eligibility-web-snapshots.parquet`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web-snapshots.parquet) contains *every* archived weekly version of every record — the unique contribution of this archive — for studying how eligibility accrued within each season. Note that the published 2008–2011 workbook reports qualifying drought windows but no payment information, so `Drought Factor` and `Payment Factor` are `NA` for those years; the FOIA archive fills that gap.
+The archive is published as
+[`fsa-lfp-eligibility-web.csv`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web.csv)
+and
+[`fsa-lfp-eligibility-web.parquet`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web.parquet).
+The archive is published in both formats with identical records. The Parquet
+carries column types; the CSV does not, so the zero-padded FSA and FIPS codes must
+be read as character or they lose their leading zeros.
+
+```r
+readr::read_csv(URL, col_types = readr::cols(FIPS = "c", `FSA County` = "c"))
+```
+
+Each record is one eligibility determination, keyed on FSA county, program year,
+pasture type and disaster type — the same grain as the
+[FOIA archive](https://sustainable-fsa.com/fsa-lfp-eligibility/). The 2008–2011
+workbook reports qualifying drought windows but no payment information, so
+`Drought Factor` and `Payment Factor` are `NA` for those years.
 
 ### Variables in Output
 
@@ -86,22 +127,11 @@ The files [`fsa-lfp-eligibility-web.csv`](https://data.sustainable-fsa.com/fsa-l
 | `Disaster Type`                        | Type of disaster (Drought)                               |
 | `D2 START DATE`:`D4B END`              | Start and end dates for qualifying drought events, including the `D2A`/`D2B` pair FSA introduced for 2026 |
 | `Date of Qualifying Drought`           | Start date of qualifying disaster                        |
-| `Drought Factor`                       | Monthly payments earned by drought severity and duration (1, 3, 4, or 5) |
+| `Drought Factor`                       | Monthly payments earned by drought severity and duration |
 | `Grazing Period Start Date`            | Start date of grazing period for the pasture type        |
 | `Grazing Period End Date`              | End date of grazing period for the pasture type          |
 | `Maximum Eligible Payment Months`      | Duration of grazing period, in months                    |
 | `Payment Factor`                       | Eligible monthly payments (`Drought Factor` capped by `Maximum Eligible Payment Months`) |
-
-### The record key is the FSA county
-
-One record per **FSA county**, program year, pasture type and disaster type — the
-same grain as the [FOIA archive](https://sustainable-fsa.com/fsa-lfp-eligibility/),
-so the two are directly comparable. FSA administers seven Census counties as two or
-three separate offices, each setting its own grazing period and receiving its own
-determination, so those Census counties carry several records per program year and
-pasture type. A join on FIPS returns several rows for them; see
-[`qa-report.txt`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/qa-report.txt)
-for the list and decide how to combine them.
 
 ### `current` is last-seen-wins
 
@@ -114,63 +144,148 @@ invisible in this file and recoverable only by diffing
 
 ---
 
-## 🔄 Output Data: Event Grain
+---
 
-[`fsa-lfp-eligibility-web-events.csv`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web-events.csv)
-and its Parquet twin reshape the wide table long: **one record per qualifying
-drought event**, matching the
-[FOIA archive's event projection](https://sustainable-fsa.com/fsa-lfp-eligibility/)
-column for column, so the two bind directly.
+## 🌵 Drought tiers and payment ladders
 
-| Variable Name                     | Description                                                       |
-|-----------------------------------|-------------------------------------------------------------------|
-| `FIPS`                            | Five-digit Census county code                                     |
-| `FSA County`                      | Five-digit FSA county code (not always FIPS)                       |
-| `Program Year`                    | Year the determination applies to                                 |
-| `Pasture Type`                    | Pasture classification, as FSA reports it                         |
-| `Qualifying Drought Event`        | `D2`, `D3a`, `D3b`, `D4a`, `D4b`; from 2026, `D2a_2026`/`D2b_2026` |
-| `Qualifying Date`                 | The date the tier was satisfied                                   |
-| `Drought Factor`                  | Monthly payments the event earns — derived, see below              |
-| `Maximum Eligible Payment Months` | FSA's cap, from the length of the grazing period                   |
-| `Payment Factor`                  | FSA's payable months                                              |
+LFP pays for grazing losses when the US Drought Monitor rates a county at a
+qualifying intensity during the normal grazing period for that pasture type. The
+tiers, and the monthly payments they earn, have changed twice.
 
-Which date qualifies a tier is not uniform. `D2`, `D2A`, `D2B`, `D3B` and `D4B` are
-duration tiers, satisfied on their **END**. `D3A` and `D4A` trigger "at any time",
-carry no END value in any vintage, and are satisfied on their **START**. Do not
-reshape the wide table yourself by pivoting on the START columns — FSA reports each
-B-tier START as a copy of its A-tier counterpart, so a START-keyed pivot
-double-counts D3 and D4.
+**2008 Farm Bill — program years 2008–2011**
 
-**This archive has better 2008–2011 coverage than the FOIA one.** The fy-2009-2011
-workbook reports the actual per-tier qualifying and ending dates, so every one of
-those records yields dated events. The FOIA response omitted the tier columns for
-those years entirely, leaving its event projection to fall back on FSA's single
-`Date of Qualifying Drought`. Where the two disagree before 2012, prefer this one.
+| Monthly payments | Qualifying drought event |
+|---|---|
+| 1 | D2 for at least 8 consecutive weeks |
+| 2 | D3 at any time |
+| 3 | D3 for at least 4 weeks, or D4 at any time |
+
+**2014 Farm Bill — program years 2012–2025**
+
+| Monthly payments | Qualifying drought event |
+|---|---|
+| 1 | D2 for at least 8 consecutive weeks |
+| 3 | D3 at any time |
+| 4 | D3 for at least 4 weeks, or D4 at any time |
+| 5 | D4 for at least 4 weeks |
+
+**P.L. 119-21 — program years 2026 onward**
+
+| Monthly payments | Qualifying drought event |
+|---|---|
+| 1 | D2 for at least 4 consecutive weeks |
+| 2 | D2 for at least 7 of the previous 8 consecutive weeks |
+| 3 | D3 at any time |
+| 4 | D3 for at least 4 weeks, or D4 at any time |
+| 5 | D4 for at least 4 weeks |
+
+Section 10401(b) of P.L. 119-21 (July 4, 2025) split the D2 tier, amending
+7 U.S.C. 9081(c)(3)(D)(ii)(I). The 4-week and 4-consecutive-week distinctions are
+as written: the D2 tiers require consecutive weeks, the D3 and D4 4-week tiers do
+not.
+
+The event codes used across these archives are `D2`, `D3a`, `D3b`, `D4a` and
+`D4b`, and from 2026 `D2a_2026` and `D2b_2026` in place of `D2`. The `a` tiers
+trigger at any time; the `b` tiers require a duration.
+
+### Which date qualifies a tier
+
+`D2`, `D2A`, `D2B`, `D3B` and `D4B` require a duration, and are satisfied on the
+last day of the qualifying window — their `END`. `D3A` and `D4A` trigger at any
+time, carry no `END` value, and are satisfied on their `START`.
+
+| Event | Source column |
+|---|---|
+| `D2` | `D2 END` |
+| `D2a_2026` | `D2A END` |
+| `D2b_2026` | `D2B END` |
+| `D3a` | `D3A START DATE` |
+| `D3b` | `D3B END` |
+| `D4a` | `D4A START DATE` |
+| `D4b` | `D4B END` |
+
+FSA reports each B-tier `START` as a copy of its A-tier counterpart, so a
+START-keyed reshape of the wide table double-counts D3 and D4.
 
 ### Program year 2026 onward
 
-The rules change: D2 splits in two — four consecutive weeks earns one payment, seven
-earns two — reinstating a two-payment tier the 2014 Farm Bill had removed. D3 and D4
-are unchanged.
+FSA reports the two D2 windows separately, as `D2A_START_DATE`/`D2A_END` and
+`D2B_START_DATE`/`D2B_END`. Observed window lengths match the statute: D2A is 27
+days in every record, D2B is 48 or 55.
 
-| Program year | Ladder |
+FSA's implementing [final rule](https://www.federalregister.gov/documents/2026/07/09/2026-13878/supplemental-disaster-assistance-programs-marketing-assistance-loans-and-sugar-provisions)
+took effect 9 July 2026, applying to program year 2026 and after. Because the
+revisions apply retroactively, the weekly snapshots in this archive record when and
+how the published determinations changed.
+
+---
+
+## 🔄 Output Data: Event Grain
+
+[`fsa-lfp-eligibility-web-events.csv`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web-events.csv)
+and
+[`fsa-lfp-eligibility-web-events.parquet`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web-events.parquet)
+reshape the wide table long.
+
+One record per **Census county, FSA county, program year, pasture type, and
+qualifying drought event**. A county whose drought deepened through the season
+carries several records, one for each tier as it was reached.
+
+| Variable | Description |
 |---|---|
-| 2008–2011 | `D2` 1 · `D3a` 2 · `D3b`/`D4a`/`D4b` 3 |
-| 2012–2025 | `D2` 1 · `D3a` 3 · `D3b`/`D4a` 4 · `D4b` 5 |
-| 2026– | `D2a_2026` 1 · `D2b_2026` 2 · `D3a` 3 · `D3b`/`D4a` 4 · `D4b` 5 |
+| `FIPS` | Census county, five-digit state + county FIPS code |
+| `FSA County` | FSA county, five-digit FSA state + county code |
+| `Program Year` | LFP program year |
+| `Pasture Type` | Pasture classification, as FSA reports it |
+| `Qualifying Drought Event` | The tier reached |
+| `Qualifying Date` | The date the tier was satisfied |
+| `Drought Factor` | Monthly payments the event earns |
+| `Maximum Eligible Payment Months` | FSA's cap, from the length of the grazing period |
+| `Payment Factor` | FSA's payable months |
 
-FSA reports the two windows separately, as `D2A_START_DATE`/`D2A_END` and
-`D2B_START_DATE`/`D2B_END`. Observed lengths confirm the rule: D2A is 27 days in
-every record, D2B is 48 or 55.
+`Drought Factor` is derived from the ladder in force, not copied from the
+record-level column of the same name, which reports only the tier that set the
+award. `Maximum Eligible Payment Months` and `Payment Factor` are FSA's own,
+repeated on each event of a determination.
 
-**One deliberate divergence from FSA.** FSA sets `Drought Factor` to 1 for D2A-only
-and D2A+D2B records alike, carrying the two-payment outcome in `Payment Factor`
-instead. This archive scores `D2b_2026` as **2**, because `Drought Factor` means
-"the monthly payments this tier earns" everywhere else in it and recording a
-two-payment tier as 1 would make the column unexplainable. The consequence: when
-checking 2026 against FSA, compare **`Payment Factor`**, not `Drought Factor` —
-otherwise you will see roughly 1,024 differences that are conventions, not errors.
-`qa-report.txt` counts them exactly.
+### `Drought Factor`, `Payment Factor` and the cap
+
+`Drought Factor` is the monthly payments a tier earns under the ladder in force.
+`Maximum Eligible Payment Months` is FSA's cap, a function of the length of the
+grazing period. `Payment Factor` is the payable figure, `min(Drought Factor,
+Maximum Eligible Payment Months)`.
+
+From program year 2026 FSA reports `Drought Factor` as 1 for both D2 sub-tiers,
+carrying the two-payment outcome in `Payment Factor` alone. These archives score
+`D2b_2026` as 2, so compare `Payment Factor` rather than `Drought Factor` when
+checking 2026 against FSA.
+
+The 2008–2011 workbook carries per-tier dates, so every determination in those
+years yields a dated event. The FOIA archive's response omitted those columns, so
+prefer this archive before 2012.
+
+---
+
+## 🗺️ Two county keys
+
+An LFP determination needs two counties. The normal grazing period is set per
+**FSA county** — the administrative unit, established through NAP and the National
+Crop Table (1-LFP Amend. 7, par. 27). Eligibility then triggers on drought "in any
+area of the county" as a **Census county**, the unit the US Drought Monitor is
+aggregated to (par. 23).
+
+The two do not nest, in either direction. One FSA county may cover several Census
+counties, most widely in Puerto Rico and Alaska, and in the Virginia
+county-plus-independent-city pairs. Several FSA counties may fall inside one Census
+county, where FSA splits a county administratively and each office sets its own
+grazing period: Aroostook ME, Custer ID, Pottawattamie IA, Otter Tail MN, Polk MN,
+St. Louis MN, Nye NV, Lucas OH and Galax VA.
+
+Records are therefore keyed on both counties and never combined. Reducing to a
+single county grain is the consumer's choice; `qa-report.txt` lists the records it
+affects. The FSA-to-Census crosswalk is published in
+[fsa-counties-dd17](https://sustainable-fsa.com/fsa-counties-dd17/) and
+[fsa-counties-dd22](https://sustainable-fsa.com/fsa-counties-dd22/).
 
 ---
 
@@ -281,6 +396,27 @@ ggplot(counties) +
 
 ---
 
+## 🧭 Related archives
+
+Three archives cover LFP county eligibility, at the same event grain and with the
+same event codes, so they can be compared directly:
+
+- [fsa-lfp-eligibility](https://sustainable-fsa.com/fsa-lfp-eligibility/) — FSA's
+  determinations as obtained by FOIA, program years 2008–2025
+- [fsa-lfp-eligibility-web](https://sustainable-fsa.com/fsa-lfp-eligibility-web/) —
+  FSA's determinations as published weekly on its maps page, 2008–present,
+  including every superseded weekly version
+- [fsa-lfp-eligibility-reanalysis](https://data.sustainable-fsa.com/fsa-lfp-eligibility-reanalysis/)
+  — eligibility recomputed from the US Drought Monitor under four county
+  aggregations
+
+The FOIA archive is the richer record for closed program years: it includes fire
+eligibility and payment factors the web tables omit. The web archive covers the
+current program year and, for 2008–2011, carries per-tier dates the FOIA response
+omitted. The reanalysis is not a record of FSA's determinations.
+
+---
+
 ## 📝 Citation
 
 If you use this data in published work, please cite:
@@ -311,15 +447,15 @@ To locate your nearest USDA Farm Service Agency office, use the USDA Service Cen
 This project is part of:
 
 **[*Enhancing Sustainable Disaster Relief in FSA Programs*](https://www.ars.usda.gov/research/project/?accnNo=444612)**
-Supported by USDA OCE/OEEP and USDA Climate Hubs
+Supported by USDA OCE/OEEP and USDA Climate Hubs  
 Prepared by the [Montana Climate Office](https://climate.umt.edu)
 
 ---
 
-## 📬 Contact
+## ✉️ Contact
 
-**R. Kyle Bocinsky**
-Director of Climate Extension
-Montana Climate Office
+**R. Kyle Bocinsky**  
+Director of Climate Extension  
+Montana Climate Office  
 📧 [kyle.bocinsky@umontana.edu](mailto:kyle.bocinsky@umontana.edu)
 🌐 [https://climate.umt.edu](https://climate.umt.edu)
