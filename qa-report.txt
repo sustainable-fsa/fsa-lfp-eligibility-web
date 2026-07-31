@@ -23,8 +23,7 @@ Everything below is reported, not enforced.
 
 Census counties carrying several FSA counties: 7
   A join on FIPS returns several rows for these; decide how to combine them.
-  The record key includes the FSA county so both survive — a FIPS-only key
-  silently dropped one of every pair until 2026-07-30.
+  The record key includes the FSA county, so both survive.
   FIPS State Code,FIPS County Code,FIPS State Name,FIPS County Name,FSA Counties,FSA Codes,Records
   23,003,Maine,Aroostook,3,23002 23003 23004,9
   19,155,Iowa,Pottawattamie,2,19155 19156,28
