@@ -816,7 +816,7 @@ arrow::write_parquet(snapshots,
 ## F2. Event grain ----
 #
 # The same determinations reshaped long, one row per qualifying drought event,
-# matching the fsa-lfp-eligibility and fsa-lfp-eligibility-reanalysis projections.
+# matching the fsa-lfp-eligibility and fsa-lfp-eligibility-derived projections.
 # See README for the tier-date convention and the ladders.
 #
 # The fy-2009-2011 workbook carries per-tier dates, so 2008-2011 needs no

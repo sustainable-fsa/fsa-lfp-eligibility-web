@@ -406,14 +406,14 @@ same event codes, so they can be compared directly:
 - [fsa-lfp-eligibility-web](https://sustainable-fsa.com/fsa-lfp-eligibility-web/) —
   FSA's determinations as published weekly on its maps page, 2008–present,
   including every superseded weekly version
-- [fsa-lfp-eligibility-reanalysis](https://data.sustainable-fsa.com/fsa-lfp-eligibility-reanalysis/)
+- [fsa-lfp-eligibility-derived](https://data.sustainable-fsa.com/fsa-lfp-eligibility-derived/)
   — eligibility recomputed from the US Drought Monitor under four county
   aggregations
 
 The FOIA archive is the richer record for closed program years: it includes fire
 eligibility and payment factors the web tables omit. The web archive covers the
 current program year and, for 2008–2011, carries per-tier dates the FOIA response
-omitted. The reanalysis is not a record of FSA's determinations.
+omitted. The derived archive is not a record of FSA's determinations.
 
 ---
 
