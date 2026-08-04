@@ -5,9 +5,9 @@ type — the same grain as the sustainable-fsa/fsa-lfp-eligibility FOIA archive.
 FSA administers some Census counties as several offices and determines
 eligibility for each separately, so a Census county may carry several records.
 
-Records published: 59339
-Snapshot records (every archived weekly version): 67139
-Events published: 134458
+Records published: 59359
+Snapshot records (every archived weekly version): 75740
+Events published: 113053
 FSA counties: 2904
 Census counties: 2897
 Program years: 2008-2026
@@ -57,7 +57,7 @@ Source vintages by program year:
   2023,1,2024-01-04,5537
   2024,1,2025-01-02,3168
   2025,1,2025-12-29,2821
-  2026,2,2026-07-23,8586
+  2026,3,2026-07-30,8606
 
 FSA revisions within a program year:
   Records seen in more than one weekly workbook, and how many had a value
@@ -78,15 +78,13 @@ FSA revisions within a program year:
   2023,1,0,0
   2024,3,0,0
   2025,3,0,0
-  2026,7767,1134,41
+  2026,8578,1134,121
 
-2026 records where our drought factor departs from FSA's: 1024
+2026 records where our drought factor departs from FSA's: 0
   From 2026 the D2 tier splits: four consecutive weeks earns one payment,
   seven earns two. FSA reports `Drought Factor` 1 for both and carries the
   two-payment outcome in `Payment Factor`. This archive's events projection
   scores D2b_2026 as 2, because `Drought Factor` means "the payments this tier
   earns" everywhere else in it. Compare `Payment Factor`, not `Drought Factor`,
   when checking 2026 against FSA.
-  Program Year,Drought Factor,Payment Factor,records
-  2026,1,2,1024
 
