@@ -259,6 +259,18 @@ The event codes used across these archives are `D2`, `D3a`, `D3b`, `D4a`
 and `D4b`, and from 2026 `D2a_2026` and `D2b_2026` in place of `D2`. The
 `a` tiers trigger at any time; the `b` tiers require a duration.
 
+FSA has not made the 2026 split cleanly: some program year 2026 records
+still arrive with the legacy `D2 END` populated rather than the
+`D2A END`/`D2B END` pair, giving a `D2` event in a year whose ladder no
+longer defines one. Because `Payment Factor` is a record-level value
+driven by the record’s highest tier, it recovers the sub-tier only where
+D2 *is* that highest tier — every 2026 record topping out at D2a carries
+`Payment Factor` 1, and every one topping out at D2b carries 2. Where a
+higher tier is present, `Payment Factor` describes that tier instead, so
+these events take the conservative one-payment reading. `qa-report.txt`
+counts them; the count should fall to zero once FSA republishes them
+split.
+
 ### Which date qualifies a tier
 
 `D2`, `D2A`, `D2B`, `D3B` and `D4B` require a duration, and are

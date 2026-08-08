@@ -5,9 +5,9 @@ type — the same grain as the sustainable-fsa/fsa-lfp-eligibility FOIA archive.
 FSA administers some Census counties as several offices and determines
 eligibility for each separately, so a Census county may carry several records.
 
-Records published: 59359
-Snapshot records (every archived weekly version): 75740
-Events published: 113053
+Records published: 59436
+Snapshot records (every archived weekly version): 84426
+Events published: 126101
 FSA counties: 2904
 Census counties: 2897
 Program years: 2008-2026
@@ -27,9 +27,9 @@ Census counties carrying several FSA counties: 7
   FIPS State Code,FIPS County Code,FIPS State Name,FIPS County Name,FSA Counties,FSA Codes,Records
   23,003,Maine,Aroostook,3,23002 23003 23004,9
   19,155,Iowa,Pottawattamie,2,19155 19156,28
-  27,111,Minnesota,Otter Tail,2,27111 27112,12
+  27,111,Minnesota,Otter Tail,2,27111 27112,14
   27,119,Minnesota,Polk,2,27119 27120,12
-  27,137,Minnesota,St. Louis,2,27137 27138,23
+  27,137,Minnesota,St. Louis,2,27137 27138,25
   32,023,Nevada,Nye,2,32023 32035,26
   46,102,South Dakota,Oglala Lakota,2,46102 46113,21
 
@@ -57,7 +57,7 @@ Source vintages by program year:
   2023,1,2024-01-04,5537
   2024,1,2025-01-02,3168
   2025,1,2025-12-29,2821
-  2026,3,2026-07-30,8606
+  2026,4,2026-08-06,8683
 
 FSA revisions within a program year:
   Records seen in more than one weekly workbook, and how many had a value
@@ -78,7 +78,7 @@ FSA revisions within a program year:
   2023,1,0,0
   2024,3,0,0
   2025,3,0,0
-  2026,8578,1134,121
+  2026,8606,1134,153
 
 2026 records where our drought factor departs from FSA's: 0
   From 2026 the D2 tier splits: four consecutive weeks earns one payment,
@@ -87,4 +87,19 @@ FSA revisions within a program year:
   scores D2b_2026 as 2, because `Drought Factor` means "the payments this tier
   earns" everywhere else in it. Compare `Payment Factor`, not `Drought Factor`,
   when checking 2026 against FSA.
+
+2026 events published against the unsplit `D2 END` column: 5467
+  P.L. 119-21 splits the 2026 D2 tier across `D2A END` and `D2B END`, but FSA
+  still populates the legacy `D2 END` for some records. `Payment Factor` is a
+  record-level value driven by the record's highest tier, so it recovers the
+  sub-tier only where D2 is that highest tier; elsewhere these score as one
+  payment, which understates any that were really the seven-week tier. Expect
+  this to fall to zero once FSA republishes them split.
+  Program Year,Drought Factor,Payment Factor,records
+  2026,1,1,795
+  2026,1,2,1125
+  2026,1,3,1063
+  2026,1,4,2158
+  2026,1,5,295
+  2026,2,2,31
 
