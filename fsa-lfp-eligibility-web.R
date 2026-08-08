@@ -866,7 +866,8 @@ events <-
     # than copied from FSA's record-level `Drought Factor`. From 2026 this differs
     # from FSA, which reports 1 for both D2 sub-tiers and carries the two-payment
     # outcome in `Payment Factor`; compare `Payment Factor` for 2026. See README.
-    # Unrecognised events become NA and the assertion below stops the run.
+    # Unrecognised events become NA. A PY2026 `D2` is the one NA the step below
+    # resolves; anything else reaches the assertion and stops the run.
     `Drought Factor` =
       dplyr::case_when(
         # 2008 Farm Bill
@@ -894,6 +895,31 @@ events <-
     `Maximum Eligible Payment Months`,
     `Payment Factor`
   ) %>%
+  # FSA has begun populating the legacy `D2 END` for PY2026 alongside the split
+  # D2A/D2B columns, so those rows reach here unscored. `Payment Factor` is a
+  # record-level value driven by the record's highest tier, so it identifies the
+  # D2 sub-tier only when D2 *is* that highest tier — where a higher tier is
+  # present it describes that tier instead and says nothing about D2, so the
+  # conservative one-payment reading stands. Verified against the published 2026
+  # events: every record topping out at D2a carries `Payment Factor` 1 (802/802)
+  # and every record topping out at D2b carries 2 (1024/1024).
+  dplyr::mutate(
+    `Max Tier On Record` = {
+      m <- suppressWarnings(max(`Drought Factor`, na.rm = TRUE))
+      if (is.finite(m)) as.integer(m) else 0L
+    },
+    .by = c(FIPS, `FSA County`, `Program Year`, `Pasture Type`)
+  ) %>%
+  dplyr::mutate(
+    `Drought Factor` =
+      dplyr::case_when(
+        !is.na(`Drought Factor`) ~ `Drought Factor`,
+        `Program Year` >= 2026L & `Qualifying Drought Event` == "D2" &
+          `Max Tier On Record` <= 2L & `Payment Factor` == 2L ~ 2L,
+        `Program Year` >= 2026L & `Qualifying Drought Event` == "D2" ~ 1L
+      )
+  ) %>%
+  dplyr::select(!`Max Tier On Record`) %>%
   dplyr::arrange(dplyr::desc(`Program Year`), FIPS, `FSA County`,
                  `Pasture Type`, `Qualifying Date`, `Qualifying Drought Event`)
 
@@ -1029,6 +1055,15 @@ qa_factor_divergence <-
   dplyr::count(`Program Year`, `Drought Factor`, `Payment Factor`,
                name = "records")
 
+# PY2026 records FSA published against the legacy, unsplit `D2 END` column
+# rather than the split D2A/D2B pair the ladder in force expects.
+qa_unsplit_d2 <-
+  events %>%
+  dplyr::filter(`Program Year` >= 2026L,
+                `Qualifying Drought Event` == "D2") %>%
+  dplyr::count(`Program Year`, `Drought Factor`, `Payment Factor`,
+               name = "records")
+
 # Detail tables as indented CSV; a tibble's print wraps wide frames across
 # several blocks.
 qa_detail <- function(x) {
@@ -1093,6 +1128,16 @@ qa_report <- c(
   "  earns\" everywhere else in it. Compare `Payment Factor`, not `Drought Factor`,",
   "  when checking 2026 against FSA.",
   qa_detail(qa_factor_divergence),
+  "",
+  paste0("2026 events published against the unsplit `D2 END` column: ",
+         sum(qa_unsplit_d2$records)),
+  "  P.L. 119-21 splits the 2026 D2 tier across `D2A END` and `D2B END`, but FSA",
+  "  still populates the legacy `D2 END` for some records. `Payment Factor` is a",
+  "  record-level value driven by the record's highest tier, so it recovers the",
+  "  sub-tier only where D2 is that highest tier; elsewhere these score as one",
+  "  payment, which understates any that were really the seven-week tier. Expect",
+  "  this to fall to zero once FSA republishes them split.",
+  qa_detail(qa_unsplit_d2),
   ""
 )
 
