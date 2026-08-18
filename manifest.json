@@ -770,6 +770,11 @@
     "mtime": "2026-08-04 03:32:15"
   },
   {
+    "path": "data-raw/2026/Counties & Pasture Types Eligible for 2026 LFP 08-13-2026.xlsx",
+    "size": 1104422,
+    "mtime": "2026-08-18 02:44:10"
+  },
+  {
     "path": "data-raw/2026/Forage Sorghum for 2026 LFP 07-09-26.pdf",
     "size": 6850706,
     "mtime": "2026-07-09 20:12:44"
@@ -1048,5 +1053,15 @@
     "path": "data-raw/log/2026-08-14/maps-page.html",
     "size": 144834,
     "mtime": "2026-08-14 03:17:23"
+  },
+  {
+    "path": "data-raw/log/2026-08-18/links.json",
+    "size": 58570,
+    "mtime": "2026-08-18 02:44:12"
+  },
+  {
+    "path": "data-raw/log/2026-08-18/maps-page.html",
+    "size": 144835,
+    "mtime": "2026-08-18 02:44:12"
   }
 ]
