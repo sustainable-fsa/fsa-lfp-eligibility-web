@@ -1154,6 +1154,79 @@ arrow::write_parquet(events,
                      compression_level = 13,
                      use_dictionary = TRUE)
 
+# Browser-optimized JSON mirror of the events table, shared layout across the
+# three LFP archives ("fsa-lfp-eligibility/1") so the eligibility dashboard can
+# compare them directly. Column-oriented, dictionary-coded, dates as
+# day-of-year plus a year offset from the program year. Frozen contract:
+# add fields; never rename or reorder existing ones without bumping the schema.
+web <-
+  events %>%
+  dplyr::mutate(dplyr::across(dplyr::where(is.factor), as.character))
+
+web_types    <- sort(unique(web$`Pasture Type`), method = "radix")
+web_counties <- sort(unique(web$`FSA County`), method = "radix")
+web_fips     <- sort(unique(web$FIPS), method = "radix")
+web_events   <- sort(unique(web$`Qualifying Drought Event`), method = "radix")
+web_year0    <- min(web$`Program Year`)
+
+web <-
+  web %>%
+  dplyr::transmute(
+    type   = match(`Pasture Type`, web_types) - 1L,
+    county = match(`FSA County`, web_counties) - 1L,
+    fips   = match(FIPS, web_fips) - 1L,
+    year   = `Program Year` - web_year0,
+    event  = match(`Qualifying Drought Event`, web_events) - 1L,
+    date   = `Qualifying Date`,
+    qy     = as.integer(lubridate::yday(date)),
+    qo     = as.integer(lubridate::year(date)) - `Program Year`,
+    df     = `Drought Factor`,
+    mepm   = `Maximum Eligible Payment Months`,
+    pf     = `Payment Factor`
+  ) %>%
+  # Integer index columns only: byte-stable in any locale. The trailing value
+  # columns make the order total even for otherwise-tied rows.
+  dplyr::arrange(type, county, fips, year, event, qy, qo, df, mepm, pf)
+
+# (program year + offset, day-of-year) must reconstruct every date exactly,
+# and nulls must land exactly where the source has NA (2008-2011 duration
+# tiers carry no satisfaction date).
+stopifnot(
+  identical(is.na(web$qy), is.na(web$date)),
+  identical(is.na(web$qo), is.na(web$date)),
+  identical(
+    (lubridate::make_date(web$year + web_year0 + web$qo, 1L, 1L) + web$qy - 1L)[!is.na(web$date)],
+    web$date[!is.na(web$date)]
+  )
+)
+
+jsonlite::write_json(
+  list(
+    schema     = jsonlite::unbox("fsa-lfp-eligibility/1"),
+    dataset    = jsonlite::unbox("fsa-lfp-eligibility-web"),
+    license    = jsonlite::unbox("CC0-1.0"),
+    year0      = jsonlite::unbox(web_year0),
+    years      = range(web$year + web_year0),
+    types      = web_types,
+    counties   = web_counties,
+    fips_codes = web_fips,
+    events     = web_events,
+    n          = jsonlite::unbox(nrow(web)),
+    type       = web$type,
+    county     = web$county,
+    fips       = web$fips,
+    year       = web$year,
+    event      = web$event,
+    qy         = web$qy,
+    qo         = web$qo,
+    df         = web$df,
+    mepm       = web$mepm,
+    pf         = web$pf
+  ),
+  "fsa-lfp-eligibility-web-events.json",
+  auto_unbox = FALSE, digits = NA, na = "null"
+)
+
 ## G. Publish the consolidated outputs ----
 #
 # Before the dashboard render, so a render failure cannot leave the data
@@ -1190,6 +1263,9 @@ if (!dry_run) {
          "fsa-lfp-eligibility-web-events.parquet",
          content_type = "application/vnd.apache.parquet",
          cache_control = "max-age=3600")
+  s3_put(s3_bucket, paste0(s3_prefix, "/fsa-lfp-eligibility-web-events.json"),
+         "fsa-lfp-eligibility-web-events.json",
+         content_type = "application/json", cache_control = "max-age=3600")
   s3_put(s3_bucket, paste0(s3_prefix, "/qa-report.txt"), "qa-report.txt",
          content_type = "text/plain", cache_control = "max-age=3600")
   s3_put(s3_bucket, paste0(s3_prefix, "/manifest.json"),
@@ -1225,6 +1301,7 @@ if (!dry_run) {
                      "fsa-lfp-eligibility-web-snapshots.parquet",
                      "fsa-lfp-eligibility-web-events.csv",
                      "fsa-lfp-eligibility-web-events.parquet",
+                     "fsa-lfp-eligibility-web-events.json",
                      "qa-report.txt",
                      "assets/fsa-lfp-eligibility-web-simple.csv",
                      "manifest.json",
