@@ -88,6 +88,9 @@ changed.
   drought event
 - [`fsa-lfp-eligibility-web-events.parquet`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web-events.parquet)
   — the same event records as Parquet
+- [`fsa-lfp-eligibility-web-events.json`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web-events.json)
+  — the same event records restructured for browsers (see *Output Data:
+  Event Grain*)
 - [`qa-report.txt`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/qa-report.txt)
   — validation summary, source vintages, and how much FSA revised each
   program year
@@ -105,10 +108,11 @@ changed.
 
 ## ☁️ Archive Hosting & Automated Publishing
 
-The consolidated data, the event-grain projection, the snapshot history,
-the QA report, the `assets/` directory the dashboard reads from, and the
-raw weekly `data-raw/` corpus are mirrored to S3 and served via
-CloudFront at
+The consolidated data, the event-grain projection — which now also ships
+a browser-optimized `.json` alongside its CSV and Parquet — the snapshot
+history, the QA report, the `assets/` directory the dashboard reads
+from, and the raw weekly `data-raw/` corpus are mirrored to S3 and
+served via CloudFront at
 <https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/> (browse the
 [archive
 listing](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/) or
@@ -349,6 +353,51 @@ than `Drought Factor` when checking 2026 against FSA.
 The 2008–2011 workbook carries per-tier dates, so every determination in
 those years yields a dated event. The FOIA archive’s response omitted
 those columns, so prefer this archive before 2012.
+
+### `fsa-lfp-eligibility-web-events.json`
+
+[`fsa-lfp-eligibility-web-events.json`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web-events.json)
+holds the same event records as the CSV and Parquet — derived from the
+identical validated table in the same run — restructured for direct use
+in a browser. It is a browser-delivery format, not an archive of record;
+for analysis, use the CSV or Parquet. It differs in structure, not
+content:
+
+- **Column-oriented**: one array per field with one entry per record,
+  rather than one object per record, sorted on the integer index columns
+  so the file gzips from ~3.9 MB to roughly 340 KB over the wire.
+- **Dictionary-coded strings**: pasture types, FSA county codes, Census
+  FIPS codes, and qualifying drought events each appear once in a lookup
+  array; the record arrays hold integer indices into them. The event
+  dictionary is built from the data, so it lists only the codes the
+  archive actually carries — all seven today, including the
+  `D2a_2026`/`D2b_2026` pair FSA introduced for 2026 (see *Drought tiers
+  and payment ladders*).
+- **Compact dates**: each `Qualifying Date` is a day-of-year (`qy`) plus
+  a year offset from the program year (`qo`), not an ISO string. A
+  grazing season that opens in the calendar year before its program year
+  carries qualifying dates there too — 11% of events here — so the
+  offset is what makes the day number unambiguous.
+
+The payload is keyed on the **FSA county code**, with the Census FIPS
+code carried as a parallel per-record dictionary — the same two keys the
+tabular files carry, for the same reason (see [*Two county
+keys*](#🗺️-two-county-keys)). Every event is dated, because this
+archive’s workbooks carry per-tier dates back to 2008, so `qy` and `qo`
+are never null. `mepm` and `pf` are null on exactly 14,064 records —
+every event of program years 2008–2011, whose workbook reports
+qualifying drought windows but no payment information at all (see
+*Output Data*).
+
+The payload is self-describing via its `schema` field
+(`fsa-lfp-eligibility/1`), a frozen contract with the dashboard: fields
+may be added, but existing ones are never renamed or reordered without
+bumping the schema. The layout is shared with
+[fsa-lfp-eligibility](https://sustainable-fsa.com/fsa-lfp-eligibility/)
+and
+[fsa-lfp-eligibility-derived](https://data.sustainable-fsa.com/fsa-lfp-eligibility-derived/),
+so the three archives can be compared directly; the `dataset` field says
+which one a payload came from.
 
 ------------------------------------------------------------------------
 
