@@ -382,7 +382,11 @@ canonical_pasture_types <- c(
 
 message("Parsing archived XLSX tables")
 
-lfp_raw <-
+# One row per archived workbook, contents nested, so each vintage's column
+# inventory survives the unnest below. `current` needs it to tell a column FSA
+# omitted from a workbook -- carry the last published value forward -- from a
+# cell FSA left blank, which is a retraction.
+lfp_parsed <-
   list.files("data-raw", pattern = "\\.xlsx?$",
              recursive = TRUE, full.names = TRUE) %>%
   purrr::discard(~ stringr::str_starts(.x, "data-raw/log/")) %>%
@@ -392,7 +396,10 @@ lfp_raw <-
       file_datestamp = extract_datestamp(basename(.)),
       data = purrr::map(., read_lfp_xlsx)
     )
-  } %>%
+  }
+
+lfp_raw <-
+  lfp_parsed %>%
   tidyr::unnest(data) %>%
   ensure_cols(c(
     # F1 columns
@@ -421,6 +428,85 @@ lfp_raw <-
     "START", "END", "MONTHS",
     "PAYMENT FACTOR", "Eligible Payment Months", "LOWEST"
   ))
+
+# The determination fields of the published schema, the source columns that can
+# carry each, and the group each belongs to.
+#
+# Groups exist because FSA's weekly workbook is not a fixed schema. It alternates
+# between the full extract and a short list -- the 07-09, 07-30 and 08-20 2026
+# tables carry only the county, pasture type, qualifying date and payment factor
+# -- and it publishes the PY2026 D2 window as *either* the legacy unsplit
+# `D2 END` or the split `D2A END`/`D2B END` pair. Columns describing one drought
+# tier therefore have to move as a block, so that carrying a value forward can
+# never pair a legacy window with a split one and count the same qualification
+# twice.
+#
+# The source names track the coalesce chains below; the assertion in F3 stops the
+# run if a value column of `current` is missing from here.
+determination_groups <- list(
+  `D2 window` = list(
+    `D2 START DATE` = c("D2 START DATE", "D2 Qualifying Date",
+                        "D2 Qualiying Date"),
+    `D2 END` = c("D2 END", "D2 Ending Date"),
+    `D2A START DATE` = "D2A START DATE",
+    `D2A END` = "D2A END",
+    `D2B START DATE` = "D2B START DATE",
+    `D2B END` = "D2B END"
+  ),
+  `D3 window` = list(
+    `D3A START DATE` = c("D3A START DATE", "D3A Qualifying Date"),
+    `D3A END` = c("D3A END", "D3A Ending Date"),
+    `D3B START DATE` = c("D3B START DATE", "D3B Qualifying Date"),
+    `D3B END` = c("D3B END", "D3B Ending Date")
+  ),
+  `D4 window` = list(
+    `D4A START DATE` = c("D4A START DATE", "D4 Qualifying Date"),
+    `D4A END` = c("D4A END", "D4 Ending Date"),
+    `D4B START DATE` = "D4B START DATE",
+    `D4B END` = "D4B END"
+  ),
+  `Qualifying date` = list(
+    `Date of Qualifying Drought` = "DATE OF QUALIFYING DROUGHT"
+  ),
+  `Drought factor` = list(
+    `Drought Factor` = c("DROUGHT FACTOR", "FACTOR")
+  ),
+  `Grazing period` = list(
+    `Grazing Period Start Date` = "START",
+    `Grazing Period End Date` = "END"
+  ),
+  `Payment months` = list(
+    `Maximum Eligible Payment Months` = "MONTHS"
+  ),
+  `Payment factor` = list(
+    `Payment Factor` = c("PAYMENT FACTOR", "Eligible Payment Months", "LOWEST")
+  )
+)
+
+determination_map <-
+  tibble::tibble(
+    group = rep(names(determination_groups), lengths(determination_groups)),
+    field = unlist(purrr::map(determination_groups, names), use.names = FALSE),
+    sources = unlist(determination_groups, recursive = FALSE, use.names = FALSE)
+  )
+
+# Which determination groups each archived workbook published at all -- column
+# present, whatever the cells hold.
+group_published <-
+  lfp_parsed %>%
+  dplyr::transmute(
+    file,
+    group = purrr::map(data, function(d) {
+      unique(determination_map$group[
+        purrr::map_lgl(determination_map$sources, ~ any(.x %in% names(d)))
+      ])
+    })
+  ) %>%
+  tidyr::unnest(group)
+
+files_publishing <- function(grp) {
+  group_published$file[group_published$group == grp]
+}
 
 fsa_lfp_eligibility <-
   lfp_raw %>%
@@ -762,30 +848,65 @@ snapshots <-
                  `FIPS County Code`,
                  `Pasture Type`)
 
-# Latest published version of each record: directly comparable to the
-# sustainable-fsa/fsa-lfp-eligibility FOIA archive.
-#
-# The key includes the FSA county, matching that archive's grain. FSA runs split
-# administrative units that the reconciliation above folds onto one FIPS code,
-# each with its own determination, so a FIPS-only key would drop one of each pair.
-current <-
+# The record key, and the columns that describe the record rather than the
+# determination it carries.
+record_key <- c("FSA State Code", "FSA County Code",
+                "FIPS State Code", "FIPS County Code",
+                "Program Year", "Pasture Type", "Disaster Type")
+
+record_context <- c(record_key, "file", "file_datestamp",
+                    "FIPS State Name", "FIPS County Name", "FSA County Name")
+
+# Newest vintage first, with the tie-break the whole-row dedup used, so a
+# record's provenance columns are unchanged from earlier runs.
+snapshots_by_recency <-
   snapshots %>%
   dplyr::arrange(`FIPS State Code`,
                  `FIPS County Code`,
                  dplyr::desc(`Program Year`),
                  dplyr::desc(file_datestamp),
                  `Pasture Type`,
-                 `Disaster Type`) %>%
-  dplyr::distinct(
-    `FSA State Code`,
-    `FSA County Code`,
-    `FIPS State Code`,
-    `FIPS County Code`,
-    `Program Year`,
-    `Pasture Type`,
-    `Disaster Type`,
-    .keep_all = TRUE
+                 `Disaster Type`)
+
+# Latest published value of each field, per record: directly comparable to the
+# sustainable-fsa/fsa-lfp-eligibility FOIA archive.
+#
+# The key includes the FSA county, matching that archive's grain. FSA runs split
+# administrative units that the reconciliation above folds onto one FIPS code,
+# each with its own determination, so a FIPS-only key would drop one of each pair.
+#
+# Composed group by group rather than by taking the newest row wholesale. The
+# 08-20-2026 workbook published 7 of the 27 columns its predecessor carried, and
+# taking that row whole blanked every tier window, drought factor, grazing period
+# and payment-month value FSA had already published for the open program year --
+# and with them every 2026 event. So each group comes from the newest vintage that
+# published its columns: a column FSA omits leaves the last published value
+# standing, while a column FSA still publishes but leaves blank is honoured as
+# blank, which is a real retraction. `file` and `file_datestamp` stay those of the
+# newest vintage that reported the record; the QA report tallies the rest.
+current <-
+  purrr::reduce(
+    unique(determination_map$group),
+    function(acc, grp) {
+      dplyr::left_join(
+        acc,
+        snapshots_by_recency %>%
+          dplyr::filter(file %in% files_publishing(grp)) %>%
+          dplyr::slice_head(n = 1L, by = dplyr::all_of(record_key)) %>%
+          dplyr::select(dplyr::all_of(c(
+            record_key,
+            determination_map$field[determination_map$group == grp]
+          ))),
+        by = record_key,
+        relationship = "one-to-one"
+      )
+    },
+    .init =
+      snapshots_by_recency %>%
+      dplyr::slice_head(n = 1L, by = dplyr::all_of(record_key)) %>%
+      dplyr::select(!dplyr::all_of(determination_map$field))
   ) %>%
+  dplyr::select(dplyr::all_of(names(snapshots))) %>%
   dplyr::arrange(dplyr::desc(`Program Year`),
                  `FIPS State Code`,
                  `FIPS County Code`,
@@ -961,30 +1082,88 @@ assert_empty(
   "drought tier columns the events projection does not account for"
 )
 
-# `aws s3 sync` is not transactional, so a partial pull would rebuild a smaller
-# table and publish it without complaint.
-published_current <-
+# A value column of the published schema the carry-forward cannot source, which
+# would leave it taking the newest row's value -- and so the newest row's blanks.
+assert_empty(
+  tibble::tibble(
+    column = setdiff(names(current),
+                     c(record_context, determination_map$field))
+  ),
+  "value columns missing from the determination field map"
+)
+
+# Records carrying any value in a determination group, by program year. Counted
+# per group rather than per column because a tier that changes encoding -- 2026's
+# D2 window arrives either split or unsplit -- moves cells between columns without
+# losing the determination. The QA report carries the per-column detail.
+group_coverage <- function(df) {
+  purrr::map(unique(determination_map$group), function(grp) {
+    cols <- intersect(determination_map$field[determination_map$group == grp],
+                      names(df))
+    if (length(cols) == 0L) {
+      return(NULL)
+    }
+    df %>%
+      dplyr::filter(dplyr::if_any(dplyr::all_of(cols), ~ !is.na(.x))) %>%
+      dplyr::count(`Program Year`, name = "records") %>%
+      dplyr::mutate(group = grp, .after = `Program Year`)
+  }) %>%
+    purrr::list_rbind()
+}
+
+# Nothing the archive has already published may vanish from a rebuild. Two ways
+# it could: `aws s3 sync` is not transactional, so a partial pull would rebuild a
+# smaller table and publish it without complaint; and FSA dropping columns from a
+# weekly workbook silently empties fields of the open program year, which is what
+# the 08-20-2026 table did to every 2026 tier window and event.
+assert_no_shrink <- function(published, rebuilt, by, what) {
+  assert_empty(
+    dplyr::full_join(published, rebuilt, by = by,
+                     suffix = c("_published", "_rebuilt")) %>%
+      dplyr::mutate(dplyr::across(c(records_published, records_rebuilt),
+                                  ~ tidyr::replace_na(.x, 0L))) %>%
+      dplyr::filter(records_rebuilt < records_published),
+    what
+  )
+}
+
+read_published <- function(name, ...) {
   tryCatch(
-    arrow::read_parquet(
-      paste0(cloudfront_base, "/", s3_prefix,
-             "/fsa-lfp-eligibility-web.parquet"),
-      col_select = "Program Year"
-    ),
+    arrow::read_parquet(paste0(cloudfront_base, "/", s3_prefix, "/", name),
+                        ...),
     error = function(e) NULL
   )
+}
+
+published_current <- read_published("fsa-lfp-eligibility-web.parquet")
+published_events <- read_published("fsa-lfp-eligibility-web-events.parquet",
+                                   col_select = "Program Year")
 
 if (!is.null(published_current)) {
-  assert_empty(
-    dplyr::full_join(
-      dplyr::count(published_current, `Program Year`, name = "published"),
-      dplyr::count(current, `Program Year`, name = "rebuilt"),
-      by = "Program Year"
-    ) %>%
-      dplyr::mutate(dplyr::across(c(published, rebuilt),
-                                  ~ tidyr::replace_na(.x, 0L))) %>%
-      dplyr::filter(rebuilt < published),
+  assert_no_shrink(
+    dplyr::count(published_current, `Program Year`, name = "records"),
+    dplyr::count(current, `Program Year`, name = "records"),
+    by = "Program Year",
     paste0("program years that shrank against the published archive (",
            nrow(published_current), " published rows vs ", nrow(current),
+           " rebuilt)")
+  )
+
+  assert_no_shrink(
+    group_coverage(published_current),
+    group_coverage(current),
+    by = c("Program Year", "group"),
+    "determination groups that lost records against the published archive"
+  )
+}
+
+if (!is.null(published_events)) {
+  assert_no_shrink(
+    dplyr::count(published_events, `Program Year`, name = "records"),
+    dplyr::count(events, `Program Year`, name = "records"),
+    by = "Program Year",
+    paste0("program years whose event count shrank against the published archive (",
+           nrow(published_events), " published events vs ", nrow(events),
            " rebuilt)")
   )
 }
@@ -1047,6 +1226,49 @@ qa_revisions <-
   ) %>%
   dplyr::arrange(`Program Year`)
 
+# Determination values in `current` that come from an earlier vintage than the
+# one that most recently reported the record, because FSA's newest workbook for
+# it dropped those columns.
+qa_carried_forward <-
+  purrr::map(unique(determination_map$group), function(grp) {
+    cols <- determination_map$field[determination_map$group == grp]
+    current %>%
+      dplyr::filter(!(file %in% files_publishing(grp)),
+                    dplyr::if_any(dplyr::all_of(cols), ~ !is.na(.x))) %>%
+      dplyr::count(`Program Year`, name = "Records") %>%
+      dplyr::mutate(Group = grp, .after = `Program Year`)
+  }) %>%
+  purrr::list_rbind() %>%
+  dplyr::arrange(dplyr::desc(`Program Year`), Group)
+
+# Columns holding fewer values than the published archive's. The enforced
+# invariant compares whole groups, so a tier changing encoding cannot fail the
+# run; this is the per-column detail that would otherwise go unseen.
+qa_column_drift <-
+  if (is.null(published_current)) {
+    tibble::tibble()
+  } else {
+    populated <- function(df, name) {
+      df %>%
+        dplyr::summarise(
+          dplyr::across(
+            dplyr::all_of(setdiff(intersect(names(published_current),
+                                            names(current)),
+                                  "Program Year")),
+            ~ sum(!is.na(.x))
+          ),
+          .by = `Program Year`
+        ) %>%
+        tidyr::pivot_longer(!`Program Year`, names_to = "Column",
+                            values_to = name)
+    }
+    dplyr::inner_join(populated(published_current, "Published"),
+                      populated(current, "Rebuilt"),
+                      by = c("Program Year", "Column")) %>%
+      dplyr::filter(Rebuilt < Published) %>%
+      dplyr::arrange(dplyr::desc(`Program Year`), Column)
+  }
+
 # 2026 records where our drought factor departs from FSA's by convention.
 qa_factor_divergence <-
   current %>%
@@ -1097,6 +1319,8 @@ qa_report <- c(
   "  * every drought factor within the ladder in force for its program year",
   "  * no drought tier column left unread by the events projection",
   "  * no program year smaller than the published archive's",
+  "  * no determination group holding fewer records than the published archive's",
+  "  * no program year with fewer events than the published archive's",
   "",
   "Everything below is reported, not enforced.",
   "",
@@ -1109,8 +1333,10 @@ qa_report <- c(
   "Source vintages by program year:",
   "  FSA republishes the open program year weekly at a new URL. `Versions` counts",
   "  the archived weekly workbooks covering each year; `current` exposes the most",
-  "  recent version of each record, and every version is kept in",
-  "  fsa-lfp-eligibility-web-snapshots.parquet.",
+  "  recent published value of each field, and every version is kept in",
+  "  fsa-lfp-eligibility-web-snapshots.parquet. `Latest` is the newest workbook",
+  "  covering the year, which is not necessarily where every value came from --",
+  "  see the carry-forward tally below.",
   qa_detail(qa_vintages),
   "",
   "FSA revisions within a program year:",
@@ -1118,6 +1344,29 @@ qa_report <- c(
   "  change. FSA revises the open program year heavily and closed years not at",
   "  all. Only the snapshots table preserves the superseded values.",
   qa_detail(qa_revisions),
+  "",
+  paste0("Determination values carried forward from an earlier vintage: ",
+         sum(qa_carried_forward$Records)),
+  "  FSA's weekly workbook alternates between the full extract and a short list:",
+  "  the 07-09, 07-30 and 08-20 2026 tables carry only the county, pasture type,",
+  "  qualifying date and payment factor. `current` composes each field group from",
+  "  the newest vintage that published its columns, so a column FSA omits leaves",
+  "  the last published value standing while a column FSA publishes but leaves",
+  "  blank is honoured as blank. For the records counted here, `file` names the",
+  "  vintage that most recently reported the record, not the one every value came",
+  "  from, and fields of one record can date from different weeks -- a 2026",
+  "  `Payment Factor` FSA raised this week sits beside tier windows it last",
+  "  published two weeks ago. Use fsa-lfp-eligibility-web-snapshots.parquet for a",
+  "  single-vintage view.",
+  qa_detail(qa_carried_forward),
+  "",
+  paste0("Columns holding fewer values than the published archive: ",
+         nrow(qa_column_drift)),
+  "  The enforced invariant compares whole field groups, so a drought tier that",
+  "  changes encoding -- 2026's D2 window arrives either split across D2A/D2B or",
+  "  unsplit in `D2 END` -- does not fail the run. Anything listed here is",
+  "  per-column detail worth a look.",
+  qa_detail(qa_column_drift),
   "",
   paste0("2026 records where our drought factor departs from FSA's: ",
          sum(qa_factor_divergence$records)),
