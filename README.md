@@ -77,8 +77,7 @@ changed.
 - [`fsa-lfp-eligibility-web.R`](fsa-lfp-eligibility-web.R) — acquisition
   and processing script
 - [`fsa-lfp-eligibility-web.csv`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web.csv)
-  — cleaned and consolidated data (latest published value of each
-  field)
+  — cleaned and consolidated data (latest published value of each field)
 - [`fsa-lfp-eligibility-web.parquet`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web.parquet)
   — the same, as Parquet
 - [`fsa-lfp-eligibility-web-snapshots.parquet`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web-snapshots.parquet)
@@ -209,16 +208,16 @@ years.
 ### `current` is last-published-value-wins
 
 `fsa-lfp-eligibility-web.csv` is not a point-in-time view of any one
-weekly table. FSA's workbook is not a fixed schema: it alternates between
-a full 27-column extract and a short list carrying only the county,
-pasture type, qualifying date and payment factor. The 08-20-2026 table
-was one of the short ones. So each field here comes from the most recent
-archived file that *published its columns* — a column FSA omits from a
-week leaves the last published value standing, while a column FSA
+weekly table. FSA’s workbook is not a fixed schema: it alternates
+between a full 27-column extract and a short list carrying only the
+county, pasture type, qualifying date and payment factor. The 08-20-2026
+table was one of the short ones. So each field here comes from the most
+recent archived file that *published its columns* — a column FSA omits
+from a week leaves the last published value standing, while a column FSA
 publishes but leaves blank is honoured as blank, which is a real
-retraction. Without that rule a short week would blank every tier window,
-drought factor and grazing period of the open program year, and with them
-every event derived from those dates.
+retraction. Without that rule a short week would blank every tier
+window, drought factor and grazing period of the open program year, and
+with them every event derived from those dates.
 
 Columns describing one drought tier move as a block, because FSA
 publishes the 2026 D2 window as *either* the legacy unsplit `D2 END` or
@@ -227,16 +226,16 @@ the same qualification twice.
 
 Two consequences worth knowing. `file` and `file_datestamp` name the
 vintage that most recently *reported* the record, which for a record
-assembled from more than one week is not where every value came from. And
-fields of one record can date from different weeks — a `Payment Factor`
-FSA raised this week can sit beside tier windows it last published a
-fortnight ago. `qa-report.txt` tallies how much of each program year was
-carried forward.
+assembled from more than one week is not where every value came from.
+And fields of one record can date from different weeks — a
+`Payment Factor` FSA raised this week can sit beside tier windows it
+last published a fortnight ago. `qa-report.txt` tallies how much of each
+program year was carried forward.
 
-If FSA silently withdraws a county from a later weekly table, the earlier
-determination is still what you see here — the archive keeps the record
-rather than dropping it. A withdrawal is therefore invisible in this file
-and recoverable only by diffing
+If FSA silently withdraws a county from a later weekly table, the
+earlier determination is still what you see here — the archive keeps the
+record rather than dropping it. A withdrawal is therefore invisible in
+this file and recoverable only by diffing
 [`fsa-lfp-eligibility-web-snapshots.parquet`](https://data.sustainable-fsa.com/fsa-lfp-eligibility-web/fsa-lfp-eligibility-web-snapshots.parquet),
 which holds every weekly version exactly as FSA published it.
 

@@ -7,7 +7,7 @@ eligibility for each separately, so a Census county may carry several records.
 
 Records published: 59639
 Snapshot records (every archived weekly version): 102059
-Events published: 113045
+Events published: 135253
 FSA counties: 2904
 Census counties: 2897
 Program years: 2008-2026
@@ -18,6 +18,8 @@ Invariants enforced (the run aborts on any violation):
   * every drought factor within the ladder in force for its program year
   * no drought tier column left unread by the events projection
   * no program year smaller than the published archive's
+  * no determination group holding fewer records than the published archive's
+  * no program year with fewer events than the published archive's
 
 Everything below is reported, not enforced.
 
@@ -36,8 +38,10 @@ Census counties carrying several FSA counties: 7
 Source vintages by program year:
   FSA republishes the open program year weekly at a new URL. `Versions` counts
   the archived weekly workbooks covering each year; `current` exposes the most
-  recent version of each record, and every version is kept in
-  fsa-lfp-eligibility-web-snapshots.parquet.
+  recent published value of each field, and every version is kept in
+  fsa-lfp-eligibility-web-snapshots.parquet. `Latest` is the newest workbook
+  covering the year, which is not necessarily where every value came from --
+  see the carry-forward tally below.
   Program Year,Versions,Latest,Records
   2008,1,NA,1842
   2009,1,NA,940
@@ -80,13 +84,42 @@ FSA revisions within a program year:
   2025,3,0,0
   2026,8733,1153,246
 
-2026 records where our drought factor departs from FSA's: 0
+Determination values carried forward from an earlier vintage: 39835
+  FSA's weekly workbook alternates between the full extract and a short list:
+  the 07-09, 07-30 and 08-20 2026 tables carry only the county, pasture type,
+  qualifying date and payment factor. `current` composes each field group from
+  the newest vintage that published its columns, so a column FSA omits leaves
+  the last published value standing while a column FSA publishes but leaves
+  blank is honoured as blank. For the records counted here, `file` names the
+  vintage that most recently reported the record, not the one every value came
+  from, and fields of one record can date from different weeks -- a 2026
+  `Payment Factor` FSA raised this week sits beside tier windows it last
+  published two weeks ago. Use fsa-lfp-eligibility-web-snapshots.parquet for a
+  single-vintage view.
+  Program Year,Group,Records
+  2026,D2 window,5510
+  2026,D3 window,6724
+  2026,D4 window,1402
+  2026,Drought factor,8733
+  2026,Grazing period,8733
+  2026,Payment months,8733
+
+Columns holding fewer values than the published archive: 0
+  The enforced invariant compares whole field groups, so a drought tier that
+  changes encoding -- 2026's D2 window arrives either split across D2A/D2B or
+  unsplit in `D2 END` -- does not fail the run. Anything listed here is
+  per-column detail worth a look.
+
+2026 records where our drought factor departs from FSA's: 1114
   From 2026 the D2 tier splits: four consecutive weeks earns one payment,
   seven earns two. FSA reports `Drought Factor` 1 for both and carries the
   two-payment outcome in `Payment Factor`. This archive's events projection
   scores D2b_2026 as 2, because `Drought Factor` means "the payments this tier
   earns" everywhere else in it. Compare `Payment Factor`, not `Drought Factor`,
   when checking 2026 against FSA.
+  Program Year,Drought Factor,Payment Factor,records
+  2026,1,2,1101
+  2026,1,3,13
 
 2026 events published against the unsplit `D2 END` column: 0
   P.L. 119-21 splits the 2026 D2 tier across `D2A END` and `D2B END`, but FSA
