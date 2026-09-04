@@ -5,11 +5,11 @@ type — the same grain as the sustainable-fsa/fsa-lfp-eligibility FOIA archive.
 FSA administers some Census counties as several offices and determines
 eligibility for each separately, so a Census county may carry several records.
 
-Records published: 59811
-Snapshot records (every archived weekly version): 111123
-Events published: 136055
-FSA counties: 2904
-Census counties: 2897
+Records published: 60003
+Snapshot records (every archived weekly version): 120379
+Events published: 136434
+FSA counties: 2908
+Census counties: 2901
 Program years: 2008-2026
 
 Invariants enforced (the run aborts on any violation):
@@ -61,7 +61,7 @@ Source vintages by program year:
   2023,1,2024-01-04,5537
   2024,1,2025-01-02,3168
   2025,1,2025-12-29,2821
-  2026,7,2026-08-28,9058
+  2026,8,2026-09-03,9250
 
 FSA revisions within a program year:
   Records seen in more than one weekly workbook, and how many had a value
@@ -82,7 +82,7 @@ FSA revisions within a program year:
   2023,1,0,0
   2024,3,0,0
   2025,3,0,0
-  2026,8886,1158,327
+  2026,9058,1159,387
 
 Determination values carried forward from an earlier vintage: 4
   FSA's weekly workbook alternates between the full extract and a short list:
@@ -108,7 +108,7 @@ Columns holding fewer values than the published archive: 0
   unsplit in `D2 END` -- does not fail the run. Anything listed here is
   per-column detail worth a look.
 
-2026 records where our drought factor departs from FSA's: 1133
+2026 records where our drought factor departs from FSA's: 1121
   From 2026 the D2 tier splits: four consecutive weeks earns one payment,
   seven earns two. FSA reports `Drought Factor` 1 for both and carries the
   two-payment outcome in `Payment Factor`. This archive's events projection
@@ -116,7 +116,7 @@ Columns holding fewer values than the published archive: 0
   earns" everywhere else in it. Compare `Payment Factor`, not `Drought Factor`,
   when checking 2026 against FSA.
   Program Year,Drought Factor,Payment Factor,records
-  2026,1,2,1133
+  2026,1,2,1121
 
 2026 events published against the unsplit `D2 END` column: 0
   P.L. 119-21 splits the 2026 D2 tier across `D2A END` and `D2B END`, but FSA
