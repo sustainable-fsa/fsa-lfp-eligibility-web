@@ -51,11 +51,26 @@ ua <- paste0("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) ",
              "AppleWebKit/537.36 (KHTML, like Gecko) ",
              "Chrome/126.0.0.0 Safari/537.36")
 
-fetch <- function(url) {
-  res <- curl::curl_fetch_memory(url, handle = curl::new_handle(useragent = ua))
-  if (res$status_code != 200L)
-    stop("Fetch failed (HTTP ", res$status_code, "): ", url)
-  res
+# Akamai also serves sporadic 503s (and the odd connection reset) on single
+# page requests, so retry transient failures with backoff before giving up.
+fetch <- function(url, attempts = 5) {
+  for (attempt in seq_len(attempts)) {
+    res <- tryCatch(
+      curl::curl_fetch_memory(url, handle = curl::new_handle(useragent = ua)),
+      error = function(e) e
+    )
+    if (!inherits(res, "error") && res$status_code == 200L)
+      return(res)
+    status <- if (inherits(res, "error")) conditionMessage(res) else
+      paste("HTTP", res$status_code)
+    transient <- inherits(res, "error") ||
+      res$status_code %in% c(408L, 429L, 500L, 502L, 503L, 504L)
+    if (!transient || attempt == attempts)
+      stop("Fetch failed (", status, "): ", url)
+    message("Fetch failed (", status, ") on attempt ", attempt, "; retrying: ",
+            url)
+    Sys.sleep(10 * attempt)
+  }
 }
 
 ## B. Scrape the maps page and resolve every asset ----
