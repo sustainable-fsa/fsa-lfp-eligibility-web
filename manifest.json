@@ -745,6 +745,11 @@
     "mtime": "2026-10-02 02:45:05"
   },
   {
+    "path": "data-raw/2026/Annual Crab Grass for 2026 LFP 10-15-26.pdf",
+    "size": 6715282,
+    "mtime": "2026-10-20 02:39:38"
+  },
+  {
     "path": "data-raw/2026/Annual Rye Grass for 2026 LFP 07-09-26.pdf",
     "size": 6851987,
     "mtime": "2026-07-09 20:12:40"
@@ -810,6 +815,11 @@
     "mtime": "2026-10-02 02:45:05"
   },
   {
+    "path": "data-raw/2026/Annual Rye Grass for 2026 LFP 10-15-26.pdf",
+    "size": 6717732,
+    "mtime": "2026-10-20 02:39:38"
+  },
+  {
     "path": "data-raw/2026/Cool Season Improved for 2026 LFP 07-09-26.pdf",
     "size": 6844720,
     "mtime": "2026-07-09 20:12:41"
@@ -873,6 +883,11 @@
     "path": "data-raw/2026/Cool Season Improved for 2026 LFP 10-01-26.pdf",
     "size": 6706885,
     "mtime": "2026-10-02 02:45:06"
+  },
+  {
+    "path": "data-raw/2026/Cool Season Improved for 2026 LFP 10-15-26.pdf",
+    "size": 6712506,
+    "mtime": "2026-10-20 02:39:38"
   },
   {
     "path": "data-raw/2026/Counties & Pasture Types Eligible for 2026 LFP 07-09-2026.xlsx",
@@ -985,6 +1000,11 @@
     "mtime": "2026-10-02 02:45:06"
   },
   {
+    "path": "data-raw/2026/Forage Sorghum for 2026 LFP 10-15-26.pdf",
+    "size": 6721798,
+    "mtime": "2026-10-20 02:39:38"
+  },
+  {
     "path": "data-raw/2026/Full Season Improved Mixed for 2026 LFP 07-09-26.pdf",
     "size": 6846866,
     "mtime": "2026-07-09 20:12:45"
@@ -1050,6 +1070,11 @@
     "mtime": "2026-10-02 02:45:06"
   },
   {
+    "path": "data-raw/2026/Full Season Improved Mixed for 2026 LFP 10-15-26.pdf",
+    "size": 6717893,
+    "mtime": "2026-10-20 02:39:38"
+  },
+  {
     "path": "data-raw/2026/Full Season Improved for 2026 LFP 07-09-26.pdf",
     "size": 6849111,
     "mtime": "2026-07-09 20:12:47"
@@ -1113,6 +1138,11 @@
     "path": "data-raw/2026/Full Season Improved for 2026 LFP 10-01-26.pdf",
     "size": 6713436,
     "mtime": "2026-10-02 02:45:06"
+  },
+  {
+    "path": "data-raw/2026/Full Season Improved for 2026 LFP 10-15-26.pdf",
+    "size": 6719773,
+    "mtime": "2026-10-20 02:39:38"
   },
   {
     "path": "data-raw/2026/LFPEligibleCounties20260806.xlsx",
@@ -1195,6 +1225,11 @@
     "mtime": "2026-10-02 02:45:06"
   },
   {
+    "path": "data-raw/2026/Long Season Small Grains for 2026 LFP 10-15-26.pdf",
+    "size": 6719977,
+    "mtime": "2026-10-20 02:39:38"
+  },
+  {
     "path": "data-raw/2026/Native Pasture for 2026 LFP 07-09-26.pdf",
     "size": 6849113,
     "mtime": "2026-07-09 20:12:52"
@@ -1258,6 +1293,16 @@
     "path": "data-raw/2026/Native Pasture for 2026 LFP 10-01-26.pdf",
     "size": 6713465,
     "mtime": "2026-10-02 02:45:06"
+  },
+  {
+    "path": "data-raw/2026/Native Pasture for 2026 LFP 10-15-26.pdf",
+    "size": 6720498,
+    "mtime": "2026-10-20 02:39:38"
+  },
+  {
+    "path": "data-raw/2026/Short Season Fall Winter Small Grains for 2026  LFP 10-15-26.pdf",
+    "size": 6732995,
+    "mtime": "2026-10-20 02:39:38"
   },
   {
     "path": "data-raw/2026/Short Season Fall Winter Small Grains for 2026 LFP 07-09-26.pdf",
@@ -1385,6 +1430,11 @@
     "mtime": "2026-10-02 02:45:06"
   },
   {
+    "path": "data-raw/2026/Short Season Small Grains for 2026 LFP 10-15-26.pdf",
+    "size": 6715885,
+    "mtime": "2026-10-20 02:39:38"
+  },
+  {
     "path": "data-raw/2026/Short Season Small Grains for LFP 08-06-26.pdf",
     "size": 6847762,
     "mtime": "2026-08-08 03:01:34"
@@ -1448,6 +1498,11 @@
     "path": "data-raw/2026/Short Season Spring Small Grains for 2026 LFP 10-01-26.pdf",
     "size": 9715707,
     "mtime": "2026-10-02 02:45:06"
+  },
+  {
+    "path": "data-raw/2026/Short Season Spring Small Grains for 2026 LFP 10-15-26.pdf",
+    "size": 6732537,
+    "mtime": "2026-10-20 02:39:38"
   },
   {
     "path": "data-raw/2026/Short Season Spring Small Grains for LFP 08-06-26.pdf",
@@ -1518,6 +1573,11 @@
     "path": "data-raw/2026/Warm Season Improved for 2026 LFP 10-01-26.pdf",
     "size": 6707269,
     "mtime": "2026-10-02 02:45:06"
+  },
+  {
+    "path": "data-raw/2026/Warm Season Improved for 2026 LFP 10-15-26.pdf",
+    "size": 6712777,
+    "mtime": "2026-10-20 02:39:38"
   },
   {
     "path": "data-raw/log/2026-07-09/links.json",
@@ -1698,5 +1758,15 @@
     "path": "data-raw/log/2026-10-09/maps-page.html",
     "size": 144688,
     "mtime": "2026-10-09 02:51:30"
+  },
+  {
+    "path": "data-raw/log/2026-10-20/links.json",
+    "size": 59465,
+    "mtime": "2026-10-20 02:39:47"
+  },
+  {
+    "path": "data-raw/log/2026-10-20/maps-page.html",
+    "size": 144906,
+    "mtime": "2026-10-20 02:39:48"
   }
 ]
