@@ -750,6 +750,11 @@
     "mtime": "2026-10-20 02:39:38"
   },
   {
+    "path": "data-raw/2026/Annual Crab Grass for 2026 LFP 10-22-26.pdf",
+    "size": 6717325,
+    "mtime": "2026-10-27 02:43:07"
+  },
+  {
     "path": "data-raw/2026/Annual Rye Grass for 2026 LFP 07-09-26.pdf",
     "size": 6851987,
     "mtime": "2026-07-09 20:12:40"
@@ -820,6 +825,11 @@
     "mtime": "2026-10-20 02:39:38"
   },
   {
+    "path": "data-raw/2026/Annual Rye Grass for 2026 LFP 10-22-26.pdf",
+    "size": 6718837,
+    "mtime": "2026-10-27 02:43:07"
+  },
+  {
     "path": "data-raw/2026/Cool Season Improved for 2026 LFP 07-09-26.pdf",
     "size": 6844720,
     "mtime": "2026-07-09 20:12:41"
@@ -888,6 +898,11 @@
     "path": "data-raw/2026/Cool Season Improved for 2026 LFP 10-15-26.pdf",
     "size": 6712506,
     "mtime": "2026-10-20 02:39:38"
+  },
+  {
+    "path": "data-raw/2026/Cool Season Improved for 2026 LFP 10-22-26.pdf",
+    "size": 6711865,
+    "mtime": "2026-10-27 02:43:07"
   },
   {
     "path": "data-raw/2026/Counties & Pasture Types Eligible for 2026 LFP 07-09-2026.xlsx",
@@ -1005,6 +1020,11 @@
     "mtime": "2026-10-20 02:39:38"
   },
   {
+    "path": "data-raw/2026/Forage Sorghum for 2026 LFP 10-22-26.pdf",
+    "size": 6721984,
+    "mtime": "2026-10-27 02:43:07"
+  },
+  {
     "path": "data-raw/2026/Full Season Improved Mixed for 2026 LFP 07-09-26.pdf",
     "size": 6846866,
     "mtime": "2026-07-09 20:12:45"
@@ -1075,6 +1095,11 @@
     "mtime": "2026-10-20 02:39:38"
   },
   {
+    "path": "data-raw/2026/Full Season Improved Mixed for 2026 LFP 10-22-26.pdf",
+    "size": 6717034,
+    "mtime": "2026-10-27 02:43:07"
+  },
+  {
     "path": "data-raw/2026/Full Season Improved for 2026 LFP 07-09-26.pdf",
     "size": 6849111,
     "mtime": "2026-07-09 20:12:47"
@@ -1143,6 +1168,11 @@
     "path": "data-raw/2026/Full Season Improved for 2026 LFP 10-15-26.pdf",
     "size": 6719773,
     "mtime": "2026-10-20 02:39:38"
+  },
+  {
+    "path": "data-raw/2026/Full Season Improved for 2026 LFP 10-22-26.pdf",
+    "size": 6718435,
+    "mtime": "2026-10-27 02:43:07"
   },
   {
     "path": "data-raw/2026/LFPEligibleCounties20260806.xlsx",
@@ -1235,6 +1265,11 @@
     "mtime": "2026-10-20 02:39:38"
   },
   {
+    "path": "data-raw/2026/Long Season Small Grains for 2026 LFP 10-22-26.pdf",
+    "size": 6720808,
+    "mtime": "2026-10-27 02:43:07"
+  },
+  {
     "path": "data-raw/2026/Native Pasture for 2026 LFP 07-09-26.pdf",
     "size": 6849113,
     "mtime": "2026-07-09 20:12:52"
@@ -1305,6 +1340,11 @@
     "mtime": "2026-10-20 02:39:38"
   },
   {
+    "path": "data-raw/2026/Native Pasture for 2026 LFP 10-22-26.pdf",
+    "size": 6719262,
+    "mtime": "2026-10-27 02:43:07"
+  },
+  {
     "path": "data-raw/2026/Short Season Fall Winter Small Grains for 2026  LFP 10-15-26.pdf",
     "size": 6732995,
     "mtime": "2026-10-20 02:39:38"
@@ -1368,6 +1408,11 @@
     "path": "data-raw/2026/Short Season Fall Winter Small Grains for 2026 LFP 10-01-26.pdf",
     "size": 9719071,
     "mtime": "2026-10-02 02:45:06"
+  },
+  {
+    "path": "data-raw/2026/Short Season Fall Winter Small Grains for 2026 LFP 10-22-26.pdf",
+    "size": 9673364,
+    "mtime": "2026-10-27 02:43:07"
   },
   {
     "path": "data-raw/2026/Short Season Fall Winter Small Grains for LFP 08-06-26.pdf",
@@ -1440,6 +1485,11 @@
     "mtime": "2026-10-20 02:39:38"
   },
   {
+    "path": "data-raw/2026/Short Season Small Grains for 2026 LFP 10-22-26.pdf",
+    "size": 6715455,
+    "mtime": "2026-10-27 02:43:08"
+  },
+  {
     "path": "data-raw/2026/Short Season Small Grains for LFP 08-06-26.pdf",
     "size": 6847762,
     "mtime": "2026-08-08 03:01:34"
@@ -1508,6 +1558,11 @@
     "path": "data-raw/2026/Short Season Spring Small Grains for 2026 LFP 10-15-26.pdf",
     "size": 6732537,
     "mtime": "2026-10-20 02:39:38"
+  },
+  {
+    "path": "data-raw/2026/Short Season Spring Small Grains for 2026 LFP 10-22-26.pdf",
+    "size": 6735527,
+    "mtime": "2026-10-27 02:43:08"
   },
   {
     "path": "data-raw/2026/Short Season Spring Small Grains for LFP 08-06-26.pdf",
@@ -1583,6 +1638,11 @@
     "path": "data-raw/2026/Warm Season Improved for 2026 LFP 10-15-26.pdf",
     "size": 6712777,
     "mtime": "2026-10-20 02:39:38"
+  },
+  {
+    "path": "data-raw/2026/Warm Season Improved for 2026 LFP 10-22-26.pdf",
+    "size": 6712712,
+    "mtime": "2026-10-27 02:43:08"
   },
   {
     "path": "data-raw/log/2026-07-09/links.json",
@@ -1783,5 +1843,15 @@
     "path": "data-raw/log/2026-10-21/maps-page.html",
     "size": 144910,
     "mtime": "2026-10-21 02:41:13"
+  },
+  {
+    "path": "data-raw/log/2026-10-27/links.json",
+    "size": 59383,
+    "mtime": "2026-10-27 02:43:10"
+  },
+  {
+    "path": "data-raw/log/2026-10-27/maps-page.html",
+    "size": 144905,
+    "mtime": "2026-10-27 02:43:11"
   }
 ]
