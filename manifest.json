@@ -1335,6 +1335,11 @@
     "mtime": "2026-11-24 02:30:19"
   },
   {
+    "path": "data-raw/2026/LFPEligibleCounties20261126.xlsx",
+    "size": 1289433,
+    "mtime": "2026-11-28 02:29:46"
+  },
+  {
     "path": "data-raw/2026/Long Season Small Grains for 2026 LFP 07-09-26.pdf",
     "size": 3876375,
     "mtime": "2026-07-09 20:12:51"
@@ -2183,5 +2188,15 @@
     "path": "data-raw/log/2026-11-24/maps-page.html",
     "size": 164106,
     "mtime": "2026-11-24 02:30:21"
+  },
+  {
+    "path": "data-raw/log/2026-11-28/links.json",
+    "size": 58500,
+    "mtime": "2026-11-28 02:29:50"
+  },
+  {
+    "path": "data-raw/log/2026-11-28/maps-page.html",
+    "size": 164104,
+    "mtime": "2026-11-28 02:29:50"
   }
 ]

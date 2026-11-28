@@ -404,6 +404,9 @@
 "01055","01055",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-05-18",1,5,1
 "01055","01055",2026,"Full Season Improved Pasture","D2a_2026","2026-05-18",1,5,1
 "01055","01055",2026,"Native Pasture","D2a_2026","2026-05-18",1,5,1
+"01057","01057",2026,"Annual Crabgrass","D3a","2026-11-24",3,5,3
+"01057","01057",2026,"Full Season Improved Pasture","D3a","2026-11-24",3,5,3
+"01057","01057",2026,"Native Pasture","D3a","2026-11-24",3,5,3
 "01059","01059",2026,"Annual Crabgrass","D2a_2026","2026-05-11",1,5,2
 "01059","01059",2026,"Annual Crabgrass","D2b_2026","2026-06-01",2,5,2
 "01059","01059",2026,"Forage Sorghum","D2a_2026","2026-05-28",1,5,1
@@ -626,13 +629,16 @@
 "01087","01087",2026,"Short Season Small Grains","D3a","2026-05-01",3,2,2
 "01089","01089",2026,"Annual Crabgrass","D2a_2026","2026-05-11",1,5,3
 "01089","01089",2026,"Annual Crabgrass","D3a","2026-10-27",3,5,3
+"01089","01089",2026,"Annual Crabgrass","D2b_2026","2026-11-23",2,5,3
 "01089","01089",2026,"Forage Sorghum","D2a_2026","2026-10-26",1,5,3
 "01089","01089",2026,"Forage Sorghum","D3a","2026-10-27",3,5,3
 "01089","01089",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-05-11",1,5,1
 "01089","01089",2026,"Full Season Improved Pasture","D2a_2026","2026-05-11",1,5,3
 "01089","01089",2026,"Full Season Improved Pasture","D3a","2026-10-27",3,5,3
+"01089","01089",2026,"Full Season Improved Pasture","D2b_2026","2026-11-23",2,5,3
 "01089","01089",2026,"Native Pasture","D2a_2026","2026-05-11",1,5,3
 "01089","01089",2026,"Native Pasture","D3a","2026-10-27",3,5,3
+"01089","01089",2026,"Native Pasture","D2b_2026","2026-11-23",2,5,3
 "01091","01091",2026,"Annual Crabgrass","D2a_2026","2026-03-28",1,5,4
 "01091","01091",2026,"Annual Crabgrass","D2b_2026","2026-04-20",2,5,4
 "01091","01091",2026,"Annual Crabgrass","D3a","2026-04-21",3,5,4
@@ -659,6 +665,12 @@
 "01091","01091",2026,"Native Pasture","D3a","2026-04-21",3,5,4
 "01091","01091",2026,"Native Pasture","D3b","2026-10-05",4,5,4
 "01091","01091",2026,"Short Season Small Grains","D3a","2026-05-01",3,2,2
+"01093","01093",2026,"Annual Crabgrass","D2a_2026","2026-11-23",1,5,3
+"01093","01093",2026,"Annual Crabgrass","D3a","2026-11-24",3,5,3
+"01093","01093",2026,"Full Season Improved Pasture","D2a_2026","2026-11-23",1,5,3
+"01093","01093",2026,"Full Season Improved Pasture","D3a","2026-11-24",3,5,3
+"01093","01093",2026,"Native Pasture","D2a_2026","2026-11-23",1,5,3
+"01093","01093",2026,"Native Pasture","D3a","2026-11-24",3,5,3
 "01095","01095",2026,"Annual Crabgrass","D2a_2026","2026-05-11",1,5,1
 "01095","01095",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-05-11",1,5,1
 "01095","01095",2026,"Full Season Improved Pasture","D2a_2026","2026-05-11",1,5,1
@@ -823,9 +835,10 @@
 "01117","01117",2026,"Long Season Small Grains","D3a","2026-04-21",3,5,3
 "01117","01117",2026,"Native Pasture","D3a","2026-04-21",3,5,3
 "01117","01117",2026,"Short Season Small Grains","D3a","2026-05-01",3,2,2
-"01119","01119",2026,"Annual Crabgrass","D2a_2026","2026-03-28",1,5,3
-"01119","01119",2026,"Annual Crabgrass","D2b_2026","2026-04-20",2,5,3
-"01119","01119",2026,"Annual Crabgrass","D3a","2026-04-21",3,5,3
+"01119","01119",2026,"Annual Crabgrass","D2a_2026","2026-03-28",1,5,4
+"01119","01119",2026,"Annual Crabgrass","D2b_2026","2026-04-20",2,5,4
+"01119","01119",2026,"Annual Crabgrass","D3a","2026-04-21",3,5,4
+"01119","01119",2026,"Annual Crabgrass","D3b","2026-11-30",4,5,4
 "01119","01119",2026,"Annual Ryegrass","D3a","2025-12-01",3,5,4
 "01119","01119",2026,"Annual Ryegrass","D3b","2025-12-29",4,5,4
 "01119","01119",2026,"Annual Ryegrass","D2a_2026","2026-02-09",1,5,4
@@ -836,16 +849,18 @@
 "01119","01119",2026,"Full Season Improved Mixed Pasture","D3b","2025-12-29",4,5,4
 "01119","01119",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-02-09",1,5,4
 "01119","01119",2026,"Full Season Improved Mixed Pasture","D2b_2026","2026-03-09",2,5,4
-"01119","01119",2026,"Full Season Improved Pasture","D3a","2026-04-21",3,5,3
-"01119","01119",2026,"Full Season Improved Pasture","D2a_2026","2026-10-12",1,5,3
-"01119","01119",2026,"Full Season Improved Pasture","D2b_2026","2026-11-02",2,5,3
+"01119","01119",2026,"Full Season Improved Pasture","D3a","2026-04-21",3,5,4
+"01119","01119",2026,"Full Season Improved Pasture","D2a_2026","2026-10-12",1,5,4
+"01119","01119",2026,"Full Season Improved Pasture","D2b_2026","2026-11-02",2,5,4
+"01119","01119",2026,"Full Season Improved Pasture","D3b","2026-11-30",4,5,4
 "01119","01119",2026,"Long Season Small Grains","D3a","2025-12-01",3,5,4
 "01119","01119",2026,"Long Season Small Grains","D3b","2025-12-29",4,5,4
 "01119","01119",2026,"Long Season Small Grains","D2a_2026","2026-02-09",1,5,4
 "01119","01119",2026,"Long Season Small Grains","D2b_2026","2026-03-09",2,5,4
-"01119","01119",2026,"Native Pasture","D2a_2026","2026-03-28",1,5,3
-"01119","01119",2026,"Native Pasture","D2b_2026","2026-04-20",2,5,3
-"01119","01119",2026,"Native Pasture","D3a","2026-04-21",3,5,3
+"01119","01119",2026,"Native Pasture","D2a_2026","2026-03-28",1,5,4
+"01119","01119",2026,"Native Pasture","D2b_2026","2026-04-20",2,5,4
+"01119","01119",2026,"Native Pasture","D3a","2026-04-21",3,5,4
+"01119","01119",2026,"Native Pasture","D3b","2026-11-30",4,5,4
 "01119","01119",2026,"Short Season Small Grains","D3a","2026-05-01",3,2,2
 "01121","01121",2026,"Annual Crabgrass","D2a_2026","2026-05-18",1,5,1
 "01121","01121",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-05-18",1,5,1
@@ -9808,23 +9823,29 @@
 "22003","22003",2026,"Native Pasture","D4a","2026-10-27",4,5,5
 "22003","22003",2026,"Native Pasture","D4b","2026-11-23",5,5,5
 "22005","22005",2026,"Annual Ryegrass","D2a_2026","2026-04-20",1,5,1
-"22005","22005",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-04-20",1,5,2
-"22005","22005",2026,"Full Season Improved Mixed Pasture","D2b_2026","2026-05-11",2,5,2
-"22005","22005",2026,"Full Season Improved Pasture","D2a_2026","2026-04-20",1,5,2
-"22005","22005",2026,"Full Season Improved Pasture","D2b_2026","2026-05-11",2,5,2
+"22005","22005",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-04-20",1,5,3
+"22005","22005",2026,"Full Season Improved Mixed Pasture","D2b_2026","2026-05-11",2,5,3
+"22005","22005",2026,"Full Season Improved Mixed Pasture","D3a","2026-11-24",3,5,3
+"22005","22005",2026,"Full Season Improved Pasture","D2a_2026","2026-04-20",1,5,3
+"22005","22005",2026,"Full Season Improved Pasture","D2b_2026","2026-05-11",2,5,3
+"22005","22005",2026,"Full Season Improved Pasture","D3a","2026-11-24",3,5,3
 "22005","22005",2026,"Long Season Small Grains","D2a_2026","2026-04-20",1,5,1
-"22005","22005",2026,"Native Pasture","D2a_2026","2026-04-20",1,5,2
-"22005","22005",2026,"Native Pasture","D2b_2026","2026-05-11",2,5,2
+"22005","22005",2026,"Native Pasture","D2a_2026","2026-04-20",1,5,3
+"22005","22005",2026,"Native Pasture","D2b_2026","2026-05-11",2,5,3
+"22005","22005",2026,"Native Pasture","D3a","2026-11-24",3,5,3
 "22007","22007",2026,"Annual Ryegrass","D3a","2026-02-24",3,5,4
 "22007","22007",2026,"Annual Ryegrass","D3b","2026-03-23",4,5,4
 "22007","22007",2026,"Full Season Improved Mixed Pasture","D3a","2026-02-24",3,5,4
 "22007","22007",2026,"Full Season Improved Mixed Pasture","D3b","2026-03-23",4,5,4
+"22007","22007",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-11-23",1,5,4
 "22007","22007",2026,"Full Season Improved Pasture","D3a","2026-02-24",3,5,4
 "22007","22007",2026,"Full Season Improved Pasture","D3b","2026-03-23",4,5,4
+"22007","22007",2026,"Full Season Improved Pasture","D2a_2026","2026-11-23",1,5,4
 "22007","22007",2026,"Long Season Small Grains","D3a","2026-02-24",3,5,4
 "22007","22007",2026,"Long Season Small Grains","D3b","2026-03-23",4,5,4
 "22007","22007",2026,"Native Pasture","D3a","2026-02-24",3,5,4
 "22007","22007",2026,"Native Pasture","D3b","2026-03-23",4,5,4
+"22007","22007",2026,"Native Pasture","D2a_2026","2026-11-23",1,5,4
 "22009","22009",2026,"Annual Ryegrass","D2a_2026","2026-02-02",1,5,4
 "22009","22009",2026,"Annual Ryegrass","D3a","2026-02-03",3,5,4
 "22009","22009",2026,"Annual Ryegrass","D3b","2026-03-02",4,5,4
@@ -10410,22 +10431,25 @@
 "22081","22081",2026,"Annual Ryegrass","D2b_2026","2026-02-16",2,5,4
 "22081","22081",2026,"Annual Ryegrass","D3a","2026-03-03",3,5,4
 "22081","22081",2026,"Annual Ryegrass","D3b","2026-03-30",4,5,4
-"22081","22081",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-02-11",1,5,4
-"22081","22081",2026,"Full Season Improved Mixed Pasture","D3a","2026-03-03",3,5,4
-"22081","22081",2026,"Full Season Improved Mixed Pasture","D3b","2026-03-30",4,5,4
-"22081","22081",2026,"Full Season Improved Mixed Pasture","D4a","2026-11-03",4,5,4
-"22081","22081",2026,"Full Season Improved Pasture","D3a","2026-03-03",3,5,4
-"22081","22081",2026,"Full Season Improved Pasture","D3b","2026-03-30",4,5,4
-"22081","22081",2026,"Full Season Improved Pasture","D2a_2026","2026-10-05",1,5,4
-"22081","22081",2026,"Full Season Improved Pasture","D4a","2026-11-03",4,5,4
+"22081","22081",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-02-11",1,5,5
+"22081","22081",2026,"Full Season Improved Mixed Pasture","D3a","2026-03-03",3,5,5
+"22081","22081",2026,"Full Season Improved Mixed Pasture","D3b","2026-03-30",4,5,5
+"22081","22081",2026,"Full Season Improved Mixed Pasture","D4a","2026-11-03",4,5,5
+"22081","22081",2026,"Full Season Improved Mixed Pasture","D4b","2026-11-30",5,5,5
+"22081","22081",2026,"Full Season Improved Pasture","D3a","2026-03-03",3,5,5
+"22081","22081",2026,"Full Season Improved Pasture","D3b","2026-03-30",4,5,5
+"22081","22081",2026,"Full Season Improved Pasture","D2a_2026","2026-10-05",1,5,5
+"22081","22081",2026,"Full Season Improved Pasture","D4a","2026-11-03",4,5,5
+"22081","22081",2026,"Full Season Improved Pasture","D4b","2026-11-30",5,5,5
 "22081","22081",2026,"Long Season Small Grains","D2a_2026","2026-01-26",1,5,4
 "22081","22081",2026,"Long Season Small Grains","D2b_2026","2026-02-16",2,5,4
 "22081","22081",2026,"Long Season Small Grains","D3a","2026-03-03",3,5,4
 "22081","22081",2026,"Long Season Small Grains","D3b","2026-03-30",4,5,4
-"22081","22081",2026,"Native Pasture","D3a","2026-03-03",3,5,4
-"22081","22081",2026,"Native Pasture","D3b","2026-03-30",4,5,4
-"22081","22081",2026,"Native Pasture","D2a_2026","2026-10-05",1,5,4
-"22081","22081",2026,"Native Pasture","D4a","2026-11-03",4,5,4
+"22081","22081",2026,"Native Pasture","D3a","2026-03-03",3,5,5
+"22081","22081",2026,"Native Pasture","D3b","2026-03-30",4,5,5
+"22081","22081",2026,"Native Pasture","D2a_2026","2026-10-05",1,5,5
+"22081","22081",2026,"Native Pasture","D4a","2026-11-03",4,5,5
+"22081","22081",2026,"Native Pasture","D4b","2026-11-30",5,5,5
 "22083","22083",2026,"Annual Ryegrass","D2a_2026","2026-02-02",1,5,4
 "22083","22083",2026,"Annual Ryegrass","D3a","2026-03-31",3,5,4
 "22083","22083",2026,"Annual Ryegrass","D3b","2026-04-27",4,5,4
@@ -10583,12 +10607,15 @@
 "22101","22101",2026,"Annual Ryegrass","D3b","2026-03-23",4,5,4
 "22101","22101",2026,"Full Season Improved Mixed Pasture","D3a","2026-02-24",3,5,4
 "22101","22101",2026,"Full Season Improved Mixed Pasture","D3b","2026-03-23",4,5,4
+"22101","22101",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-11-23",1,5,4
 "22101","22101",2026,"Full Season Improved Pasture","D3a","2026-02-24",3,5,4
 "22101","22101",2026,"Full Season Improved Pasture","D3b","2026-03-23",4,5,4
+"22101","22101",2026,"Full Season Improved Pasture","D2a_2026","2026-11-23",1,5,4
 "22101","22101",2026,"Long Season Small Grains","D3a","2026-02-24",3,5,4
 "22101","22101",2026,"Long Season Small Grains","D3b","2026-03-23",4,5,4
 "22101","22101",2026,"Native Pasture","D3a","2026-02-24",3,5,4
 "22101","22101",2026,"Native Pasture","D3b","2026-03-23",4,5,4
+"22101","22101",2026,"Native Pasture","D2a_2026","2026-11-23",1,5,4
 "22103","22103",2026,"Annual Ryegrass","D3a","2026-04-14",3,5,3
 "22103","22103",2026,"Full Season Improved Mixed Pasture","D3a","2026-04-14",3,5,3
 "22103","22103",2026,"Full Season Improved Pasture","D3a","2026-04-14",3,5,3
@@ -10704,9 +10731,12 @@
 "22119","22119",2026,"Native Pasture","D3a","2026-03-31",3,5,4
 "22119","22119",2026,"Native Pasture","D3b","2026-04-27",4,5,4
 "22119","22119",2026,"Native Pasture","D4a","2026-11-17",4,5,4
-"22121","22121",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-11-16",1,5,1
-"22121","22121",2026,"Full Season Improved Pasture","D2a_2026","2026-11-16",1,5,1
-"22121","22121",2026,"Native Pasture","D2a_2026","2026-11-16",1,5,1
+"22121","22121",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-11-16",1,5,3
+"22121","22121",2026,"Full Season Improved Mixed Pasture","D3a","2026-11-24",3,5,3
+"22121","22121",2026,"Full Season Improved Pasture","D2a_2026","2026-11-16",1,5,3
+"22121","22121",2026,"Full Season Improved Pasture","D3a","2026-11-24",3,5,3
+"22121","22121",2026,"Native Pasture","D2a_2026","2026-11-16",1,5,3
+"22121","22121",2026,"Native Pasture","D3a","2026-11-24",3,5,3
 "22123","22123",2026,"Annual Ryegrass","D3a","2026-04-21",3,5,3
 "22123","22123",2026,"Full Season Improved Mixed Pasture","D3a","2026-04-21",3,5,4
 "22123","22123",2026,"Full Season Improved Mixed Pasture","D3b","2026-05-18",4,5,4
@@ -11708,9 +11738,10 @@
 "28003","28003",2026,"Native Pasture","D2a_2026","2026-05-11",1,5,3
 "28003","28003",2026,"Native Pasture","D2b_2026","2026-06-01",2,5,3
 "28003","28003",2026,"Native Pasture","D3a","2026-10-20",3,5,3
-"28005","28005",2026,"Annual Crabgrass","D3a","2026-03-01",3,5,3
-"28005","28005",2026,"Annual Crabgrass","D2a_2026","2026-04-06",1,5,3
-"28005","28005",2026,"Annual Crabgrass","D2b_2026","2026-05-04",2,5,3
+"28005","28005",2026,"Annual Crabgrass","D3a","2026-03-01",3,5,4
+"28005","28005",2026,"Annual Crabgrass","D2a_2026","2026-04-06",1,5,4
+"28005","28005",2026,"Annual Crabgrass","D2b_2026","2026-05-04",2,5,4
+"28005","28005",2026,"Annual Crabgrass","D3b","2026-11-30",4,5,4
 "28005","28005",2026,"Annual Ryegrass","D2a_2026","2026-02-09",1,5,3
 "28005","28005",2026,"Annual Ryegrass","D3a","2026-02-24",3,5,3
 "28005","28005",2026,"Annual Ryegrass","D2b_2026","2026-04-27",2,5,3
@@ -11718,15 +11749,17 @@
 "28005","28005",2026,"Full Season Improved Mixed Pasture","D3a","2026-02-24",3,5,4
 "28005","28005",2026,"Full Season Improved Mixed Pasture","D2b_2026","2026-04-27",2,5,4
 "28005","28005",2026,"Full Season Improved Mixed Pasture","D3b","2026-11-23",4,5,4
-"28005","28005",2026,"Full Season Improved Pasture","D3a","2026-03-01",3,5,3
-"28005","28005",2026,"Full Season Improved Pasture","D2a_2026","2026-04-06",1,5,3
-"28005","28005",2026,"Full Season Improved Pasture","D2b_2026","2026-05-04",2,5,3
+"28005","28005",2026,"Full Season Improved Pasture","D3a","2026-03-01",3,5,4
+"28005","28005",2026,"Full Season Improved Pasture","D2a_2026","2026-04-06",1,5,4
+"28005","28005",2026,"Full Season Improved Pasture","D2b_2026","2026-05-04",2,5,4
+"28005","28005",2026,"Full Season Improved Pasture","D3b","2026-11-30",4,5,4
 "28005","28005",2026,"Long Season Small Grains","D2a_2026","2026-02-09",1,5,3
 "28005","28005",2026,"Long Season Small Grains","D3a","2026-02-24",3,5,3
 "28005","28005",2026,"Long Season Small Grains","D2b_2026","2026-04-27",2,5,3
-"28005","28005",2026,"Native Pasture","D3a","2026-03-01",3,5,3
-"28005","28005",2026,"Native Pasture","D2a_2026","2026-04-06",1,5,3
-"28005","28005",2026,"Native Pasture","D2b_2026","2026-05-04",2,5,3
+"28005","28005",2026,"Native Pasture","D3a","2026-03-01",3,5,4
+"28005","28005",2026,"Native Pasture","D2a_2026","2026-04-06",1,5,4
+"28005","28005",2026,"Native Pasture","D2b_2026","2026-05-04",2,5,4
+"28005","28005",2026,"Native Pasture","D3b","2026-11-30",4,5,4
 "28007","28007",2026,"Annual Crabgrass","D3a","2026-04-21",3,5,4
 "28007","28007",2026,"Annual Crabgrass","D3b","2026-05-18",4,5,4
 "28007","28007",2026,"Annual Crabgrass","D4a","2026-11-17",4,5,4
@@ -11995,14 +12028,18 @@
 "28033","28033",2026,"Native Pasture","D3a","2026-10-20",3,5,5
 "28033","28033",2026,"Native Pasture","D4a","2026-10-27",4,5,5
 "28033","28033",2026,"Native Pasture","D4b","2026-11-23",5,5,5
-"28035","28035",2026,"Annual Crabgrass","D2a_2026","2026-10-05",1,5,2
-"28035","28035",2026,"Annual Crabgrass","D2b_2026","2026-11-02",2,5,2
-"28035","28035",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-10-05",1,5,2
-"28035","28035",2026,"Full Season Improved Mixed Pasture","D2b_2026","2026-11-02",2,5,2
-"28035","28035",2026,"Full Season Improved Pasture","D2a_2026","2026-10-05",1,5,2
-"28035","28035",2026,"Full Season Improved Pasture","D2b_2026","2026-11-02",2,5,2
-"28035","28035",2026,"Native Pasture","D2a_2026","2026-10-05",1,5,2
-"28035","28035",2026,"Native Pasture","D2b_2026","2026-11-02",2,5,2
+"28035","28035",2026,"Annual Crabgrass","D2a_2026","2026-10-05",1,5,3
+"28035","28035",2026,"Annual Crabgrass","D2b_2026","2026-11-02",2,5,3
+"28035","28035",2026,"Annual Crabgrass","D3a","2026-11-24",3,5,3
+"28035","28035",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-10-05",1,5,3
+"28035","28035",2026,"Full Season Improved Mixed Pasture","D2b_2026","2026-11-02",2,5,3
+"28035","28035",2026,"Full Season Improved Mixed Pasture","D3a","2026-11-24",3,5,3
+"28035","28035",2026,"Full Season Improved Pasture","D2a_2026","2026-10-05",1,5,3
+"28035","28035",2026,"Full Season Improved Pasture","D2b_2026","2026-11-02",2,5,3
+"28035","28035",2026,"Full Season Improved Pasture","D3a","2026-11-24",3,5,3
+"28035","28035",2026,"Native Pasture","D2a_2026","2026-10-05",1,5,3
+"28035","28035",2026,"Native Pasture","D2b_2026","2026-11-02",2,5,3
+"28035","28035",2026,"Native Pasture","D3a","2026-11-24",3,5,3
 "28037","28037",2026,"Annual Crabgrass","D3a","2026-03-01",3,5,4
 "28037","28037",2026,"Annual Crabgrass","D3b","2026-03-30",4,5,4
 "28037","28037",2026,"Annual Crabgrass","D2a_2026","2026-05-25",1,5,4
@@ -12067,11 +12104,12 @@
 "28041","28041",2026,"Native Pasture","D2b_2026","2026-04-20",2,5,4
 "28041","28041",2026,"Native Pasture","D3a","2026-04-21",3,5,4
 "28041","28041",2026,"Native Pasture","D3b","2026-05-18",4,5,4
-"28043","28043",2026,"Annual Crabgrass","D2a_2026","2026-03-28",1,5,4
-"28043","28043",2026,"Annual Crabgrass","D3a","2026-03-31",3,5,4
-"28043","28043",2026,"Annual Crabgrass","D3b","2026-04-27",4,5,4
-"28043","28043",2026,"Annual Crabgrass","D2b_2026","2026-07-27",2,5,4
-"28043","28043",2026,"Annual Crabgrass","D4a","2026-11-03",4,5,4
+"28043","28043",2026,"Annual Crabgrass","D2a_2026","2026-03-28",1,5,5
+"28043","28043",2026,"Annual Crabgrass","D3a","2026-03-31",3,5,5
+"28043","28043",2026,"Annual Crabgrass","D3b","2026-04-27",4,5,5
+"28043","28043",2026,"Annual Crabgrass","D2b_2026","2026-07-27",2,5,5
+"28043","28043",2026,"Annual Crabgrass","D4a","2026-11-03",4,5,5
+"28043","28043",2026,"Annual Crabgrass","D4b","2026-11-30",5,5,5
 "28043","28043",2026,"Annual Ryegrass","D2a_2026","2025-12-28",1,5,4
 "28043","28043",2026,"Annual Ryegrass","D2b_2026","2026-01-26",2,5,4
 "28043","28043",2026,"Annual Ryegrass","D3a","2026-03-31",3,5,4
@@ -12079,25 +12117,28 @@
 "28043","28043",2026,"Forage Sorghum","D3a","2026-06-01",3,3,3
 "28043","28043",2026,"Forage Sorghum","D2a_2026","2026-07-06",1,3,3
 "28043","28043",2026,"Forage Sorghum","D2b_2026","2026-08-03",2,3,3
-"28043","28043",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-01-28",1,5,4
-"28043","28043",2026,"Full Season Improved Mixed Pasture","D2b_2026","2026-03-02",2,5,4
-"28043","28043",2026,"Full Season Improved Mixed Pasture","D3a","2026-03-31",3,5,4
-"28043","28043",2026,"Full Season Improved Mixed Pasture","D3b","2026-04-27",4,5,4
-"28043","28043",2026,"Full Season Improved Mixed Pasture","D4a","2026-11-03",4,5,4
-"28043","28043",2026,"Full Season Improved Pasture","D2a_2026","2026-03-28",1,5,4
-"28043","28043",2026,"Full Season Improved Pasture","D3a","2026-03-31",3,5,4
-"28043","28043",2026,"Full Season Improved Pasture","D3b","2026-04-27",4,5,4
-"28043","28043",2026,"Full Season Improved Pasture","D2b_2026","2026-07-27",2,5,4
-"28043","28043",2026,"Full Season Improved Pasture","D4a","2026-11-03",4,5,4
+"28043","28043",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-01-28",1,5,5
+"28043","28043",2026,"Full Season Improved Mixed Pasture","D2b_2026","2026-03-02",2,5,5
+"28043","28043",2026,"Full Season Improved Mixed Pasture","D3a","2026-03-31",3,5,5
+"28043","28043",2026,"Full Season Improved Mixed Pasture","D3b","2026-04-27",4,5,5
+"28043","28043",2026,"Full Season Improved Mixed Pasture","D4a","2026-11-03",4,5,5
+"28043","28043",2026,"Full Season Improved Mixed Pasture","D4b","2026-11-30",5,5,5
+"28043","28043",2026,"Full Season Improved Pasture","D2a_2026","2026-03-28",1,5,5
+"28043","28043",2026,"Full Season Improved Pasture","D3a","2026-03-31",3,5,5
+"28043","28043",2026,"Full Season Improved Pasture","D3b","2026-04-27",4,5,5
+"28043","28043",2026,"Full Season Improved Pasture","D2b_2026","2026-07-27",2,5,5
+"28043","28043",2026,"Full Season Improved Pasture","D4a","2026-11-03",4,5,5
+"28043","28043",2026,"Full Season Improved Pasture","D4b","2026-11-30",5,5,5
 "28043","28043",2026,"Long Season Small Grains","D2a_2026","2025-12-28",1,5,4
 "28043","28043",2026,"Long Season Small Grains","D2b_2026","2026-01-26",2,5,4
 "28043","28043",2026,"Long Season Small Grains","D3a","2026-03-31",3,5,4
 "28043","28043",2026,"Long Season Small Grains","D3b","2026-04-27",4,5,4
-"28043","28043",2026,"Native Pasture","D2a_2026","2026-03-28",1,5,4
-"28043","28043",2026,"Native Pasture","D3a","2026-03-31",3,5,4
-"28043","28043",2026,"Native Pasture","D3b","2026-04-27",4,5,4
-"28043","28043",2026,"Native Pasture","D2b_2026","2026-07-27",2,5,4
-"28043","28043",2026,"Native Pasture","D4a","2026-11-03",4,5,4
+"28043","28043",2026,"Native Pasture","D2a_2026","2026-03-28",1,5,5
+"28043","28043",2026,"Native Pasture","D3a","2026-03-31",3,5,5
+"28043","28043",2026,"Native Pasture","D3b","2026-04-27",4,5,5
+"28043","28043",2026,"Native Pasture","D2b_2026","2026-07-27",2,5,5
+"28043","28043",2026,"Native Pasture","D4a","2026-11-03",4,5,5
+"28043","28043",2026,"Native Pasture","D4b","2026-11-30",5,5,5
 "28045","28045",2026,"Annual Crabgrass","D2a_2026","2026-05-11",1,5,1
 "28045","28045",2026,"Annual Ryegrass","D2a_2026","2026-05-11",1,5,1
 "28045","28045",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-05-11",1,5,1
@@ -12140,47 +12181,55 @@
 "28049","28049",2026,"Native Pasture","D3a","2026-04-21",3,5,4
 "28049","28049",2026,"Native Pasture","D3b","2026-05-18",4,5,4
 "28049","28049",2026,"Native Pasture","D4a","2026-11-17",4,5,4
-"28051","28051",2026,"Annual Crabgrass","D3a","2026-04-21",3,5,4
-"28051","28051",2026,"Annual Crabgrass","D3b","2026-05-18",4,5,4
-"28051","28051",2026,"Annual Crabgrass","D2a_2026","2026-07-06",1,5,4
-"28051","28051",2026,"Annual Crabgrass","D2b_2026","2026-07-27",2,5,4
-"28051","28051",2026,"Annual Crabgrass","D4a","2026-11-03",4,5,4
+"28051","28051",2026,"Annual Crabgrass","D3a","2026-04-21",3,5,5
+"28051","28051",2026,"Annual Crabgrass","D3b","2026-05-18",4,5,5
+"28051","28051",2026,"Annual Crabgrass","D2a_2026","2026-07-06",1,5,5
+"28051","28051",2026,"Annual Crabgrass","D2b_2026","2026-07-27",2,5,5
+"28051","28051",2026,"Annual Crabgrass","D4a","2026-11-03",4,5,5
+"28051","28051",2026,"Annual Crabgrass","D4b","2026-11-30",5,5,5
 "28051","28051",2026,"Annual Ryegrass","D3a","2026-04-21",3,5,3
 "28051","28051",2026,"Forage Sorghum","D3a","2026-06-01",3,3,3
 "28051","28051",2026,"Forage Sorghum","D2a_2026","2026-07-06",1,3,3
 "28051","28051",2026,"Forage Sorghum","D2b_2026","2026-08-03",2,3,3
-"28051","28051",2026,"Full Season Improved Mixed Pasture","D3a","2026-04-21",3,5,4
-"28051","28051",2026,"Full Season Improved Mixed Pasture","D3b","2026-05-18",4,5,4
-"28051","28051",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-07-06",1,5,4
-"28051","28051",2026,"Full Season Improved Mixed Pasture","D2b_2026","2026-07-27",2,5,4
-"28051","28051",2026,"Full Season Improved Mixed Pasture","D4a","2026-11-03",4,5,4
-"28051","28051",2026,"Full Season Improved Pasture","D3a","2026-04-21",3,5,4
-"28051","28051",2026,"Full Season Improved Pasture","D3b","2026-05-18",4,5,4
-"28051","28051",2026,"Full Season Improved Pasture","D2a_2026","2026-07-06",1,5,4
-"28051","28051",2026,"Full Season Improved Pasture","D2b_2026","2026-07-27",2,5,4
-"28051","28051",2026,"Full Season Improved Pasture","D4a","2026-11-03",4,5,4
+"28051","28051",2026,"Full Season Improved Mixed Pasture","D3a","2026-04-21",3,5,5
+"28051","28051",2026,"Full Season Improved Mixed Pasture","D3b","2026-05-18",4,5,5
+"28051","28051",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-07-06",1,5,5
+"28051","28051",2026,"Full Season Improved Mixed Pasture","D2b_2026","2026-07-27",2,5,5
+"28051","28051",2026,"Full Season Improved Mixed Pasture","D4a","2026-11-03",4,5,5
+"28051","28051",2026,"Full Season Improved Mixed Pasture","D4b","2026-11-30",5,5,5
+"28051","28051",2026,"Full Season Improved Pasture","D3a","2026-04-21",3,5,5
+"28051","28051",2026,"Full Season Improved Pasture","D3b","2026-05-18",4,5,5
+"28051","28051",2026,"Full Season Improved Pasture","D2a_2026","2026-07-06",1,5,5
+"28051","28051",2026,"Full Season Improved Pasture","D2b_2026","2026-07-27",2,5,5
+"28051","28051",2026,"Full Season Improved Pasture","D4a","2026-11-03",4,5,5
+"28051","28051",2026,"Full Season Improved Pasture","D4b","2026-11-30",5,5,5
 "28051","28051",2026,"Long Season Small Grains","D3a","2026-04-21",3,5,3
-"28051","28051",2026,"Native Pasture","D3a","2026-04-21",3,5,4
-"28051","28051",2026,"Native Pasture","D3b","2026-05-18",4,5,4
-"28051","28051",2026,"Native Pasture","D2a_2026","2026-07-06",1,5,4
-"28051","28051",2026,"Native Pasture","D2b_2026","2026-07-27",2,5,4
-"28051","28051",2026,"Native Pasture","D4a","2026-11-03",4,5,4
-"28053","28053",2026,"Annual Crabgrass","D3a","2026-04-21",3,5,4
-"28053","28053",2026,"Annual Crabgrass","D3b","2026-06-08",4,5,4
-"28053","28053",2026,"Annual Crabgrass","D4a","2026-11-03",4,5,4
+"28051","28051",2026,"Native Pasture","D3a","2026-04-21",3,5,5
+"28051","28051",2026,"Native Pasture","D3b","2026-05-18",4,5,5
+"28051","28051",2026,"Native Pasture","D2a_2026","2026-07-06",1,5,5
+"28051","28051",2026,"Native Pasture","D2b_2026","2026-07-27",2,5,5
+"28051","28051",2026,"Native Pasture","D4a","2026-11-03",4,5,5
+"28051","28051",2026,"Native Pasture","D4b","2026-11-30",5,5,5
+"28053","28053",2026,"Annual Crabgrass","D3a","2026-04-21",3,5,5
+"28053","28053",2026,"Annual Crabgrass","D3b","2026-06-08",4,5,5
+"28053","28053",2026,"Annual Crabgrass","D4a","2026-11-03",4,5,5
+"28053","28053",2026,"Annual Crabgrass","D4b","2026-11-30",5,5,5
 "28053","28053",2026,"Annual Ryegrass","D3a","2026-04-21",3,5,3
 "28053","28053",2026,"Forage Sorghum","D3a","2026-06-01",3,3,3
 "28053","28053",2026,"Forage Sorghum","D3b","2026-06-29",4,3,3
-"28053","28053",2026,"Full Season Improved Mixed Pasture","D3a","2026-04-21",3,5,4
-"28053","28053",2026,"Full Season Improved Mixed Pasture","D3b","2026-06-08",4,5,4
-"28053","28053",2026,"Full Season Improved Mixed Pasture","D4a","2026-11-03",4,5,4
-"28053","28053",2026,"Full Season Improved Pasture","D3a","2026-04-21",3,5,4
-"28053","28053",2026,"Full Season Improved Pasture","D3b","2026-06-08",4,5,4
-"28053","28053",2026,"Full Season Improved Pasture","D4a","2026-11-03",4,5,4
+"28053","28053",2026,"Full Season Improved Mixed Pasture","D3a","2026-04-21",3,5,5
+"28053","28053",2026,"Full Season Improved Mixed Pasture","D3b","2026-06-08",4,5,5
+"28053","28053",2026,"Full Season Improved Mixed Pasture","D4a","2026-11-03",4,5,5
+"28053","28053",2026,"Full Season Improved Mixed Pasture","D4b","2026-11-30",5,5,5
+"28053","28053",2026,"Full Season Improved Pasture","D3a","2026-04-21",3,5,5
+"28053","28053",2026,"Full Season Improved Pasture","D3b","2026-06-08",4,5,5
+"28053","28053",2026,"Full Season Improved Pasture","D4a","2026-11-03",4,5,5
+"28053","28053",2026,"Full Season Improved Pasture","D4b","2026-11-30",5,5,5
 "28053","28053",2026,"Long Season Small Grains","D3a","2026-04-21",3,5,3
-"28053","28053",2026,"Native Pasture","D3a","2026-04-21",3,5,4
-"28053","28053",2026,"Native Pasture","D3b","2026-06-08",4,5,4
-"28053","28053",2026,"Native Pasture","D4a","2026-11-03",4,5,4
+"28053","28053",2026,"Native Pasture","D3a","2026-04-21",3,5,5
+"28053","28053",2026,"Native Pasture","D3b","2026-06-08",4,5,5
+"28053","28053",2026,"Native Pasture","D4a","2026-11-03",4,5,5
+"28053","28053",2026,"Native Pasture","D4b","2026-11-30",5,5,5
 "28055","28055",2026,"Annual Crabgrass","D3a","2026-04-21",3,5,4
 "28055","28055",2026,"Annual Crabgrass","D3b","2026-05-18",4,5,4
 "28055","28055",2026,"Annual Crabgrass","D2a_2026","2026-07-20",1,5,4
@@ -12224,6 +12273,14 @@
 "28059","28059",2026,"Long Season Small Grains","D2a_2026","2026-04-27",1,5,1
 "28059","28059",2026,"Native Pasture","D2a_2026","2026-04-27",1,5,2
 "28059","28059",2026,"Native Pasture","D2b_2026","2026-05-25",2,5,2
+"28061","28061",2026,"Annual Crabgrass","D2a_2026","2026-11-23",1,5,3
+"28061","28061",2026,"Annual Crabgrass","D3a","2026-11-24",3,5,3
+"28061","28061",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-11-23",1,5,3
+"28061","28061",2026,"Full Season Improved Mixed Pasture","D3a","2026-11-24",3,5,3
+"28061","28061",2026,"Full Season Improved Pasture","D2a_2026","2026-11-23",1,5,3
+"28061","28061",2026,"Full Season Improved Pasture","D3a","2026-11-24",3,5,3
+"28061","28061",2026,"Native Pasture","D2a_2026","2026-11-23",1,5,3
+"28061","28061",2026,"Native Pasture","D3a","2026-11-24",3,5,3
 "28063","28063",2026,"Annual Crabgrass","D3a","2026-03-01",3,5,4
 "28063","28063",2026,"Annual Crabgrass","D3b","2026-03-30",4,5,4
 "28063","28063",2026,"Annual Ryegrass","D3a","2026-02-03",3,5,4
@@ -12240,14 +12297,18 @@
 "28065","28065",2026,"Full Season Improved Mixed Pasture","D3a","2026-11-10",3,5,3
 "28065","28065",2026,"Full Season Improved Pasture","D3a","2026-11-10",3,5,3
 "28065","28065",2026,"Native Pasture","D3a","2026-11-10",3,5,3
-"28067","28067",2026,"Annual Crabgrass","D2a_2026","2026-10-05",1,5,2
-"28067","28067",2026,"Annual Crabgrass","D2b_2026","2026-11-02",2,5,2
-"28067","28067",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-10-05",1,5,2
-"28067","28067",2026,"Full Season Improved Mixed Pasture","D2b_2026","2026-11-02",2,5,2
-"28067","28067",2026,"Full Season Improved Pasture","D2a_2026","2026-10-05",1,5,2
-"28067","28067",2026,"Full Season Improved Pasture","D2b_2026","2026-11-02",2,5,2
-"28067","28067",2026,"Native Pasture","D2a_2026","2026-10-05",1,5,2
-"28067","28067",2026,"Native Pasture","D2b_2026","2026-11-02",2,5,2
+"28067","28067",2026,"Annual Crabgrass","D2a_2026","2026-10-05",1,5,3
+"28067","28067",2026,"Annual Crabgrass","D2b_2026","2026-11-02",2,5,3
+"28067","28067",2026,"Annual Crabgrass","D3a","2026-11-24",3,5,3
+"28067","28067",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-10-05",1,5,3
+"28067","28067",2026,"Full Season Improved Mixed Pasture","D2b_2026","2026-11-02",2,5,3
+"28067","28067",2026,"Full Season Improved Mixed Pasture","D3a","2026-11-24",3,5,3
+"28067","28067",2026,"Full Season Improved Pasture","D2a_2026","2026-10-05",1,5,3
+"28067","28067",2026,"Full Season Improved Pasture","D2b_2026","2026-11-02",2,5,3
+"28067","28067",2026,"Full Season Improved Pasture","D3a","2026-11-24",3,5,3
+"28067","28067",2026,"Native Pasture","D2a_2026","2026-10-05",1,5,3
+"28067","28067",2026,"Native Pasture","D2b_2026","2026-11-02",2,5,3
+"28067","28067",2026,"Native Pasture","D3a","2026-11-24",3,5,3
 "28069","28069",2026,"Annual Crabgrass","D3a","2026-04-21",3,5,4
 "28069","28069",2026,"Annual Crabgrass","D3b","2026-11-16",4,5,4
 "28069","28069",2026,"Annual Ryegrass","D3a","2026-04-21",3,5,3
@@ -12281,20 +12342,28 @@
 "28071","28071",2026,"Native Pasture","D2b_2026","2026-04-27",2,5,4
 "28071","28071",2026,"Native Pasture","D3a","2026-05-12",3,5,4
 "28071","28071",2026,"Native Pasture","D3b","2026-11-02",4,5,4
-"28073","28073",2026,"Annual Crabgrass","D2a_2026","2026-10-05",1,5,2
-"28073","28073",2026,"Annual Crabgrass","D2b_2026","2026-11-02",2,5,2
-"28073","28073",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-10-05",1,5,2
-"28073","28073",2026,"Full Season Improved Mixed Pasture","D2b_2026","2026-11-02",2,5,2
-"28073","28073",2026,"Full Season Improved Pasture","D2a_2026","2026-10-05",1,5,2
-"28073","28073",2026,"Full Season Improved Pasture","D2b_2026","2026-11-02",2,5,2
-"28073","28073",2026,"Native Pasture","D2a_2026","2026-10-05",1,5,2
-"28073","28073",2026,"Native Pasture","D2b_2026","2026-11-02",2,5,2
-"28075","28075",2026,"Annual Crabgrass","D3a","2026-04-21",3,5,3
+"28073","28073",2026,"Annual Crabgrass","D2a_2026","2026-10-05",1,5,3
+"28073","28073",2026,"Annual Crabgrass","D2b_2026","2026-11-02",2,5,3
+"28073","28073",2026,"Annual Crabgrass","D3a","2026-11-24",3,5,3
+"28073","28073",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-10-05",1,5,3
+"28073","28073",2026,"Full Season Improved Mixed Pasture","D2b_2026","2026-11-02",2,5,3
+"28073","28073",2026,"Full Season Improved Mixed Pasture","D3a","2026-11-24",3,5,3
+"28073","28073",2026,"Full Season Improved Pasture","D2a_2026","2026-10-05",1,5,3
+"28073","28073",2026,"Full Season Improved Pasture","D2b_2026","2026-11-02",2,5,3
+"28073","28073",2026,"Full Season Improved Pasture","D3a","2026-11-24",3,5,3
+"28073","28073",2026,"Native Pasture","D2a_2026","2026-10-05",1,5,3
+"28073","28073",2026,"Native Pasture","D2b_2026","2026-11-02",2,5,3
+"28073","28073",2026,"Native Pasture","D3a","2026-11-24",3,5,3
+"28075","28075",2026,"Annual Crabgrass","D3a","2026-04-21",3,5,4
+"28075","28075",2026,"Annual Crabgrass","D3b","2026-11-30",4,5,4
 "28075","28075",2026,"Annual Ryegrass","D3a","2026-04-21",3,5,3
-"28075","28075",2026,"Full Season Improved Mixed Pasture","D3a","2026-04-21",3,5,3
-"28075","28075",2026,"Full Season Improved Pasture","D3a","2026-04-21",3,5,3
+"28075","28075",2026,"Full Season Improved Mixed Pasture","D3a","2026-04-21",3,5,4
+"28075","28075",2026,"Full Season Improved Mixed Pasture","D3b","2026-11-30",4,5,4
+"28075","28075",2026,"Full Season Improved Pasture","D3a","2026-04-21",3,5,4
+"28075","28075",2026,"Full Season Improved Pasture","D3b","2026-11-30",4,5,4
 "28075","28075",2026,"Long Season Small Grains","D3a","2026-04-21",3,5,3
-"28075","28075",2026,"Native Pasture","D3a","2026-04-21",3,5,3
+"28075","28075",2026,"Native Pasture","D3a","2026-04-21",3,5,4
+"28075","28075",2026,"Native Pasture","D3b","2026-11-30",4,5,4
 "28077","28077",2026,"Annual Crabgrass","D3a","2026-11-10",3,5,3
 "28077","28077",2026,"Full Season Improved Mixed Pasture","D3a","2026-11-10",3,5,3
 "28077","28077",2026,"Full Season Improved Pasture","D3a","2026-11-10",3,5,3
@@ -12352,24 +12421,28 @@
 "28083","28083",2026,"Native Pasture","D3b","2026-04-27",4,5,5
 "28083","28083",2026,"Native Pasture","D4a","2026-10-13",4,5,5
 "28083","28083",2026,"Native Pasture","D4b","2026-11-09",5,5,5
-"28085","28085",2026,"Annual Crabgrass","D2a_2026","2026-03-28",1,5,3
-"28085","28085",2026,"Annual Crabgrass","D2b_2026","2026-04-20",2,5,3
-"28085","28085",2026,"Annual Crabgrass","D3a","2026-04-21",3,5,3
+"28085","28085",2026,"Annual Crabgrass","D2a_2026","2026-03-28",1,5,4
+"28085","28085",2026,"Annual Crabgrass","D2b_2026","2026-04-20",2,5,4
+"28085","28085",2026,"Annual Crabgrass","D3a","2026-04-21",3,5,4
+"28085","28085",2026,"Annual Crabgrass","D3b","2026-11-30",4,5,4
 "28085","28085",2026,"Annual Ryegrass","D2a_2026","2026-02-09",1,5,3
 "28085","28085",2026,"Annual Ryegrass","D2b_2026","2026-03-09",2,5,3
 "28085","28085",2026,"Annual Ryegrass","D3a","2026-04-21",3,5,3
-"28085","28085",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-02-09",1,5,3
-"28085","28085",2026,"Full Season Improved Mixed Pasture","D2b_2026","2026-03-09",2,5,3
-"28085","28085",2026,"Full Season Improved Mixed Pasture","D3a","2026-04-21",3,5,3
-"28085","28085",2026,"Full Season Improved Pasture","D2a_2026","2026-03-28",1,5,3
-"28085","28085",2026,"Full Season Improved Pasture","D2b_2026","2026-04-20",2,5,3
-"28085","28085",2026,"Full Season Improved Pasture","D3a","2026-04-21",3,5,3
+"28085","28085",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-02-09",1,5,4
+"28085","28085",2026,"Full Season Improved Mixed Pasture","D2b_2026","2026-03-09",2,5,4
+"28085","28085",2026,"Full Season Improved Mixed Pasture","D3a","2026-04-21",3,5,4
+"28085","28085",2026,"Full Season Improved Mixed Pasture","D3b","2026-11-30",4,5,4
+"28085","28085",2026,"Full Season Improved Pasture","D2a_2026","2026-03-28",1,5,4
+"28085","28085",2026,"Full Season Improved Pasture","D2b_2026","2026-04-20",2,5,4
+"28085","28085",2026,"Full Season Improved Pasture","D3a","2026-04-21",3,5,4
+"28085","28085",2026,"Full Season Improved Pasture","D3b","2026-11-30",4,5,4
 "28085","28085",2026,"Long Season Small Grains","D2a_2026","2026-02-09",1,5,3
 "28085","28085",2026,"Long Season Small Grains","D2b_2026","2026-03-09",2,5,3
 "28085","28085",2026,"Long Season Small Grains","D3a","2026-04-21",3,5,3
-"28085","28085",2026,"Native Pasture","D2a_2026","2026-03-28",1,5,3
-"28085","28085",2026,"Native Pasture","D2b_2026","2026-04-20",2,5,3
-"28085","28085",2026,"Native Pasture","D3a","2026-04-21",3,5,3
+"28085","28085",2026,"Native Pasture","D2a_2026","2026-03-28",1,5,4
+"28085","28085",2026,"Native Pasture","D2b_2026","2026-04-20",2,5,4
+"28085","28085",2026,"Native Pasture","D3a","2026-04-21",3,5,4
+"28085","28085",2026,"Native Pasture","D3b","2026-11-30",4,5,4
 "28087","28087",2026,"Annual Crabgrass","D3a","2026-04-21",3,5,4
 "28087","28087",2026,"Annual Crabgrass","D3b","2026-11-02",4,5,4
 "28087","28087",2026,"Annual Crabgrass","D4a","2026-11-17",4,5,4
@@ -12398,6 +12471,14 @@
 "28089","28089",2026,"Native Pasture","D3a","2026-04-21",3,5,4
 "28089","28089",2026,"Native Pasture","D3b","2026-11-09",4,5,4
 "28089","28089",2026,"Native Pasture","D4a","2026-11-17",4,5,4
+"28091","28091",2026,"Annual Crabgrass","D2a_2026","2026-11-23",1,5,3
+"28091","28091",2026,"Annual Crabgrass","D3a","2026-11-24",3,5,3
+"28091","28091",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-11-23",1,5,3
+"28091","28091",2026,"Full Season Improved Mixed Pasture","D3a","2026-11-24",3,5,3
+"28091","28091",2026,"Full Season Improved Pasture","D2a_2026","2026-11-23",1,5,3
+"28091","28091",2026,"Full Season Improved Pasture","D3a","2026-11-24",3,5,3
+"28091","28091",2026,"Native Pasture","D2a_2026","2026-11-23",1,5,3
+"28091","28091",2026,"Native Pasture","D3a","2026-11-24",3,5,3
 "28093","28093",2026,"Annual Crabgrass","D2a_2026","2026-05-18",1,5,3
 "28093","28093",2026,"Annual Crabgrass","D3a","2026-10-20",3,5,3
 "28093","28093",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-05-18",1,5,3
@@ -12761,22 +12842,26 @@
 "28135","28135",2026,"Native Pasture","D4b","2026-04-27",5,5,5
 "28135","28135",2026,"Native Pasture","D2a_2026","2026-08-03",1,5,5
 "28135","28135",2026,"Native Pasture","D2b_2026","2026-08-31",2,5,5
-"28137","28137",2026,"Annual Crabgrass","D2a_2026","2026-03-30",1,5,3
-"28137","28137",2026,"Annual Crabgrass","D2b_2026","2026-04-27",2,5,3
-"28137","28137",2026,"Annual Crabgrass","D3a","2026-10-20",3,5,3
+"28137","28137",2026,"Annual Crabgrass","D2a_2026","2026-03-30",1,5,4
+"28137","28137",2026,"Annual Crabgrass","D2b_2026","2026-04-27",2,5,4
+"28137","28137",2026,"Annual Crabgrass","D3a","2026-10-20",3,5,4
+"28137","28137",2026,"Annual Crabgrass","D3b","2026-11-30",4,5,4
 "28137","28137",2026,"Annual Ryegrass","D2a_2026","2026-03-30",1,5,2
 "28137","28137",2026,"Annual Ryegrass","D2b_2026","2026-04-27",2,5,2
-"28137","28137",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-03-30",1,5,3
-"28137","28137",2026,"Full Season Improved Mixed Pasture","D2b_2026","2026-04-27",2,5,3
-"28137","28137",2026,"Full Season Improved Mixed Pasture","D3a","2026-10-20",3,5,3
-"28137","28137",2026,"Full Season Improved Pasture","D2a_2026","2026-03-30",1,5,3
-"28137","28137",2026,"Full Season Improved Pasture","D2b_2026","2026-04-27",2,5,3
-"28137","28137",2026,"Full Season Improved Pasture","D3a","2026-10-20",3,5,3
+"28137","28137",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-03-30",1,5,4
+"28137","28137",2026,"Full Season Improved Mixed Pasture","D2b_2026","2026-04-27",2,5,4
+"28137","28137",2026,"Full Season Improved Mixed Pasture","D3a","2026-10-20",3,5,4
+"28137","28137",2026,"Full Season Improved Mixed Pasture","D3b","2026-11-30",4,5,4
+"28137","28137",2026,"Full Season Improved Pasture","D2a_2026","2026-03-30",1,5,4
+"28137","28137",2026,"Full Season Improved Pasture","D2b_2026","2026-04-27",2,5,4
+"28137","28137",2026,"Full Season Improved Pasture","D3a","2026-10-20",3,5,4
+"28137","28137",2026,"Full Season Improved Pasture","D3b","2026-11-30",4,5,4
 "28137","28137",2026,"Long Season Small Grains","D2a_2026","2026-03-30",1,5,2
 "28137","28137",2026,"Long Season Small Grains","D2b_2026","2026-04-27",2,5,2
-"28137","28137",2026,"Native Pasture","D2a_2026","2026-03-30",1,5,3
-"28137","28137",2026,"Native Pasture","D2b_2026","2026-04-27",2,5,3
-"28137","28137",2026,"Native Pasture","D3a","2026-10-20",3,5,3
+"28137","28137",2026,"Native Pasture","D2a_2026","2026-03-30",1,5,4
+"28137","28137",2026,"Native Pasture","D2b_2026","2026-04-27",2,5,4
+"28137","28137",2026,"Native Pasture","D3a","2026-10-20",3,5,4
+"28137","28137",2026,"Native Pasture","D3b","2026-11-30",4,5,4
 "28139","28139",2026,"Annual Crabgrass","D2a_2026","2026-05-18",1,5,3
 "28139","28139",2026,"Annual Crabgrass","D3a","2026-10-20",3,5,3
 "28139","28139",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-05-18",1,5,3
@@ -13155,19 +13240,21 @@
 "29069","29069",2026,"Forage Sorghum","D3a","2026-06-15",3,3,3
 "29069","29069",2026,"Forage Sorghum","D2a_2026","2026-07-27",1,3,3
 "29069","29069",2026,"Forage Sorghum","D2b_2026","2026-08-24",2,3,3
-"29069","29069",2026,"Full Season Improved Pasture","D3a","2026-03-31",3,5,4
-"29069","29069",2026,"Full Season Improved Pasture","D3b","2026-04-27",4,5,4
-"29069","29069",2026,"Full Season Improved Pasture","D4a","2026-05-19",4,5,4
-"29069","29069",2026,"Full Season Improved Pasture","D2a_2026","2026-07-27",1,5,4
-"29069","29069",2026,"Full Season Improved Pasture","D2b_2026","2026-08-24",2,5,4
+"29069","29069",2026,"Full Season Improved Pasture","D3a","2026-03-31",3,5,5
+"29069","29069",2026,"Full Season Improved Pasture","D3b","2026-04-27",4,5,5
+"29069","29069",2026,"Full Season Improved Pasture","D4a","2026-05-19",4,5,5
+"29069","29069",2026,"Full Season Improved Pasture","D2a_2026","2026-07-27",1,5,5
+"29069","29069",2026,"Full Season Improved Pasture","D2b_2026","2026-08-24",2,5,5
+"29069","29069",2026,"Full Season Improved Pasture","D4b","2026-11-30",5,5,5
 "29069","29069",2026,"Long Season Small Grains","D2a_2026","2026-01-26",1,5,3
 "29069","29069",2026,"Long Season Small Grains","D2b_2026","2026-02-23",2,5,3
 "29069","29069",2026,"Long Season Small Grains","D3a","2026-03-31",3,5,3
-"29069","29069",2026,"Native Pasture","D3a","2026-03-31",3,5,4
-"29069","29069",2026,"Native Pasture","D3b","2026-04-27",4,5,4
-"29069","29069",2026,"Native Pasture","D4a","2026-05-19",4,5,4
-"29069","29069",2026,"Native Pasture","D2a_2026","2026-07-27",1,5,4
-"29069","29069",2026,"Native Pasture","D2b_2026","2026-08-24",2,5,4
+"29069","29069",2026,"Native Pasture","D3a","2026-03-31",3,5,5
+"29069","29069",2026,"Native Pasture","D3b","2026-04-27",4,5,5
+"29069","29069",2026,"Native Pasture","D4a","2026-05-19",4,5,5
+"29069","29069",2026,"Native Pasture","D2a_2026","2026-07-27",1,5,5
+"29069","29069",2026,"Native Pasture","D2b_2026","2026-08-24",2,5,5
+"29069","29069",2026,"Native Pasture","D4b","2026-11-30",5,5,5
 "29069","29069",2026,"Short Season Small Grains","D3a","2026-04-01",3,2,2
 "29069","29069",2026,"Short Season Small Grains","D3b","2026-05-04",4,2,2
 "29069","29069",2026,"Short Season Small Grains","D4a","2026-05-19",4,2,2
@@ -16417,14 +16504,16 @@
 "37185","37185",2026,"Native Pasture","D3b","2026-05-04",4,5,4
 "37187","37187",2026,"Forage Sorghum","D2a_2026","2026-06-11",1,4,3
 "37187","37187",2026,"Forage Sorghum","D3a","2026-06-16",3,4,3
-"37187","37187",2026,"Full Season Improved Pasture","D2a_2026","2026-04-27",1,5,3
-"37187","37187",2026,"Full Season Improved Pasture","D2b_2026","2026-05-25",2,5,3
-"37187","37187",2026,"Full Season Improved Pasture","D3a","2026-06-16",3,5,3
+"37187","37187",2026,"Full Season Improved Pasture","D2a_2026","2026-04-27",1,5,4
+"37187","37187",2026,"Full Season Improved Pasture","D2b_2026","2026-05-25",2,5,4
+"37187","37187",2026,"Full Season Improved Pasture","D3a","2026-06-16",3,5,4
+"37187","37187",2026,"Full Season Improved Pasture","D3b","2026-11-30",4,5,4
 "37187","37187",2026,"Long Season Small Grains","D2a_2026","2026-04-27",1,5,2
 "37187","37187",2026,"Long Season Small Grains","D2b_2026","2026-05-25",2,5,2
-"37187","37187",2026,"Native Pasture","D2a_2026","2026-04-27",1,5,3
-"37187","37187",2026,"Native Pasture","D2b_2026","2026-05-25",2,5,3
-"37187","37187",2026,"Native Pasture","D3a","2026-06-16",3,5,3
+"37187","37187",2026,"Native Pasture","D2a_2026","2026-04-27",1,5,4
+"37187","37187",2026,"Native Pasture","D2b_2026","2026-05-25",2,5,4
+"37187","37187",2026,"Native Pasture","D3a","2026-06-16",3,5,4
+"37187","37187",2026,"Native Pasture","D3b","2026-11-30",4,5,4
 "37189","37189",2026,"Forage Sorghum","D3a","2026-05-15",3,4,4
 "37189","37189",2026,"Forage Sorghum","D4a","2026-05-19",4,4,4
 "37189","37189",2026,"Forage Sorghum","D3b","2026-06-22",4,4,4
@@ -18960,9 +19049,11 @@
 "45003","45003",2026,"Full Season Improved Mixed Pasture","D3b","2026-05-25",4,5,4
 "45003","45003",2026,"Full Season Improved Pasture","D3a","2026-04-28",3,5,4
 "45003","45003",2026,"Full Season Improved Pasture","D3b","2026-05-25",4,5,4
+"45003","45003",2026,"Full Season Improved Pasture","D2a_2026","2026-11-23",1,5,4
 "45003","45003",2026,"Long Season Small Grains","D3a","2026-04-28",3,5,3
 "45003","45003",2026,"Native Pasture","D3a","2026-04-28",3,5,4
 "45003","45003",2026,"Native Pasture","D3b","2026-05-25",4,5,4
+"45003","45003",2026,"Native Pasture","D2a_2026","2026-11-23",1,5,4
 "45005","45005",2026,"Forage Sorghum","D3a","2026-04-15",3,5,5
 "45005","45005",2026,"Forage Sorghum","D4a","2026-04-28",4,5,5
 "45005","45005",2026,"Forage Sorghum","D4b","2026-05-25",5,5,5
@@ -19202,6 +19293,7 @@
 "45029","45029",2026,"Full Season Improved Pasture","D3b","2026-04-27",4,5,5
 "45029","45029",2026,"Full Season Improved Pasture","D4a","2026-04-28",4,5,5
 "45029","45029",2026,"Full Season Improved Pasture","D4b","2026-05-25",5,5,5
+"45029","45029",2026,"Full Season Improved Pasture","D2b_2026","2026-11-23",2,5,5
 "45029","45029",2026,"Long Season Small Grains","D2a_2026","2025-11-29",1,5,4
 "45029","45029",2026,"Long Season Small Grains","D2b_2026","2026-03-02",2,5,4
 "45029","45029",2026,"Long Season Small Grains","D3a","2026-03-31",3,5,4
@@ -19212,6 +19304,7 @@
 "45029","45029",2026,"Native Pasture","D3b","2026-04-27",4,5,5
 "45029","45029",2026,"Native Pasture","D4a","2026-04-28",4,5,5
 "45029","45029",2026,"Native Pasture","D4b","2026-05-25",5,5,5
+"45029","45029",2026,"Native Pasture","D2b_2026","2026-11-23",2,5,5
 "45031","45031",2026,"Forage Sorghum","D3a","2026-04-21",3,5,4
 "45031","45031",2026,"Forage Sorghum","D3b","2026-05-18",4,5,4
 "45031","45031",2026,"Forage Sorghum","D2a_2026","2026-06-22",1,5,4
@@ -19499,12 +19592,14 @@
 "45063","45063",2026,"Full Season Improved Pasture","D3a","2026-04-28",3,5,4
 "45063","45063",2026,"Full Season Improved Pasture","D3b","2026-05-25",4,5,4
 "45063","45063",2026,"Full Season Improved Pasture","D2a_2026","2026-11-02",1,5,4
+"45063","45063",2026,"Full Season Improved Pasture","D2b_2026","2026-11-23",2,5,4
 "45063","45063",2026,"Long Season Small Grains","D2a_2026","2026-02-09",1,5,3
 "45063","45063",2026,"Long Season Small Grains","D2b_2026","2026-03-02",2,5,3
 "45063","45063",2026,"Long Season Small Grains","D3a","2026-04-28",3,5,3
 "45063","45063",2026,"Native Pasture","D3a","2026-04-28",3,5,4
 "45063","45063",2026,"Native Pasture","D3b","2026-05-25",4,5,4
 "45063","45063",2026,"Native Pasture","D2a_2026","2026-11-02",1,5,4
+"45063","45063",2026,"Native Pasture","D2b_2026","2026-11-23",2,5,4
 "45065","45065",2026,"Forage Sorghum","D3a","2026-04-15",3,5,4
 "45065","45065",2026,"Forage Sorghum","D3b","2026-05-18",4,5,4
 "45065","45065",2026,"Full Season Improved Mixed Pasture","D2a_2026","2026-02-09",1,5,4
@@ -20516,8 +20611,9 @@
 "47031","47031",2026,"Annual Crabgrass","D2a_2026","2026-10-19",1,5,3
 "47031","47031",2026,"Annual Crabgrass","D3a","2026-10-27",3,5,3
 "47031","47031",2026,"Annual Ryegrass","D2a_2026","2026-05-11",1,5,1
-"47031","47031",2026,"Full Season Improved Pasture","D2a_2026","2026-05-11",1,5,3
-"47031","47031",2026,"Full Season Improved Pasture","D3a","2026-10-27",3,5,3
+"47031","47031",2026,"Full Season Improved Pasture","D2a_2026","2026-05-11",1,5,4
+"47031","47031",2026,"Full Season Improved Pasture","D3a","2026-10-27",3,5,4
+"47031","47031",2026,"Full Season Improved Pasture","D3b","2026-11-30",4,5,4
 "47031","47031",2026,"Long Season Small Grains","D2a_2026","2026-05-11",1,5,1
 "47033","47033",2026,"Annual Crabgrass","D3a","2026-06-01",3,5,3
 "47033","47033",2026,"Annual Ryegrass","D2a_2026","2026-02-16",1,5,4
@@ -20650,6 +20746,7 @@
 "47055","47055",2026,"Annual Ryegrass","D2a_2026","2026-05-11",1,5,1
 "47055","47055",2026,"Full Season Improved Pasture","D2a_2026","2026-05-11",1,5,3
 "47055","47055",2026,"Full Season Improved Pasture","D3a","2026-10-27",3,5,3
+"47055","47055",2026,"Full Season Improved Pasture","D2b_2026","2026-11-23",2,5,3
 "47055","47055",2026,"Long Season Small Grains","D2a_2026","2026-05-11",1,5,1
 "47059","47059",2026,"Annual Ryegrass","D2a_2026","2026-02-23",1,5,2
 "47059","47059",2026,"Annual Ryegrass","D2b_2026","2026-03-23",2,5,2
@@ -20664,9 +20761,10 @@
 "47061","47061",2026,"Annual Crabgrass","D3a","2026-10-27",3,5,3
 "47061","47061",2026,"Annual Ryegrass","D2a_2026","2026-05-11",1,5,1
 "47061","47061",2026,"Forage Sorghum","D2a_2026","2026-05-28",1,5,1
-"47061","47061",2026,"Full Season Improved Pasture","D2a_2026","2026-05-11",1,5,3
-"47061","47061",2026,"Full Season Improved Pasture","D2b_2026","2026-06-01",2,5,3
-"47061","47061",2026,"Full Season Improved Pasture","D3a","2026-10-27",3,5,3
+"47061","47061",2026,"Full Season Improved Pasture","D2a_2026","2026-05-11",1,5,4
+"47061","47061",2026,"Full Season Improved Pasture","D2b_2026","2026-06-01",2,5,4
+"47061","47061",2026,"Full Season Improved Pasture","D3a","2026-10-27",3,5,4
+"47061","47061",2026,"Full Season Improved Pasture","D3b","2026-11-30",4,5,4
 "47061","47061",2026,"Long Season Small Grains","D2a_2026","2026-05-11",1,5,1
 "47061","47061",2026,"Native Pasture","D2a_2026","2026-05-28",1,5,1
 "47065","47065",2026,"Annual Crabgrass","D3a","2026-06-01",3,5,3
@@ -20857,6 +20955,7 @@
 "47099","47099",2026,"Annual Ryegrass","D2a_2026","2026-05-11",1,5,1
 "47099","47099",2026,"Full Season Improved Pasture","D2a_2026","2026-05-11",1,5,3
 "47099","47099",2026,"Full Season Improved Pasture","D3a","2026-10-27",3,5,3
+"47099","47099",2026,"Full Season Improved Pasture","D2b_2026","2026-11-23",2,5,3
 "47099","47099",2026,"Long Season Small Grains","D2a_2026","2026-05-11",1,5,1
 "47101","47101",2026,"Annual Crabgrass","D2a_2026","2026-10-26",1,5,3
 "47101","47101",2026,"Annual Crabgrass","D3a","2026-10-27",3,5,3
@@ -21055,9 +21154,10 @@
 "47133","47133",2026,"Forage Sorghum","D3a","2026-05-19",3,5,3
 "47133","47133",2026,"Forage Sorghum","D2a_2026","2026-06-22",1,5,3
 "47133","47133",2026,"Forage Sorghum","D2b_2026","2026-06-29",2,5,3
-"47133","47133",2026,"Full Season Improved Pasture","D2a_2026","2026-05-11",1,5,3
-"47133","47133",2026,"Full Season Improved Pasture","D3a","2026-05-19",3,5,3
-"47133","47133",2026,"Full Season Improved Pasture","D2b_2026","2026-06-08",2,5,3
+"47133","47133",2026,"Full Season Improved Pasture","D2a_2026","2026-05-11",1,5,4
+"47133","47133",2026,"Full Season Improved Pasture","D3a","2026-05-19",3,5,4
+"47133","47133",2026,"Full Season Improved Pasture","D2b_2026","2026-06-08",2,5,4
+"47133","47133",2026,"Full Season Improved Pasture","D3b","2026-11-30",4,5,4
 "47133","47133",2026,"Long Season Small Grains","D2a_2026","2026-05-11",1,5,1
 "47133","47133",2026,"Native Pasture","D3a","2026-05-19",3,5,3
 "47133","47133",2026,"Native Pasture","D2a_2026","2026-06-22",1,5,3
@@ -21078,8 +21178,9 @@
 "47135","47135",2026,"Native Pasture","D3b","2026-10-05",4,5,4
 "47137","47137",2026,"Annual Ryegrass","D2a_2026","2026-05-11",1,5,1
 "47137","47137",2026,"Forage Sorghum","D3a","2026-05-19",3,5,3
-"47137","47137",2026,"Full Season Improved Pasture","D2a_2026","2026-05-11",1,5,3
-"47137","47137",2026,"Full Season Improved Pasture","D3a","2026-05-19",3,5,3
+"47137","47137",2026,"Full Season Improved Pasture","D2a_2026","2026-05-11",1,5,4
+"47137","47137",2026,"Full Season Improved Pasture","D3a","2026-05-19",3,5,4
+"47137","47137",2026,"Full Season Improved Pasture","D3b","2026-11-30",4,5,4
 "47137","47137",2026,"Long Season Small Grains","D2a_2026","2026-05-11",1,5,1
 "47137","47137",2026,"Native Pasture","D3a","2026-05-19",3,5,3
 "47139","47139",2026,"Annual Crabgrass","D3a","2026-06-01",3,5,3
@@ -21220,8 +21321,9 @@
 "47157","47157",2026,"Full Season Improved Pasture","D3b","2026-10-26",4,5,4
 "47157","47157",2026,"Native Pasture","D2a_2026","2026-05-28",1,5,3
 "47157","47157",2026,"Native Pasture","D3a","2026-09-29",3,5,3
-"47159","47159",2026,"Full Season Improved Pasture","D2a_2026","2026-05-18",1,5,3
-"47159","47159",2026,"Full Season Improved Pasture","D3a","2026-11-03",3,5,3
+"47159","47159",2026,"Full Season Improved Pasture","D2a_2026","2026-05-18",1,5,4
+"47159","47159",2026,"Full Season Improved Pasture","D3a","2026-11-03",3,5,4
+"47159","47159",2026,"Full Season Improved Pasture","D3b","2026-11-30",4,5,4
 "47161","47161",2026,"Annual Crabgrass","D2a_2026","2026-06-28",1,5,1
 "47161","47161",2026,"Annual Ryegrass","D2a_2026","2026-02-16",1,5,3
 "47161","47161",2026,"Annual Ryegrass","D3a","2026-04-21",3,5,3
@@ -22103,12 +22205,14 @@
 "48075","48075",2026,"Full Season Improved Pasture","D2a_2026","2026-03-30",1,5,4
 "48075","48075",2026,"Full Season Improved Pasture","D3a","2026-03-31",3,5,4
 "48075","48075",2026,"Full Season Improved Pasture","D3b","2026-04-27",4,5,4
+"48075","48075",2026,"Full Season Improved Pasture","D2b_2026","2026-11-23",2,5,4
 "48075","48075",2026,"Long Season Small Grains","D2a_2026","2026-03-30",1,5,4
 "48075","48075",2026,"Long Season Small Grains","D3a","2026-03-31",3,5,4
 "48075","48075",2026,"Long Season Small Grains","D3b","2026-04-27",4,5,4
 "48075","48075",2026,"Native Pasture","D2a_2026","2026-03-30",1,5,4
 "48075","48075",2026,"Native Pasture","D3a","2026-03-31",3,5,4
 "48075","48075",2026,"Native Pasture","D3b","2026-04-27",4,5,4
+"48075","48075",2026,"Native Pasture","D2b_2026","2026-11-23",2,5,4
 "48075","48075",2026,"Short Season Spring Small Grains","D2a_2026","2026-03-30",1,5,4
 "48075","48075",2026,"Short Season Spring Small Grains","D3a","2026-03-31",3,5,4
 "48075","48075",2026,"Short Season Spring Small Grains","D3b","2026-04-27",4,5,4
@@ -22743,14 +22847,16 @@
 "48159","48159",2026,"Annual Ryegrass","D3b","2026-02-16",4,5,4
 "48159","48159",2026,"Forage Sorghum","D3a","2026-06-15",3,4,4
 "48159","48159",2026,"Forage Sorghum","D3b","2026-10-05",4,4,4
-"48159","48159",2026,"Full Season Improved Pasture","D3a","2026-01-20",3,5,4
-"48159","48159",2026,"Full Season Improved Pasture","D3b","2026-02-16",4,5,4
-"48159","48159",2026,"Full Season Improved Pasture","D4a","2026-11-03",4,5,4
+"48159","48159",2026,"Full Season Improved Pasture","D3a","2026-01-20",3,5,5
+"48159","48159",2026,"Full Season Improved Pasture","D3b","2026-02-16",4,5,5
+"48159","48159",2026,"Full Season Improved Pasture","D4a","2026-11-03",4,5,5
+"48159","48159",2026,"Full Season Improved Pasture","D4b","2026-11-30",5,5,5
 "48159","48159",2026,"Long Season Small Grains","D3a","2026-01-20",3,5,4
 "48159","48159",2026,"Long Season Small Grains","D3b","2026-02-16",4,5,4
-"48159","48159",2026,"Native Pasture","D3a","2026-01-20",3,5,4
-"48159","48159",2026,"Native Pasture","D3b","2026-02-16",4,5,4
-"48159","48159",2026,"Native Pasture","D4a","2026-11-03",4,5,4
+"48159","48159",2026,"Native Pasture","D3a","2026-01-20",3,5,5
+"48159","48159",2026,"Native Pasture","D3b","2026-02-16",4,5,5
+"48159","48159",2026,"Native Pasture","D4a","2026-11-03",4,5,5
+"48159","48159",2026,"Native Pasture","D4b","2026-11-30",5,5,5
 "48159","48159",2026,"Short Season Fall/Winter Small Grains","D3a","2026-01-20",3,3,3
 "48159","48159",2026,"Short Season Fall/Winter Small Grains","D3b","2026-02-16",4,3,3
 "48159","48159",2026,"Short Season Small Grains","D3a","2026-01-20",3,4,4
@@ -22973,12 +23079,14 @@
 "48183","48183",2026,"Full Season Improved Pasture","D2b_2026","2026-05-18",2,5,4
 "48183","48183",2026,"Full Season Improved Pasture","D3a","2026-09-29",3,5,4
 "48183","48183",2026,"Full Season Improved Pasture","D3b","2026-10-26",4,5,4
+"48183","48183",2026,"Full Season Improved Pasture","D4a","2026-11-24",4,5,4
 "48183","48183",2026,"Long Season Small Grains","D2a_2026","2026-04-20",1,5,2
 "48183","48183",2026,"Long Season Small Grains","D2b_2026","2026-05-18",2,5,2
 "48183","48183",2026,"Native Pasture","D2a_2026","2026-04-20",1,5,4
 "48183","48183",2026,"Native Pasture","D2b_2026","2026-05-18",2,5,4
 "48183","48183",2026,"Native Pasture","D3a","2026-09-29",3,5,4
 "48183","48183",2026,"Native Pasture","D3b","2026-10-26",4,5,4
+"48183","48183",2026,"Native Pasture","D4a","2026-11-24",4,5,4
 "48183","48183",2026,"Short Season Spring Small Grains","D2a_2026","2026-04-20",1,5,2
 "48183","48183",2026,"Short Season Spring Small Grains","D2b_2026","2026-05-18",2,5,2
 "48185","48185",2026,"Annual Ryegrass","D2a_2026","2026-02-02",1,5,4
@@ -23359,16 +23467,18 @@
 "48223","48223",2026,"Forage Sorghum","D2a_2026","2026-07-12",1,4,4
 "48223","48223",2026,"Forage Sorghum","D3a","2026-09-15",3,4,4
 "48223","48223",2026,"Forage Sorghum","D3b","2026-10-12",4,4,4
-"48223","48223",2026,"Full Season Improved Pasture","D3a","2026-01-20",3,5,4
-"48223","48223",2026,"Full Season Improved Pasture","D3b","2026-02-16",4,5,4
-"48223","48223",2026,"Full Season Improved Pasture","D2a_2026","2026-07-06",1,5,4
-"48223","48223",2026,"Full Season Improved Pasture","D4a","2026-11-03",4,5,4
+"48223","48223",2026,"Full Season Improved Pasture","D3a","2026-01-20",3,5,5
+"48223","48223",2026,"Full Season Improved Pasture","D3b","2026-02-16",4,5,5
+"48223","48223",2026,"Full Season Improved Pasture","D2a_2026","2026-07-06",1,5,5
+"48223","48223",2026,"Full Season Improved Pasture","D4a","2026-11-03",4,5,5
+"48223","48223",2026,"Full Season Improved Pasture","D4b","2026-11-30",5,5,5
 "48223","48223",2026,"Long Season Small Grains","D3a","2026-01-20",3,5,4
 "48223","48223",2026,"Long Season Small Grains","D3b","2026-02-16",4,5,4
-"48223","48223",2026,"Native Pasture","D3a","2026-01-20",3,5,4
-"48223","48223",2026,"Native Pasture","D3b","2026-02-16",4,5,4
-"48223","48223",2026,"Native Pasture","D2a_2026","2026-07-06",1,5,4
-"48223","48223",2026,"Native Pasture","D4a","2026-11-03",4,5,4
+"48223","48223",2026,"Native Pasture","D3a","2026-01-20",3,5,5
+"48223","48223",2026,"Native Pasture","D3b","2026-02-16",4,5,5
+"48223","48223",2026,"Native Pasture","D2a_2026","2026-07-06",1,5,5
+"48223","48223",2026,"Native Pasture","D4a","2026-11-03",4,5,5
+"48223","48223",2026,"Native Pasture","D4b","2026-11-30",5,5,5
 "48223","48223",2026,"Short Season Fall/Winter Small Grains","D3a","2026-01-20",3,3,3
 "48223","48223",2026,"Short Season Fall/Winter Small Grains","D3b","2026-02-16",4,3,3
 "48223","48223",2026,"Short Season Small Grains","D3a","2026-01-20",3,4,4
@@ -23857,14 +23967,16 @@
 "48277","48277",2026,"Forage Sorghum","D3a","2026-06-15",3,4,4
 "48277","48277",2026,"Forage Sorghum","D3b","2026-09-28",4,4,4
 "48277","48277",2026,"Forage Sorghum","D4a","2026-09-29",4,4,4
-"48277","48277",2026,"Full Season Improved Pasture","D3a","2026-01-13",3,5,4
-"48277","48277",2026,"Full Season Improved Pasture","D3b","2026-02-09",4,5,4
-"48277","48277",2026,"Full Season Improved Pasture","D4a","2026-09-29",4,5,4
+"48277","48277",2026,"Full Season Improved Pasture","D3a","2026-01-13",3,5,5
+"48277","48277",2026,"Full Season Improved Pasture","D3b","2026-02-09",4,5,5
+"48277","48277",2026,"Full Season Improved Pasture","D4a","2026-09-29",4,5,5
+"48277","48277",2026,"Full Season Improved Pasture","D4b","2026-11-30",5,5,5
 "48277","48277",2026,"Long Season Small Grains","D3a","2026-01-13",3,5,4
 "48277","48277",2026,"Long Season Small Grains","D3b","2026-02-09",4,5,4
-"48277","48277",2026,"Native Pasture","D3a","2026-01-13",3,5,4
-"48277","48277",2026,"Native Pasture","D3b","2026-02-09",4,5,4
-"48277","48277",2026,"Native Pasture","D4a","2026-09-29",4,5,4
+"48277","48277",2026,"Native Pasture","D3a","2026-01-13",3,5,5
+"48277","48277",2026,"Native Pasture","D3b","2026-02-09",4,5,5
+"48277","48277",2026,"Native Pasture","D4a","2026-09-29",4,5,5
+"48277","48277",2026,"Native Pasture","D4b","2026-11-30",5,5,5
 "48277","48277",2026,"Short Season Fall/Winter Small Grains","D3a","2026-01-13",3,3,3
 "48277","48277",2026,"Short Season Fall/Winter Small Grains","D3b","2026-02-09",4,3,3
 "48277","48277",2026,"Short Season Small Grains","D3a","2026-01-13",3,4,4
@@ -24453,14 +24565,16 @@
 "48347","48347",2026,"Annual Ryegrass","D2b_2026","2026-03-09",2,5,2
 "48347","48347",2026,"Forage Sorghum","D2a_2026","2026-09-28",1,4,3
 "48347","48347",2026,"Forage Sorghum","D3a","2026-09-29",3,4,3
-"48347","48347",2026,"Full Season Improved Pasture","D2a_2026","2026-02-09",1,5,3
-"48347","48347",2026,"Full Season Improved Pasture","D2b_2026","2026-03-09",2,5,3
-"48347","48347",2026,"Full Season Improved Pasture","D3a","2026-09-29",3,5,3
+"48347","48347",2026,"Full Season Improved Pasture","D2a_2026","2026-02-09",1,5,4
+"48347","48347",2026,"Full Season Improved Pasture","D2b_2026","2026-03-09",2,5,4
+"48347","48347",2026,"Full Season Improved Pasture","D3a","2026-09-29",3,5,4
+"48347","48347",2026,"Full Season Improved Pasture","D3b","2026-11-30",4,5,4
 "48347","48347",2026,"Long Season Small Grains","D2a_2026","2026-02-09",1,5,2
 "48347","48347",2026,"Long Season Small Grains","D2b_2026","2026-03-09",2,5,2
-"48347","48347",2026,"Native Pasture","D2a_2026","2026-02-09",1,5,3
-"48347","48347",2026,"Native Pasture","D2b_2026","2026-03-09",2,5,3
-"48347","48347",2026,"Native Pasture","D3a","2026-09-29",3,5,3
+"48347","48347",2026,"Native Pasture","D2a_2026","2026-02-09",1,5,4
+"48347","48347",2026,"Native Pasture","D2b_2026","2026-03-09",2,5,4
+"48347","48347",2026,"Native Pasture","D3a","2026-09-29",3,5,4
+"48347","48347",2026,"Native Pasture","D3b","2026-11-30",4,5,4
 "48347","48347",2026,"Short Season Fall/Winter Small Grains","D2a_2026","2026-02-09",1,3,1
 "48347","48347",2026,"Short Season Small Grains","D2a_2026","2026-02-09",1,4,1
 "48347","48347",2026,"Short Season Spring Small Grains","D2a_2026","2026-02-09",1,5,2
@@ -25090,6 +25204,7 @@
 "48423","48423",2026,"Full Season Improved Pasture","D2b_2026","2026-03-30",2,5,4
 "48423","48423",2026,"Full Season Improved Pasture","D3a","2026-03-31",3,5,4
 "48423","48423",2026,"Full Season Improved Pasture","D3b","2026-04-27",4,5,4
+"48423","48423",2026,"Full Season Improved Pasture","D4a","2026-11-24",4,5,4
 "48423","48423",2026,"Long Season Small Grains","D2a_2026","2026-03-09",1,5,4
 "48423","48423",2026,"Long Season Small Grains","D2b_2026","2026-03-30",2,5,4
 "48423","48423",2026,"Long Season Small Grains","D3a","2026-03-31",3,5,4
@@ -25098,6 +25213,7 @@
 "48423","48423",2026,"Native Pasture","D2b_2026","2026-03-30",2,5,4
 "48423","48423",2026,"Native Pasture","D3a","2026-03-31",3,5,4
 "48423","48423",2026,"Native Pasture","D3b","2026-04-27",4,5,4
+"48423","48423",2026,"Native Pasture","D4a","2026-11-24",4,5,4
 "48423","48423",2026,"Short Season Spring Small Grains","D2a_2026","2026-03-09",1,5,4
 "48423","48423",2026,"Short Season Spring Small Grains","D2b_2026","2026-03-30",2,5,4
 "48423","48423",2026,"Short Season Spring Small Grains","D3a","2026-03-31",3,5,4
@@ -25693,6 +25809,7 @@
 "48491","48491",2026,"Full Season Improved Pasture","D3a","2026-01-13",3,5,4
 "48491","48491",2026,"Full Season Improved Pasture","D3b","2026-02-09",4,5,4
 "48491","48491",2026,"Full Season Improved Pasture","D2a_2026","2026-11-02",1,5,4
+"48491","48491",2026,"Full Season Improved Pasture","D2b_2026","2026-11-23",2,5,4
 "48491","48491",2026,"Long Season Small Grains","D2a_2026","2025-11-28",1,5,4
 "48491","48491",2026,"Long Season Small Grains","D2b_2026","2025-12-29",2,5,4
 "48491","48491",2026,"Long Season Small Grains","D3a","2026-01-13",3,5,4
@@ -25700,6 +25817,7 @@
 "48491","48491",2026,"Native Pasture","D3a","2026-01-13",3,5,4
 "48491","48491",2026,"Native Pasture","D3b","2026-02-09",4,5,4
 "48491","48491",2026,"Native Pasture","D2a_2026","2026-11-02",1,5,4
+"48491","48491",2026,"Native Pasture","D2b_2026","2026-11-23",2,5,4
 "48491","48491",2026,"Short Season Fall/Winter Small Grains","D2a_2026","2025-12-12",1,3,3
 "48491","48491",2026,"Short Season Fall/Winter Small Grains","D2b_2026","2026-01-12",2,3,3
 "48491","48491",2026,"Short Season Fall/Winter Small Grains","D3a","2026-01-13",3,3,3
@@ -25747,17 +25865,19 @@
 "48499","48499",2026,"Annual Ryegrass","D3b","2026-03-09",4,5,4
 "48499","48499",2026,"Forage Sorghum","D3a","2026-06-01",3,4,3
 "48499","48499",2026,"Forage Sorghum","D2a_2026","2026-09-21",1,4,3
-"48499","48499",2026,"Full Season Improved Pasture","D2a_2026","2026-02-09",1,5,4
-"48499","48499",2026,"Full Season Improved Pasture","D3a","2026-02-10",3,5,4
-"48499","48499",2026,"Full Season Improved Pasture","D3b","2026-03-09",4,5,4
-"48499","48499",2026,"Full Season Improved Pasture","D4a","2026-11-03",4,5,4
+"48499","48499",2026,"Full Season Improved Pasture","D2a_2026","2026-02-09",1,5,5
+"48499","48499",2026,"Full Season Improved Pasture","D3a","2026-02-10",3,5,5
+"48499","48499",2026,"Full Season Improved Pasture","D3b","2026-03-09",4,5,5
+"48499","48499",2026,"Full Season Improved Pasture","D4a","2026-11-03",4,5,5
+"48499","48499",2026,"Full Season Improved Pasture","D4b","2026-11-30",5,5,5
 "48499","48499",2026,"Long Season Small Grains","D2a_2026","2026-02-09",1,5,4
 "48499","48499",2026,"Long Season Small Grains","D3a","2026-02-10",3,5,4
 "48499","48499",2026,"Long Season Small Grains","D3b","2026-03-09",4,5,4
-"48499","48499",2026,"Native Pasture","D2a_2026","2026-02-09",1,5,4
-"48499","48499",2026,"Native Pasture","D3a","2026-02-10",3,5,4
-"48499","48499",2026,"Native Pasture","D3b","2026-03-09",4,5,4
-"48499","48499",2026,"Native Pasture","D4a","2026-11-03",4,5,4
+"48499","48499",2026,"Native Pasture","D2a_2026","2026-02-09",1,5,5
+"48499","48499",2026,"Native Pasture","D3a","2026-02-10",3,5,5
+"48499","48499",2026,"Native Pasture","D3b","2026-03-09",4,5,5
+"48499","48499",2026,"Native Pasture","D4a","2026-11-03",4,5,5
+"48499","48499",2026,"Native Pasture","D4b","2026-11-30",5,5,5
 "48499","48499",2026,"Short Season Fall/Winter Small Grains","D2a_2026","2026-02-09",1,3,3
 "48499","48499",2026,"Short Season Fall/Winter Small Grains","D3a","2026-02-10",3,3,3
 "48499","48499",2026,"Short Season Small Grains","D2a_2026","2026-02-09",1,4,3
@@ -25870,7 +25990,7 @@
 "49007","49007",2026,"Native Pasture","D3a","2026-01-01",3,5,4
 "49007","49007",2026,"Native Pasture","D3b","2026-02-02",4,5,4
 "49007","49007",2026,"Native Pasture","D2a_2026","2026-10-26",1,5,4
-"49007","49007",2026,"Native Pasture","D2b_2026","2026-11-16",2,5,4
+"49007","49007",2026,"Native Pasture","D2b_2026","2026-11-23",2,5,4
 "49009","49009",2026,"Full Season Improved Pasture","D4a","2026-05-01",4,5,5
 "49009","49009",2026,"Full Season Improved Pasture","D4b","2026-06-01",5,5,5
 "49009","49009",2026,"Full Season Improved Pasture","D3a","2026-06-02",3,5,5
@@ -26370,8 +26490,9 @@
 "51091","51091",2026,"Long Season Small Grains","D2a_2026","2026-05-04",1,1,1
 "51091","51091",2026,"Native Pasture","D3a","2026-05-19",3,5,3
 "51091","51091",2026,"Native Pasture","D2a_2026","2026-06-29",1,5,3
-"51093","51093",2026,"Full Season Improved Pasture","D2a_2026","2026-06-01",1,5,3
-"51093","51093",2026,"Full Season Improved Pasture","D3a","2026-06-09",3,5,3
+"51093","51093",2026,"Full Season Improved Pasture","D2a_2026","2026-06-01",1,5,4
+"51093","51093",2026,"Full Season Improved Pasture","D3a","2026-06-09",3,5,4
+"51093","51093",2026,"Full Season Improved Pasture","D3b","2026-11-30",4,5,4
 "51093","51093",2026,"Native Pasture","D2a_2026","2026-06-01",1,5,3
 "51093","51093",2026,"Native Pasture","D3a","2026-06-09",3,5,3
 "51095","51095",2026,"Full Season Improved Pasture","D2a_2026","2026-05-18",1,5,2
@@ -26671,9 +26792,10 @@
 "51179","51179",2026,"Native Pasture","D2a_2026","2026-05-04",1,5,4
 "51179","51179",2026,"Native Pasture","D3a","2026-05-19",3,5,4
 "51179","51179",2026,"Native Pasture","D3b","2026-06-15",4,5,4
-"51181","51181",2026,"Full Season Improved Pasture","D2a_2026","2026-05-18",1,5,3
-"51181","51181",2026,"Full Season Improved Pasture","D2b_2026","2026-06-08",2,5,3
-"51181","51181",2026,"Full Season Improved Pasture","D3a","2026-06-09",3,5,3
+"51181","51181",2026,"Full Season Improved Pasture","D2a_2026","2026-05-18",1,5,4
+"51181","51181",2026,"Full Season Improved Pasture","D2b_2026","2026-06-08",2,5,4
+"51181","51181",2026,"Full Season Improved Pasture","D3a","2026-06-09",3,5,4
+"51181","51181",2026,"Full Season Improved Pasture","D3b","2026-11-30",4,5,4
 "51181","51181",2026,"Native Pasture","D2a_2026","2026-05-18",1,5,3
 "51181","51181",2026,"Native Pasture","D2b_2026","2026-06-08",2,5,3
 "51181","51181",2026,"Native Pasture","D3a","2026-06-09",3,5,3
@@ -27537,8 +27659,7 @@
 "72019","72019",2026,"Forage Sorghum","D2b_2026","2026-11-09",2,5,4
 "72019","72019",2026,"Full Season Improved Pasture","D3a","2026-08-11",3,5,4
 "72019","72019",2026,"Full Season Improved Pasture","D3b","2026-09-07",4,5,4
-"72019","72019",2026,"Full Season Improved Pasture","D2a_2026","2026-10-19",1,5,4
-"72019","72019",2026,"Full Season Improved Pasture","D2b_2026","2026-11-09",2,5,4
+"72019","72019",2026,"Full Season Improved Pasture","D2a_2026","2026-10-12",1,5,4
 "72019","72019",2026,"Long Season Small Grains","D2a_2026","2026-08-24",1,5,3
 "72019","72019",2026,"Long Season Small Grains","D3a","2026-08-25",3,5,3
 "72019","72019",2026,"Long Season Small Grains","D2b_2026","2026-11-02",2,5,3
@@ -27548,26 +27669,20 @@
 "72019","72019",2026,"Native Pasture","D2b_2026","2026-11-09",2,5,4
 "72025","72025",2026,"Forage Sorghum","D3a","2026-08-11",3,5,4
 "72025","72025",2026,"Forage Sorghum","D3b","2026-09-07",4,5,4
-"72025","72025",2026,"Full Season Improved Pasture","D2a_2026","2026-08-10",1,5,4
 "72025","72025",2026,"Full Season Improved Pasture","D3a","2026-08-11",3,5,4
 "72025","72025",2026,"Full Season Improved Pasture","D3b","2026-09-07",4,5,4
-"72025","72025",2026,"Full Season Improved Pasture","D2b_2026","2026-11-09",2,5,4
 "72025","72025",2026,"Long Season Small Grains","D3a","2026-08-11",3,5,4
 "72025","72025",2026,"Long Season Small Grains","D3b","2026-09-07",4,5,4
-"72025","72025",2026,"Native Pasture","D3a","2026-08-18",3,5,4
-"72025","72025",2026,"Native Pasture","D3b","2026-09-14",4,5,4
-"72047","72047",2026,"Forage Sorghum","D3a","2026-08-25",3,5,4
-"72047","72047",2026,"Forage Sorghum","D3b","2026-09-21",4,5,4
+"72025","72025",2026,"Native Pasture","D3a","2026-08-11",3,5,4
+"72025","72025",2026,"Native Pasture","D3b","2026-09-07",4,5,4
+"72047","72047",2026,"Forage Sorghum","D2a_2026","2026-09-14",1,5,2
+"72047","72047",2026,"Forage Sorghum","D2b_2026","2026-10-12",2,5,2
 "72047","72047",2026,"Full Season Improved Pasture","D3a","2026-08-25",3,5,4
 "72047","72047",2026,"Full Season Improved Pasture","D3b","2026-09-21",4,5,4
-"72047","72047",2026,"Full Season Improved Pasture","D2a_2026","2026-10-19",1,5,4
-"72047","72047",2026,"Full Season Improved Pasture","D2b_2026","2026-11-09",2,5,4
-"72047","72047",2026,"Long Season Small Grains","D3a","2026-08-25",3,5,4
-"72047","72047",2026,"Long Season Small Grains","D3b","2026-09-21",4,5,4
-"72047","72047",2026,"Long Season Small Grains","D2a_2026","2026-10-19",1,5,4
-"72047","72047",2026,"Long Season Small Grains","D2b_2026","2026-11-09",2,5,4
-"72047","72047",2026,"Native Pasture","D3a","2026-08-25",3,5,4
-"72047","72047",2026,"Native Pasture","D3b","2026-09-21",4,5,4
+"72047","72047",2026,"Long Season Small Grains","D2a_2026","2026-09-14",1,5,2
+"72047","72047",2026,"Long Season Small Grains","D2b_2026","2026-10-12",2,5,2
+"72047","72047",2026,"Native Pasture","D2a_2026","2026-09-07",1,5,2
+"72047","72047",2026,"Native Pasture","D2b_2026","2026-10-05",2,5,2
 "72097","72097",2026,"Forage Sorghum","D2a_2026","2026-07-20",1,5,4
 "72097","72097",2026,"Forage Sorghum","D3a","2026-08-04",3,5,4
 "72097","72097",2026,"Forage Sorghum","D3b","2026-08-31",4,5,4
@@ -27584,9 +27699,13 @@
 "72113","72113",2026,"Forage Sorghum","D3a","2026-08-04",3,5,4
 "72113","72113",2026,"Forage Sorghum","D3b","2026-08-31",4,5,4
 "72113","72113",2026,"Full Season Improved Pasture","D2a_2026","2026-07-20",1,5,4
-"72113","72113",2026,"Full Season Improved Pasture","D3a","2026-08-04",3,5,4
-"72113","72113",2026,"Full Season Improved Pasture","D3b","2026-08-31",4,5,4
-"72113","72113",2026,"Long Season Small Grains","D2a_2026","2026-08-24",1,5,1
+"72113","72113",2026,"Full Season Improved Pasture","D2b_2026","2026-08-10",2,5,4
+"72113","72113",2026,"Full Season Improved Pasture","D3a","2026-08-11",3,5,4
+"72113","72113",2026,"Full Season Improved Pasture","D3b","2026-09-07",4,5,4
+"72113","72113",2026,"Long Season Small Grains","D2a_2026","2026-07-20",1,5,4
+"72113","72113",2026,"Long Season Small Grains","D2b_2026","2026-08-10",2,5,4
+"72113","72113",2026,"Long Season Small Grains","D3a","2026-08-11",3,5,4
+"72113","72113",2026,"Long Season Small Grains","D3b","2026-09-07",4,5,4
 "72113","72113",2026,"Native Pasture","D2a_2026","2026-07-20",1,5,4
 "72113","72113",2026,"Native Pasture","D3a","2026-08-04",3,5,4
 "72113","72113",2026,"Native Pasture","D3b","2026-08-31",4,5,4
@@ -27602,28 +27721,26 @@
 "78010","52001",2026,"Full Season Improved Pasture","D2b_2026","2026-11-09",2,5,4
 "78010","52001",2026,"Long Season Small Grains","D3a","2026-08-18",3,5,4
 "78010","52001",2026,"Long Season Small Grains","D3b","2026-09-14",4,5,4
-"78010","52001",2026,"Native Pasture","D2a_2026","2026-08-10",1,5,4
-"78010","52001",2026,"Native Pasture","D3a","2026-08-25",3,5,4
-"78010","52001",2026,"Native Pasture","D3b","2026-09-21",4,5,4
-"78010","52001",2026,"Native Pasture","D2b_2026","2026-11-09",2,5,4
+"78010","52001",2026,"Native Pasture","D3a","2026-08-18",3,5,4
+"78010","52001",2026,"Native Pasture","D3b","2026-09-14",4,5,4
 "78020","52003",2026,"Forage Sorghum","D3a","2026-08-18",3,5,4
 "78020","52003",2026,"Forage Sorghum","D3b","2026-09-14",4,5,4
 "78020","52003",2026,"Full Season Improved Pasture","D3a","2026-08-18",3,5,4
 "78020","52003",2026,"Full Season Improved Pasture","D3b","2026-09-14",4,5,4
-"78020","52003",2026,"Long Season Small Grains","D3a","2026-08-18",3,5,4
-"78020","52003",2026,"Long Season Small Grains","D3b","2026-09-14",4,5,4
-"78020","52003",2026,"Native Pasture","D2a_2026","2026-08-10",1,5,4
-"78020","52003",2026,"Native Pasture","D3a","2026-08-25",3,5,4
-"78020","52003",2026,"Native Pasture","D3b","2026-09-21",4,5,4
+"78020","52003",2026,"Full Season Improved Pasture","D2a_2026","2026-10-19",1,5,4
+"78020","52003",2026,"Long Season Small Grains","D3a","2026-08-11",3,5,4
+"78020","52003",2026,"Long Season Small Grains","D3b","2026-09-07",4,5,4
+"78020","52003",2026,"Native Pasture","D3a","2026-08-18",3,5,4
+"78020","52003",2026,"Native Pasture","D3b","2026-09-14",4,5,4
 "78030","52005",2026,"Forage Sorghum","D3a","2026-08-18",3,5,4
 "78030","52005",2026,"Forage Sorghum","D3b","2026-09-14",4,5,4
 "78030","52005",2026,"Full Season Improved Pasture","D3a","2026-08-18",3,5,4
 "78030","52005",2026,"Full Season Improved Pasture","D3b","2026-09-14",4,5,4
+"78030","52005",2026,"Full Season Improved Pasture","D2a_2026","2026-10-19",1,5,4
 "78030","52005",2026,"Long Season Small Grains","D3a","2026-08-18",3,5,4
 "78030","52005",2026,"Long Season Small Grains","D3b","2026-09-14",4,5,4
-"78030","52005",2026,"Native Pasture","D2a_2026","2026-08-10",1,5,4
-"78030","52005",2026,"Native Pasture","D3a","2026-08-25",3,5,4
-"78030","52005",2026,"Native Pasture","D3b","2026-09-21",4,5,4
+"78030","52005",2026,"Native Pasture","D3a","2026-08-18",3,5,4
+"78030","52005",2026,"Native Pasture","D3b","2026-09-14",4,5,4
 "01001","01001",2025,"Annual Ryegrass","D2","2025-01-25",1,5,1
 "01001","01001",2025,"Full Season Improved Mixed Pasture","D2","2025-01-25",1,5,1
 "01001","01001",2025,"Long Season Small Grains","D2","2025-01-25",1,5,1
